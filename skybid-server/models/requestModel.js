@@ -9,6 +9,7 @@ const bidSchema = new mongoose.Schema({
     aircraft:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"Fleet",
+        required:true
     },
     price:{
         type:Number,
