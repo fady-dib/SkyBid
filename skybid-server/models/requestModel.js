@@ -43,7 +43,7 @@ const requestSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    Departure_date:{
+    departure_date:{
         type:Date,
         required:true
     },
