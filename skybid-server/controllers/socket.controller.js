@@ -1,7 +1,16 @@
-module.exports = function (io) {
+const { authMiddleware } = require("../middlewares/socketMiddleware");
 
+module.exports = function (io) {
+  
     io.on('connection', (socket) => {
-        
+
+        authMiddleware(socket, (err) => {
+            if (err) {
+              console.error(err);
+              return socket.disconnect(true);
+            }
+        })
+
         console.log(`Client ${socket.id} connected`);
 
         socket.on('disconnect', () => {
@@ -16,3 +25,4 @@ module.exports = function (io) {
 
     });
 }
+
