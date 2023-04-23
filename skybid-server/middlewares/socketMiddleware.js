@@ -3,7 +3,7 @@ const User = require("../models/userModel");
 
 exports.authMiddleware = async (socket, next) => {
   try {
-    const token = socket.handshake.auth.token;
+    const token = socket.handshake.query.token
 
     if (!token) {
       return next(new Error("Unauthenticated"));

@@ -4,15 +4,15 @@ const Notification = require("../models/notificationModel");
 const User = require("../models/userModel");
 
 module.exports = function (io) {
-  
+
     io.on('connection', (socket) => {
 
-        // authMiddleware(socket, (err) => {
-        //     if (err) {
-        //       console.error(err);
-        //       return socket.disconnect(true);
-        //     }
-        // })
+        authMiddleware(socket, (err) => {
+            if (err) {
+              console.error(err);
+              return socket.disconnect(true);
+            }
+        })
 
         console.log(`Client ${socket.id} connected`);
 
@@ -25,8 +25,8 @@ module.exports = function (io) {
             io.emit('chatMessage', msg);
         });
 
-        socket.on('createRequest', async (request)=> {
-            
+        socket.on('createRequest', async (request) => {
+
             const newRequest = new Request({
                 broker_id: request.broker_id,
                 trip: request.trip,
@@ -39,17 +39,19 @@ module.exports = function (io) {
                 status: "pending",
             });
             await newRequest.save();
-            const operators = await User.find({role: "operator"});
+            const operators = await User.find({ role: "operator" });
+            const operatorIds = operators.map(operator => operator._id.toString());
+            socket.join(operatorIds);
             const notification = new Notification({
                 sender_id: request.broker_id,
-                receiver_id : operators.map(operator => operator._id),
+                receiver_id: operators.map(operator => operator._id),
                 type: "request",
-                notification : `A new request has been created`
+                notification: `A new request has been created`
             })
             await notification.save()
-            io.emit('notification', newRequest, notification)
+            io.to(operatorIds).emit('notification', newRequest, notification)
 
-        }) 
+        })
 
 
     });
