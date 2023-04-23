@@ -4,12 +4,12 @@ module.exports = function (io) {
   
     io.on('connection', (socket) => {
 
-        authMiddleware(socket, (err) => {
-            if (err) {
-              console.error(err);
-              return socket.disconnect(true);
-            }
-        })
+        // authMiddleware(socket, (err) => {
+        //     if (err) {
+        //       console.error(err);
+        //       return socket.disconnect(true);
+        //     }
+        // })
 
         console.log(`Client ${socket.id} connected`);
 
