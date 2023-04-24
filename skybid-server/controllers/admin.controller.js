@@ -5,3 +5,8 @@ exports.getUsers = async (req,res) => {
     const users = await User.find()
     return res.json(users)
 }
+
+exports.getRequests = async (req,res) => {
+    const Requests = await Request.find()
+    return res.json(Requests)
+}
