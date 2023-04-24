@@ -21,12 +21,13 @@ app.use('/images', express.static(path.join(__dirname, '../images')));
 exports.addAircraft = async (req, res) => {
   try {
     const { operator_id, aircraft, passengers, year_of_manufacture } = req.body;
+    console.log(req.body)
 
-    // if (!operator_id || !aircraft || !passengers || !year_of_manufacture) {
-    //   return res.status(400).json({
-    //     message: 'Content cannot be empty!'
-    //   });
-    // }
+    if (!operator_id || !aircraft || !passengers || !year_of_manufacture) {
+      return res.status(400).json({
+        message: 'Content cannot be empty!'
+      });
+    }
 
     upload(req, res, async function (err) {
       if (err instanceof multer.MulterError) {

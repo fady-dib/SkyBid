@@ -1,9 +1,10 @@
 const { Router } = require("express");
 const router = Router();
 
-const {updateProfile} = require("../controllers/user.controller")
+const {updateProfile, getUser} = require("../controllers/user.controller")
 
 router.post("/updateProfile", updateProfile);
+router.get("/getUser/:id", getUser)
 
 
 module.exports = router;

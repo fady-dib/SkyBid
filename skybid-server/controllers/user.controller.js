@@ -29,3 +29,15 @@ exports.updateProfile = async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 }
+
+exports.getUser = async (req,res) => {
+
+    user_id = req.params.id
+    if(!user_id) return res.json(" Invalid user ID")
+
+    const user = await User.findOne({_id : user_id})
+
+    if (!user) return res.json("User not found")
+
+    return res.json(user)
+}
