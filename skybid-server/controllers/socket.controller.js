@@ -5,14 +5,9 @@ const User = require("../models/userModel");
 
 module.exports = function (io) {
 
-    io.on('connection', (socket) => {
+    // io.use(authMiddleware);
 
-        authMiddleware(socket, (err) => {
-            if (err) {
-              console.error(err);
-              return socket.disconnect(true);
-            }
-        })
+    io.on('connection', (socket) => {
 
         console.log(`Client ${socket.id} connected`);
 
@@ -40,8 +35,9 @@ module.exports = function (io) {
             });
             await newRequest.save();
             const operators = await User.find({ role: "operator" });
-            const operatorIds = operators.map(operator => operator._id.toString());
-            socket.join(operatorIds);
+            const operatorSockets = Object.keys(io.sockets.sockets)
+            .filter(socketId => operators.some(operator => operator._id.equals(io.sockets.sockets[socketId].user._id)));
+            operatorSockets.forEach(socketId => io.sockets.sockets[socketId].join("operators"));
             const notification = new Notification({
                 sender_id: request.broker_id,
                 receiver_id: operators.map(operator => operator._id),
@@ -49,9 +45,16 @@ module.exports = function (io) {
                 notification: `A new request has been created`
             })
             await notification.save()
-            io.to(operatorIds).emit('notification', newRequest, notification)
+            io.to("operators").emit('notification', newRequest, notification)
+            const requests = await Request.find();
+            io.emit("getRequests", requests)
 
         })
+
+        // socket.on("getRequests", async () => {
+        //     const requests = await Request.find();
+        //     io.emit("getRequests", requests)
+        // })
 
 
     });
