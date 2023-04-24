@@ -36,7 +36,7 @@ module.exports = function (io) {
             await newRequest.save();
             const operators = await User.find({ role: "operator" });
             const operatorSockets = Object.keys(io.sockets.sockets)
-            .filter(socketId => operators.some(operator => operator._id.equals(io.sockets.sockets[socketId].user._id)));
+                .filter(socketId => operators.some(operator => operator._id.equals(io.sockets.sockets[socketId].user._id)));
             operatorSockets.forEach(socketId => io.sockets.sockets[socketId].join("operators"));
             const notification = new Notification({
                 sender_id: request.broker_id,
@@ -51,10 +51,30 @@ module.exports = function (io) {
 
         })
 
-        // socket.on("getRequests", async () => {
-        //     const requests = await Request.find();
-        //     io.emit("getRequests", requests)
-        // })
+        socket.on("newBid", async (bid) => {
+            const request_id = bid.request_id
+            const request = await Request.findById(request_id)
+            if (!request) {
+                return "request not found";
+            }
+            const new_bid = {
+                operator_id: socket.user._id,
+                aircraft: bid.aircraft,
+                price: bid.price
+            };
+            request.bids.push(new_bid);
+            await request.updateOne({ bids: request.bids });
+            const notification = new Notification({
+                sender_id: socket.user._id,
+                receiver_id: [request.broker_id],
+                type: "bid",
+                notification: `A new bid has been submitted`
+              });
+              await notification.save();
+
+        })
+
+
 
 
     });
