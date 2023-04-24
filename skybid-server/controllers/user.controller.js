@@ -1,3 +1,4 @@
+const Request = require("../models/requestModel");
 const User = require("../models/userModel");
 
 exports.updateProfile = async (req, res) => {
@@ -32,7 +33,7 @@ exports.updateProfile = async (req, res) => {
 
 exports.getUser = async (req,res) => {
 
-    user_id = req.params.id
+   const user_id = req.params.id
     if(!user_id) return res.json(" Invalid user ID")
 
     const user = await User.findOne({_id : user_id})
@@ -40,4 +41,17 @@ exports.getUser = async (req,res) => {
     if (!user) return res.json("User not found")
 
     return res.json(user)
+}
+
+exports.getRequest = async (req,res) => {
+
+   const request_id = req.params.id
+    if(!request_id) return res.json(" Invalid request ID")
+
+    const request = await Request.findOne({_id : request_id})
+
+    if (!request) return res.json("User not found")
+
+    return res.json(request)
+
 }
