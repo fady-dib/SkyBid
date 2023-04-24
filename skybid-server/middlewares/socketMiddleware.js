@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 
-exports.authMiddleware = async (socket, next) => {
+exports.socketMiddleware = async (socket, next) => {
   try {
     const token = socket.handshake.query.token
 

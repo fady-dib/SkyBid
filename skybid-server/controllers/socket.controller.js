@@ -1,11 +1,11 @@
-const { authMiddleware } = require("../middlewares/socketMiddleware");
+const { socketMiddleware } = require("../middlewares/socketMiddleware");
 const Request = require("../models/requestModel");
 const Notification = require("../models/notificationModel");
 const User = require("../models/userModel");
 
 module.exports = function (io) {
 
-    // io.use(authMiddleware);
+    io.use(socketMiddleware);
 
     io.on('connection', (socket) => {
 

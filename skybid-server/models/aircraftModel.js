@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const fleetSchema = new mongoose.Schema({
+const aircraftSchema = new mongoose.Schema({
     operator_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"User",
@@ -24,6 +24,6 @@ const fleetSchema = new mongoose.Schema({
 
 })
 
-const Fleet = mongoose.model("Fleet",fleetSchema);
+const Aircraft = mongoose.model("Aircraft",aircraftSchema);
 
-module.exports = Fleet
+module.exports = Aircraft
