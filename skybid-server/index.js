@@ -6,7 +6,7 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 const socket_controller = require('./controllers/socket.controller')(io);
-const auth_middlewear = require('./middlewares/authMiddlewear');
+const {authMiddleware} = require('./middlewares/authMiddlewear');
 
 
 app.use(express.json())
@@ -20,7 +20,7 @@ const auth_router = require("./routes/auth.routes")
 app.use('/auth', auth_router)
 
 const user_router = require('./routes/user.routes')
-app.use('user', auth_middlewear, user_router)
+app.use('/user', authMiddleware, user_router)
 
 server.listen(port, (err) => {
     if (err) console.log (err)

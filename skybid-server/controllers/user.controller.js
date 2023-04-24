@@ -19,9 +19,10 @@ exports.updateProfile = async (req, res) => {
         profile.phone = phone;
         profile.role = role
         await profile.save()
+        const {password: hashed_password, ...new_profile} = profile.toJSON()
         return res.json({
             message: "Profile updated succesfully",
-            profile
+            new_profile
         });
     }
     catch (error) {
