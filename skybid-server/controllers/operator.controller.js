@@ -10,7 +10,7 @@ const storageEngine = multer.diskStorage({
     }
 })
 
-const upload = multer({ storage: storageEngine, limits: { fileSize: 10000000000 }, })
+const upload = multer({ storage: storageEngine })
 
 exports.addAircraft = async (req,res) => {
 
