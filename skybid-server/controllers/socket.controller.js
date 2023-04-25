@@ -8,6 +8,7 @@ module.exports = function (io) {
     io.use(socketMiddleware);
 
     io.on('connection', (socket) => {
+       
 
         console.log(`Client ${socket.id} connected`);
 
@@ -20,8 +21,17 @@ module.exports = function (io) {
             io.emit('chatMessage', msg);
         });
 
-        socket.on('createRequest', async (request) => {
+        socket.use((packet, next) => {
+            if (packet[0] === 'createRequest') {
+                if (!socket.user || socket.user.role !== 'broker') {
+                    return next(new Error('Unauthorized'));
+                }
+            }
+            next();
+        });
 
+        socket.on('createRequest', async (request) => {
+          
             const newRequest = new Request({
                 broker_id: request.broker_id,
                 trip: request.trip,
@@ -48,8 +58,9 @@ module.exports = function (io) {
             io.to("operators").emit('notification', newRequest, notification)
             const requests = await Request.find();
             io.emit("getRequests", requests)
-
+        
         })
+    
 
         socket.on("newBid", async (bid) => {
             const request_id = bid.request_id
