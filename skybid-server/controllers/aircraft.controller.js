@@ -33,7 +33,7 @@
 //       if (err instanceof multer.MulterError) {
 //         return res.status(500).json({ message: 'Error uploading files!' });
 //       } else{
-      
+
 
 //       if (!req.files) {
 //         throw new Error('No files were uploaded');
@@ -60,10 +60,10 @@
 //   }
 // };
 
- const Aircraft = require('../models/aircraftModel');
- const path = require('path');
+const Aircraft = require('../models/aircraftModel');
+const path = require('path');
 
- exports.addAircraft = async (req,res) => {
+exports.addAircraft = async (req, res) => {
   try {
     const { aircraft, passengers, year_of_manufacture } = req.body;
     if (!aircraft || !passengers || !year_of_manufacture) {
@@ -71,25 +71,44 @@
         message: 'Content cannot be empty!'
       });
     }
-   
+
     const operator_id = req.user._id;
 
     const newAircraft = new Aircraft({
-              operator_id,
-              aircraft,
-              passengers,
-              year_of_manufacture
-            });
-      
-            await newAircraft.save();
-      
-            return res.status(201).json({ message: 'Aircraft added successfully!' });
-         } 
-         catch (error) {
-          console.error(error);
-          res.status(500).json({ message: 'Something went wrong. Please try again later.' });
-        }
-      }
+      operator_id,
+      aircraft,
+      passengers,
+      year_of_manufacture
+    });
+
+    await newAircraft.save();
+
+    return res.status(201).json({ message: 'Aircraft added successfully!', newAircraft });
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+  }
+}
+
+exports.deleteAircraft = async (req, res) => {
+
+  try {
+    const aircraft_id = req.params.id
+    if (!aircraft_id) return res.json(" Invalid aircraft ID")
+
+    const aircraft = await Aircraft.findOneAndDelete({ _id: aircraft_id })
+
+    if (!aircraft) return res.json("aircraft not found")
+
+    return res.json({ message: 'Aircraft deleted successfully!', aircraft })
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+  }
+
+}
 
 
 
