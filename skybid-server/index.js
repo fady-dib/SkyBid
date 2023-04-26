@@ -9,14 +9,17 @@ const socket_controller = require('./controllers/socket.controller')(io);
 const {authMiddleware} = require('./middlewares/authMiddleware');
 const {operatorMiddleware}= require('./middlewares/operatorMiddleware')
 const { adminMiddleware } = require('./middlewares/adminMiddleware');
+const fileUpload = require("express-fileupload");
 
+
+// const path = require('path');
 
 app.use(express.json())
+// app.use(express.urlencoded({extended: true})); 
+// app.use('/images', express.static(path.join(__dirname, '../images')));
 
 app.use(cors())
-
-
-const port = process.env.PORT || 3006;
+app.use(fileUpload({maxFileSize: 10 * 1024 * 1024}));
 
 const auth_router = require("./routes/auth.routes")
 app.use('/auth', auth_router)
@@ -25,13 +28,15 @@ const user_router = require('./routes/user.routes')
 app.use('/user', authMiddleware, user_router)
 
 const operator_router = require('./routes/operator.routes')
-app.use('/user', authMiddleware,operatorMiddleware, operator_router)
+app.use('/operator', authMiddleware,operatorMiddleware, operator_router)
 
 const admin_router = require('./routes/admin.routes');
 app.use('/admin',authMiddleware, adminMiddleware, admin_router)
 
-server.listen(port, (err) => {
+app.use("/uploads", express.static(__dirname+"/Uploads"))
+
+server.listen(process.env.PORT, (err) => {
     if (err) console.log (err)
-    console.log("Server is running on port ", port);
+    console.log("Server is running on port ", process.env.PORT||3007);
     require("./config/db.config")
 })

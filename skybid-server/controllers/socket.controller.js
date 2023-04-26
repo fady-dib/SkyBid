@@ -8,6 +8,13 @@ module.exports = function (io) {
     io.use(socketMiddleware);
 
     io.on('connection', (socket) => {
+
+        socket.on('subscribeOperatorsToRoom', (operatorsRoom) => {
+           
+            const operatorSockets = Object.values(io.sockets.sockets).filter(s => s.user && s.user.role === 'operator');
+        
+            operatorSockets.forEach(s => s.join(operatorsRoom));
+          });
        
 
         console.log(`Client ${socket.id} connected`);
@@ -45,9 +52,11 @@ module.exports = function (io) {
             });
             await newRequest.save();
             const operators = await User.find({ role: "operator" });
+
             const operatorSockets = Object.keys(io.sockets.sockets)
                 .filter(socketId => operators.some(operator => operator._id.equals(io.sockets.sockets[socketId].user._id)));
             operatorSockets.forEach(socketId => io.sockets.sockets[socketId].join("operators"));
+            
             const notification = new Notification({
                 sender_id: request.broker_id,
                 receiver_id: operators.map(operator => operator._id),
@@ -55,7 +64,7 @@ module.exports = function (io) {
                 notification: `A new request has been created`
             })
             await notification.save()
-            io.to("operators").emit('notification', newRequest, notification)
+            io.to(operatorsRoom).emit('notification', newRequest, notification)
             const requests = await Request.find();
             io.emit("getRequests", requests)
         
