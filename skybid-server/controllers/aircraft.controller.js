@@ -62,6 +62,7 @@
 
 const Aircraft = require('../models/aircraftModel');
 const path = require('path');
+const fs = require('fs')
 
 exports.addAircraft = async (req, res) => {
   try {
@@ -192,7 +193,7 @@ exports.uploadImage = async (req,res) => {
         const newImage = {
             name: image_name,
             image_type: image.mimetype,
-            url: `/uploads/${image_name}`
+            url: `Uploads/${image_name}`
         };
 
        const aircraft = Aircraft.findByIdAndUpdate(req.body.aircraft_id, {
@@ -218,4 +219,32 @@ exports.uploadImage = async (req,res) => {
   console.error(error);
   res.status(500).json({ message: 'Something went wrong. Please try again later.' });
 }
+}
+
+exports.deleteImage = async (req,res) => {
+
+try{
+
+  const {aircraft_id, image_url} = req.body
+  if(!aircraft_id || !image_url) return res.send("Information incomplete")
+  console.log(aircraft_id,image_url)
+
+ await fs.promises.unlink(image_url, (err) => {
+    if (err) console.log(err);
+  });
+  const aircraft = await Aircraft.findOneAndUpdate(
+    {_id : aircraft_id},
+    {$pull : {images: {url : image_url}}},
+    {new:true}
+  )
+
+
+  res.json({ message: 'Image deleted successfully', aircraft });
+  
+}
+catch (error) {
+  console.error(error);
+  res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+}
+
 }
