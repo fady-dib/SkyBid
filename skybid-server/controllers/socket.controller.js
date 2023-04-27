@@ -10,6 +10,11 @@ module.exports = function (io) {
 
     io.on('connection', (socket) => {
 
+        if(!socket.user_id){
+            socket.user_id = socket.user._id
+            console.log(socket.user_id)
+        }
+    
         if(socket.user.role === "operator") {
             socket.join("operators")
         }
@@ -40,7 +45,7 @@ module.exports = function (io) {
         socket.on('createRequest', async (request) => {
              const broker_id = socket.user._id
             const newRequest = new Request({
-                broker_id,
+                broker,
                 trip: request.trip,
                 passengers: request.passengers,
                 luggage: request.luggage,
@@ -58,8 +63,8 @@ module.exports = function (io) {
             socket.join(request_id)
             io.in("operators").socketsJoin(request_id)
             const notification = new Notification({
-                sender_id: broker_id,
-                receiver_id: operators.map(operator => operator._id),
+                sender: broker_id,
+                receiver: operators.map(operator => operator._id),
                 type: "request",
                 notification: `A new request has been created`
             })
@@ -85,8 +90,8 @@ module.exports = function (io) {
             request.bids.push(new_bid);
             await request.updateOne({ bids: request.bids });
             const notification = new Notification({
-                sender_id: socket.user._id,
-                receiver_id: [req.broker_id],
+                sender: socket.user._id,
+                receiver: [req.broker_id],
                 type: "bid",
                 notification: `A new bid has been submitted`
               });

@@ -18,7 +18,7 @@ const bidSchema = new mongoose.Schema({
 })
 
 const requestSchema = new mongoose.Schema({
-    broker_id:{
+    broker:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true

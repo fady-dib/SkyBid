@@ -73,10 +73,10 @@ exports.addAircraft = async (req, res) => {
       });
     }
 
-    const operator_id = req.user._id;
+    const operator = req.user._id;
 
     const newAircraft = new Aircraft({
-      operator_id,
+      operator,
       aircraft,
       passengers,
       year_of_manufacture
@@ -144,8 +144,8 @@ exports.updateAircraft = async (req, res) => {
 
 exports.getAircraftsByOperator = async (req,res) => {
   try{
-    const operator_id = req.user._id
-    const aircrafts = await Aircraft.find({operator_id}).select("-images")
+    const operator = req.user._id
+    const aircrafts = await Aircraft.find({operator}).select("-images")
     if(!aircrafts) return res.json("Operator doesn't have aircrafts")
     return res.json({
       aircrafts
