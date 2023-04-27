@@ -180,7 +180,8 @@ exports.uploadImage = async (req,res) => {
     const image = req.files.image;
     console.log(image)
 
-    const upload_path = path.join(__dirname, '..', 'Uploads', Date.now() +"-" + image.name);
+    const image_name =  Date.now() +"-" + image.name
+    const upload_path = path.join(__dirname, '..', 'Uploads', image_name);
     image.mv(upload_path, function (err) {
 
         if (err) {
@@ -189,9 +190,9 @@ exports.uploadImage = async (req,res) => {
         }
 
         const newImage = {
-            name: Date.now() +"-" + image.name,
+            name: image_name,
             image_type: image.mimetype,
-            url: `/uploads/${Date.now() +"-" + image.name}`
+            url: `/uploads/${image_name}`
         };
 
        const aircraft = Aircraft.findByIdAndUpdate(req.body.aircraft_id, {
@@ -218,7 +219,3 @@ exports.uploadImage = async (req,res) => {
   res.status(500).json({ message: 'Something went wrong. Please try again later.' });
 }
 }
-
-
-
-
