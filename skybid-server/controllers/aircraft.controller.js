@@ -110,6 +110,37 @@ exports.deleteAircraft = async (req, res) => {
 
 }
 
+exports.updateAircraft = async (req, res) => {
+
+  try {
+  
+    if(Object.keys(req.body).length === 0 || !req.body) return res.send("No updates sent")
+    const {aircraft, passengers, year_of_manufacture} = req.body
+    const aircraft_id = req.params.id
+    
+    if (!aircraft_id) return res.json(" Invalid aircraft ID")
+
+    const updated_aircraft = await Aircraft.findById({ _id: aircraft_id })
+    if (!updated_aircraft) return res.json("aircraft not found")
+
+    updated_aircraft.aircraft = aircraft;
+    updated_aircraft.passengers = passengers;
+    updated_aircraft.year_of_manufacture = year_of_manufacture
+
+    await updated_aircraft.save()
+
+    return res.json({
+      message: "Aircraft updated succesfully",
+      updated_aircraft
+  });
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+  }
+
+}
+
 
 
 
