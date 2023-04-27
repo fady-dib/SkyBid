@@ -10,13 +10,6 @@ module.exports = function (io) {
 
     io.on('connection', (socket) => {
 
-        // socket.on('subscribeOperatorsToRoom', (operatorsRoom) => {
-           
-        //     const operatorSockets = Object.values(io.sockets.sockets).filter(s => s.user && s.user.role === 'operator');
-        
-        //     operatorSockets.forEach(s => s.join(operatorsRoom));
-        //   });
-
         if(socket.user.role === "operator") {
             socket.join("operators")
         }
@@ -45,10 +38,7 @@ module.exports = function (io) {
         });
 
         socket.on('createRequest', async (request) => {
-            const room_id = short_id()
              const broker_id = socket.user._id
-             socket.join(room_id)
-             io.in("operators").socketsJoin(room_id)
             const newRequest = new Request({
                 broker_id,
                 trip: request.trip,
@@ -63,7 +53,10 @@ module.exports = function (io) {
             
             await newRequest.save();
             const operators = await User.find({ role: "operator" });
-
+            const request_id = newRequest._id
+            console.log(request_id)
+            socket.join(request_id)
+            io.in("operators").socketsJoin(request_id)
             const notification = new Notification({
                 sender_id: broker_id,
                 receiver_id: operators.map(operator => operator._id),
@@ -71,7 +64,7 @@ module.exports = function (io) {
                 notification: `A new request has been created`
             })
             await notification.save()
-            io.to(room_id).emit('notification', newRequest, notification)
+            io.to(request_id).emit('notification', newRequest, notification)
             const requests = await Request.find();
             io.emit("getRequests", requests)
         
@@ -80,7 +73,7 @@ module.exports = function (io) {
 
         socket.on("newBid", async (bid) => {
             const request_id = bid.request_id
-            const request = await Request.findById(request_id)
+            const request = await Request.findById({request_id})
             if (!request) {
                 return "request not found";
             }
