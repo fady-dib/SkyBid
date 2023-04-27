@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const aircraftSchema = new mongoose.Schema({
-    operator_id:{
+    operator:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true
