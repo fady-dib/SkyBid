@@ -12,8 +12,6 @@ const { adminMiddleware } = require('./middlewares/adminMiddleware');
 const fileUpload = require("express-fileupload");
 
 
-// const path = require('path');
-
 app.use(express.json())
 // app.use(express.urlencoded({extended: true})); 
 // app.use('/images', express.static(path.join(__dirname, '../images')));
@@ -33,7 +31,6 @@ app.use('/aircraft', authMiddleware,operatorMiddleware, aircraft_router)
 const admin_router = require('./routes/admin.routes');
 app.use('/admin',authMiddleware, adminMiddleware, admin_router)
 
-app.use("/uploads", express.static(__dirname+"/Uploads"))
 
 server.listen(process.env.PORT, (err) => {
     if (err) console.log (err)

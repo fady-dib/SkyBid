@@ -2,6 +2,7 @@ const { socketMiddleware } = require("../middlewares/socketMiddleware");
 const Request = require("../models/requestModel");
 const Notification = require("../models/notificationModel");
 const User = require("../models/userModel");
+const short_id = require('shortid')
 
 module.exports = function (io) {
 
@@ -9,13 +10,19 @@ module.exports = function (io) {
 
     io.on('connection', (socket) => {
 
-        socket.on('subscribeOperatorsToRoom', (operatorsRoom) => {
+        // socket.on('subscribeOperatorsToRoom', (operatorsRoom) => {
            
-            const operatorSockets = Object.values(io.sockets.sockets).filter(s => s.user && s.user.role === 'operator');
+        //     const operatorSockets = Object.values(io.sockets.sockets).filter(s => s.user && s.user.role === 'operator');
         
-            operatorSockets.forEach(s => s.join(operatorsRoom));
-          });
-       
+        //     operatorSockets.forEach(s => s.join(operatorsRoom));
+        //   });
+
+        if(socket.user.role === "operator") {
+            socket.join("operators")
+        }
+        else if(socket.user.role ==="broker"){
+            socket.join("brokers")
+        }
 
         console.log(`Client ${socket.id} connected`);
 
@@ -38,9 +45,12 @@ module.exports = function (io) {
         });
 
         socket.on('createRequest', async (request) => {
-          
+            const room_id = short_id()
+             const broker_id = socket.user._id
+             socket.join(room_id)
+             io.in("operators").socketsJoin(room_id)
             const newRequest = new Request({
-                broker_id: request.broker_id,
+                broker_id,
                 trip: request.trip,
                 passengers: request.passengers,
                 luggage: request.luggage,
@@ -50,21 +60,18 @@ module.exports = function (io) {
                 return_date: request.return_date,
                 status: "pending",
             });
+            
             await newRequest.save();
             const operators = await User.find({ role: "operator" });
 
-            const operatorSockets = Object.keys(io.sockets.sockets)
-                .filter(socketId => operators.some(operator => operator._id.equals(io.sockets.sockets[socketId].user._id)));
-            operatorSockets.forEach(socketId => io.sockets.sockets[socketId].join("operators"));
-            
             const notification = new Notification({
-                sender_id: request.broker_id,
+                sender_id: broker_id,
                 receiver_id: operators.map(operator => operator._id),
                 type: "request",
                 notification: `A new request has been created`
             })
             await notification.save()
-            io.to(operatorsRoom).emit('notification', newRequest, notification)
+            io.to(room_id).emit('notification', newRequest, notification)
             const requests = await Request.find();
             io.emit("getRequests", requests)
         

@@ -10,9 +10,7 @@ exports.socketMiddleware = async (socket, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    console.log("Decoded token:", decoded);
     const user = await User.findById(decoded.id, "-password");
-    console.log("User:", user);
     if (!user) {
         console.log("User not found");
         return next(new Error("Unauthenticated"));
