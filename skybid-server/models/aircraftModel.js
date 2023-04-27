@@ -11,7 +11,18 @@ const aircraftSchema = new mongoose.Schema({
         required:true,
     },
     images:{
-        Object
+        name:{
+            type: String,
+           
+        },
+        image_type:{
+            type: String,
+            
+        },
+        url:{
+            type: String,
+            
+        }
     },
     passengers:{
         type:Number,

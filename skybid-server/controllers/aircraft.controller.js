@@ -172,6 +172,53 @@ exports.getAircraftById = async (req,res) => {
   }
 }
 
+exports.uploadImage = async (req,res) => {
+  try {
+    if (!req.files || !req.files.image) return res.status(400).send('No image uploaded');
+
+
+    const image = req.files.image;
+    console.log(image)
+
+    const upload_path = path.join(__dirname, '..', 'Uploads', Date.now() +"-" + image.name);
+    image.mv(upload_path, function (err) {
+
+        if (err) {
+          console.log(err)
+            return res.status(500).send('Error while saving image');
+        }
+
+        const newImage = {
+            name: Date.now() +"-" + image.name,
+            image_type: image.mimetype,
+            url: `/uploads/${Date.now() +"-" + image.name}`
+        };
+
+       const aircraft = Aircraft.findByIdAndUpdate(req.body.aircraft_id, {
+            $push: { images: newImage }
+        },
+            { new: true })
+            .then((aircraft) => {
+                aircraft.save()
+                    .then(() => {
+                        res.json({message:'Image uploaded and saved successfully',aircraft});
+                    })
+                    .catch((err) => {
+                      console.log(err)
+                        res.status(500).send('Error while saving image');
+                    });
+            })
+            .catch((err) => {
+              console.log(err)
+                res.status(500).send('Error while updating aircraft');
+            });
+    });
+}  catch (error) {
+  console.error(error);
+  res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+}
+}
+
 
 
 
