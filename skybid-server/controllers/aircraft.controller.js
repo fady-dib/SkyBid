@@ -139,6 +139,22 @@ exports.updateAircraft = async (req, res) => {
     res.status(500).json({ message: 'Something went wrong. Please try again later.' });
   }
 
+} 
+
+exports.getAircraftsByOperator = async (req,res) => {
+  try{
+    const operator_id = req.user._id
+    const aircrafts = await Aircraft.find({operator_id})
+    if(!aircrafts) return res.json("Operator doesn't have aircrafts")
+    return res.json({
+      aircrafts
+  })
+}
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+  }
+
 }
 
 
