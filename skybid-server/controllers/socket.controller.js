@@ -71,9 +71,9 @@ module.exports = function (io) {
         })
     
 
-        socket.on("newBid", async (bid) => {
-            const request_id = bid.request_id
-            const request = await Request.findById({request_id})
+        socket.on("newBid", async (bid,req) => {
+            const request_id = req.request_id
+            const request = await Request.findById({_id : request_id})
             if (!request) {
                 return "request not found";
             }
@@ -86,12 +86,12 @@ module.exports = function (io) {
             await request.updateOne({ bids: request.bids });
             const notification = new Notification({
                 sender_id: socket.user._id,
-                receiver_id: [request.broker_id],
+                receiver_id: [req.broker_id],
                 type: "bid",
                 notification: `A new bid has been submitted`
               });
               await notification.save();
-
+              io.to(req.request_id).emit("notification",new_bid, notification)
         })
 
 

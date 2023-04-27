@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const notificationSchema = mongoose.Schema({
-    sender_id:{
+    sender:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true
     },
-    receiver_id:[{
+    receiver:[{
         type : mongoose.Schema.Types.ObjectId,
         ref:"User",
         required:true
@@ -16,15 +16,11 @@ const notificationSchema = mongoose.Schema({
         enum:["message","bid","request"],
         required:true
     },
-    created_at:{
-        type: Date,
-        default: Date.now
-    },
     notification:{
         type:String,
         required:true
     }
-})
+},{timestamps : true})
 
 const Notification = mongoose.model("Notification",notificationSchema)
 

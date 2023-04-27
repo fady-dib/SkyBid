@@ -183,7 +183,7 @@ exports.uploadImage = async (req,res) => {
 
     const image_name =  Date.now() +"-" + image.name
     const upload_path = path.join(__dirname, '..', 'Uploads', image_name);
-    image.mv(upload_path, function (err) {
+    image.mv(upload_path, async function (err) {
 
         if (err) {
           console.log(err)
@@ -196,24 +196,13 @@ exports.uploadImage = async (req,res) => {
             url: `Uploads/${image_name}`
         };
 
-       const aircraft = Aircraft.findByIdAndUpdate(req.body.aircraft_id, {
+        console.log("123",newImage)
+
+       const aircraft = await Aircraft.findByIdAndUpdate(req.body.aircraft_id, {
             $push: { images: newImage }
         },
             { new: true })
-            .then((aircraft) => {
-                aircraft.save()
-                    .then(() => {
-                        res.json({message:'Image uploaded and saved successfully',aircraft});
-                    })
-                    .catch((err) => {
-                      console.log(err)
-                        res.status(500).send('Error while saving image');
-                    });
-            })
-            .catch((err) => {
-              console.log(err)
-                res.status(500).send('Error while updating aircraft');
-            });
+            return    res.json({message:'Image uploaded and saved successfully',aircraft});
     });
 }  catch (error) {
   console.error(error);

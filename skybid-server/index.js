@@ -4,7 +4,10 @@ require('dotenv').config();
 const cors = require('cors');
 const http = require('http');
 const server = http.createServer(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server,{ cors:{
+    origin: "*",
+    methods: ["GET", "POST"]
+  }});
 const socket_controller = require('./controllers/socket.controller')(io);
 const {authMiddleware} = require('./middlewares/authMiddleware');
 const {operatorMiddleware}= require('./middlewares/operatorMiddleware')
