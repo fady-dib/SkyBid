@@ -160,7 +160,7 @@ exports.getAircraftsByOperator = async (req,res) => {
 exports.getAircraftById = async (req,res) => {
   try{
     const aircraft_id = req.params.id
-    const aircraft = await Aircraft.find({aircraft_id})
+    const aircraft = await Aircraft.findOne({_id :aircraft_id})
     if(!aircraft) return res.json("Aircraft not found")
     return res.json({
       aircraft
