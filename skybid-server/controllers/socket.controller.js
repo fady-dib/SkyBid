@@ -24,6 +24,10 @@ module.exports = function (io) {
 
         console.log(`Client ${socket.id} connected`);
 
+        // socket.onAny((event, ...args) => {
+        //     console.log(event, args);
+        //   });
+
         socket.on('disconnect', () => {
             console.log(`Client ${socket.id} disconnected`);
         });
@@ -77,18 +81,16 @@ module.exports = function (io) {
     
 
         socket.on("newBid", async (bid,req) => {
-            const request_id = req.request_id
-            const request = await Request.findById({_id : request_id})
-            if (!request) {
-                return "request not found";
-            }
+            const request_id = req._id
             const new_bid = {
-                operator_id: socket.user._id,
+                operator: socket.user._id,
                 aircraft: bid.aircraft,
                 price: bid.price
             };
-            request.bids.push(new_bid);
-            await request.updateOne({ bids: request.bids });
+            const request = await Request.findOneAndUpdate({_id : request_id}, {$push:{bids:new_bid}},)
+            if (!request) {
+                return "request not found";
+            }
             const notification = new Notification({
                 sender: socket.user._id,
                 receiver: [req.broker_id],
@@ -96,7 +98,7 @@ module.exports = function (io) {
                 notification: `A new bid has been submitted`
               });
               await notification.save();
-              io.to(req.request_id).emit("notification",new_bid, notification)
+              io.to(request_id).emit('notification',request, notification)
         })
 
 
