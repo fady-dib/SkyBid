@@ -1,3 +1,23 @@
-
+<div class="header">
+    <div class="logo-container">
+        <a [routerLink]="['/']"><img class="logo" src="assets/images/logo.png"></a>
+    </div>
+    <div class="sections">
+        <div>Platform</div>
+        <div>Operators</div>
+        <div>Brokers</div>
+        <div>AboutUs</div>
+    </div>
+    <button type="button" class="login btn" onclick="login()">Login</button>
+</div>
+<div class="map">
+    <div class="logo">SkyBid</div>
+    <div class="text">
+        <p>Real-time tools.</p>
+        <p>For Air Charter Professionnals</p>
+        <p>Accurate and transparent realtime pricing</p>
+    </div>
+    <button type="button" class="signup" onclick="signup()"></button>
+</div>
 
 <router-outlet></router-outlet>

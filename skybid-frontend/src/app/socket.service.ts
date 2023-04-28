@@ -10,8 +10,10 @@ export class SocketService {
   public message: BehaviorSubject<string> = new BehaviorSubject('');
   constructor() { }
 
-  socket = io('http://localhost:3006', {
-    withCredentials: true,
+  socket = io('http://localhost:3006', 
+  //{autoConnect:false},
+  {
+    // withCredentials: true,
     query: { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2IwYjk4NGQxODEzZjI1MTA3MGYyZiIsImVtYWlsIjoicHJpc3RpbmVAaW5mby5jb20iLCJpYXQiOjE2ODIyODkyNjN9.UlwxuN1lBi3FGjA5Qw3tbM-6dX5zEOgsskMpUz9WRrg' },
   });
 

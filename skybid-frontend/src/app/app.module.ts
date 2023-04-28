@@ -5,7 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChatComponentComponent } from './chat-component/chat-component.component';
+import { ChatComponentComponent } from './pages/chat/chat-component.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -17,7 +22,8 @@ import { ChatComponentComponent } from './chat-component/chat-component.componen
     AppRoutingModule,
     RouterModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
