@@ -88,10 +88,41 @@ font-weight: bold;
     color: var(--darkblue)
 }
 
+.operator-text{
+    width: 50%;
+   margin: auto;
+}
+
 .operators img{
     display:block;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
     border-radius: 0.375rem;
+    margin-bottom: 40px;
+}
+
+.operator-row1{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    gap:30px;
+    margin-bottom : 20px
+}
+
+.box:hover{
+    background-color: var(--green);
+    border-radius: 0.375rem;
+    color: var(--white)
+}
+
+.operator-row2{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    gap:30px
+}
+
+.operators p{
+    font-weight: lighter;
 }
