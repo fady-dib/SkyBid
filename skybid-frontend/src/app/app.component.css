@@ -35,7 +35,7 @@
     background-position: cover ;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin : 30px;
+    margin : 50px;
     height : 80vh;
     border-radius: 0.375rem;
 
@@ -58,12 +58,11 @@ p{
 
 .platform{ 
     background-color: var(--darkblue);
-    width: 50%;
+    width: 60%;
    margin: auto;
    border-radius: 0.375rem;
 }
 .platform-title{
-font-size: 1.2rem;
 text-align: center;
 padding-top: 5%;
 font-weight: bold;
@@ -78,4 +77,21 @@ font-weight: bold;
     padding-bottom: 5%;
     margin-left: 5%;
     font-weight: lighter;
+}
+
+.operators{
+    margin-top: 50px;
+}
+
+.operator-title{
+    text-align: center;
+    color: var(--darkblue)
+}
+
+.operators img{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    border-radius: 0.375rem;
 }
