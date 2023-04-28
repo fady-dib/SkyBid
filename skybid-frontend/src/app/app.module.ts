@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatComponentComponent } from './pages/chat/chat-component.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+
 
 
 
@@ -24,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ButtonsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
