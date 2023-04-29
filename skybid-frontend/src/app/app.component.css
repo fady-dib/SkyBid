@@ -149,7 +149,8 @@ font-weight: bold;
 
 .about-us p{
     margin-bottom: 20px;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
+    color: #5f798f
 }
 
 .disclaimer{
@@ -159,9 +160,30 @@ font-weight: bold;
     font-weight: lighter;
     margin-top: 60px;
     font-size: 0.8rem;
+    color: #5f798f
 }
 
 .disclaimer-title{
-    font-size: 1rem;
     margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    margin-top: 80px;
+    /* margin-bottom: 5px; */
+    border-bottom: 1px solid #5f798f;
+    border-top: 1px solid #5f798f;
+}
+
+.rights{
+    color:#5f798f;
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 4%;
+    font-size: 0.8rem;
+
 }

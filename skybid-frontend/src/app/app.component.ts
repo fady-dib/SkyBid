@@ -17,6 +17,10 @@ login() {
   this.router.navigate(['/login'])
 }
 
+signup(){
+  this.router.navigate(['/signup'])
+}
+
 }
 
 
