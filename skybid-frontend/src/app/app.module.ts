@@ -6,9 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatComponentComponent } from './pages/chat/chat-component.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { ButtonsModule } from '@progress/kendo-angular-buttons';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './pages/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 
@@ -18,6 +18,8 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
   declarations: [
     AppComponent,
     ChatComponentComponent,
+    LoginComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,6 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ButtonsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

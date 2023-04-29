@@ -18,7 +18,7 @@
 }
 
 .logo{
-    width: 50px;
+    width: 55px;
     height: 50px;
     color :var(--white);
     font-family: 'racing sans one';
@@ -52,10 +52,6 @@
     padding-left: 1%
 }
 
-p{
-    margin-bottom: 0rem;
-}
-
 .platform{ 
     background-color: var(--darkblue);
     width: 60%;
@@ -81,11 +77,11 @@ font-weight: bold;
 
 .section{
     margin-top: 50px;
+    color: var(--darkblue);
 }
 
 .section-title{
     text-align: center;
-    color: var(--darkblue)
 }
 
 .section-text{
@@ -117,7 +113,8 @@ font-weight: bold;
 .box:hover{
     background-color: var(--green);
     border-radius: 0.375rem;
-    color: var(--white)
+    color: var(--white);
+    cursor: pointer;
 }
 
 .row2{

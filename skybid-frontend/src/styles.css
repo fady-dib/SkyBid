@@ -16,3 +16,7 @@
     font-size: 16px;
     color: var(--white)
   }
+
+  p{
+    margin-bottom: 0rem;
+}
