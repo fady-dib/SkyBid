@@ -9,17 +9,17 @@
         
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
-                <input type="email" [(ngModel)]="model.email" name="email" class="form-control" id="email" placeholder="name@example.com">
+                <input type="email" [(ngModel)]="model.email" name="email"  class="form-control" id="email" required placeholder="name@example.com">
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" id="password" placeholder="name@example.com">
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password"  id="password" required placeholder="password">
                 
               </div>
               <div class="forgot" >
               <a [routerLink]="['forgot']" >Forgot password?</a>
               </div>
-              <button type="button" class="login-button btn" (click)="login()">Login</button>
+              <button type="submit" class="login-button btn" (click)="login()">Login</button>
         </form>
     </div>
     <div class="solid"></div>

@@ -1,4 +1,4 @@
-.login-container{
+.register-container{
     display: flex;
     flex-direction: row;
 }
@@ -6,7 +6,7 @@
 .solid{
     background-color: var(--darkblue);
     height: 100vh;
-    width: 55%;
+    width: 30%;
 }
 .logo{
     color :var(--darkblue);
@@ -17,36 +17,26 @@
     color: var(--green)
 }
 
-.login{
-    width: 45%
-}
-
-.login-text{
-    color: var(--darkblue);
-}
-
-.signup{
-    color: var(--darkblue);
-}
 
 form{
     padding-left: 10%;
     padding-right:10%;
-    margin-top: 10%;
+    margin-top: 5%;
+    color :var(--darkblue);
 }
 
 .form-label{
     color: var(--darkblue);
 }
-
-.forgot{
-    color: var(--darkblue);
-    position: relative;
-    bottom: 10px;
-}
-
-.login-button{
+.register-button{
     background-color: var(--green);
     color: var(--white);
     width: 100%
 }
+.flex{
+    display: flex;
+    gap : 50px
+
+}
+
+.flex > * {flex: 1}

@@ -1,0 +1,32 @@
+<div class="register-container">
+    <div class="solid"></div>
+    <div class="register">
+        
+        <form>
+            <div class="logo">
+                <p>Sky<span class="bid">Bid</span></p>
+            </div>
+            <p class="register-text">Signup</p>
+            <p class="signup">Already have an account? <a [routerLink]="['/login']">Sign in</a></p>
+            <p>Company Details</p>
+            <p>Details entered here will form your company bio within SkyBid. This is how other users will assess and
+                contact you during the bidding process.</p>
+            <div class="flex">
+                <div class="mb-3 item">
+                    <label for="name" class="form-label">Compnay name</label>
+                    <input type="text" [(ngModel)]="model.company_name" name="name" class="form-control" id="name"
+                        required>
+                </div>
+                <div class="mb-3 item">
+                    <label for="role" class="form-label">Register as</label>
+                    <select id="role" class="form-select" [(ngModel)]="model.role" name="role">
+                        <option value="operator">Operator</option>
+                        <option value="broker">Broker</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="register-button btn">Register</button>
+        </form>
+    </div>
+    
+</div>

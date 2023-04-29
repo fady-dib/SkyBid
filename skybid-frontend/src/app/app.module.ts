@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 
@@ -22,6 +23,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
     LoginComponent,
     HeaderComponent,
     LandingPageComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
