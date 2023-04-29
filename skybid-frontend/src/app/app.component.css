@@ -130,3 +130,38 @@ font-weight: bold;
 .section p{
     font-weight: lighter;
 }
+
+.footer{
+    background-color: var(--darkblue);
+    margin-top: 50px;
+}
+
+.about-us{
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.about-us h4{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.about-us p{
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+}
+
+.disclaimer{
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    font-weight: lighter;
+    margin-top: 60px;
+    font-size: 0.8rem;
+}
+
+.disclaimer-title{
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
