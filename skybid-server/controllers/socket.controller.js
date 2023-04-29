@@ -4,32 +4,42 @@ const Notification = require("../models/notificationModel");
 const User = require("../models/userModel");
 const short_id = require('shortid')
 
+let users = [];
+
 module.exports = function (io) {
 
     io.use(socketMiddleware);
 
     io.on('connection', (socket) => {
 
-        if(!socket.user_id){
-            socket.user_id = socket.user._id
-            console.log(socket.user_id)
-        }
-    
-        if(socket.user.role === "operator") {
+        const user_id = socket.user._id
+        const socket_id = socket.id
+        const user_index = users.findIndex(user => user.user_id === user_id);
+        if (user_index === -1) {
+            users.push({ user_id, socket_id })
+         } 
+        //else {
+        //     users[user_index].socket_id = socket_id
+        // }
+        console.log(users)
+
+        if (socket.user.role === "operator") {
             socket.join("operators")
         }
-        else if(socket.user.role ==="broker"){
+        else if (socket.user.role === "broker") {
             socket.join("brokers")
         }
 
         console.log(`Client ${socket.id} connected`);
 
-        // socket.onAny((event, ...args) => {
-        //     console.log(event, args);
-        //   });
 
         socket.on('disconnect', () => {
             console.log(`Client ${socket.id} disconnected`);
+            const user_index = users.findIndex(user => user.user_id === user_id);
+            if (user_index !== -1) {
+                users.splice(user_index, 1);
+            }
+            console.log(users)
         });
 
         socket.on('chatMessage', (msg) => {
@@ -47,7 +57,7 @@ module.exports = function (io) {
         });
 
         socket.on('createRequest', async (request) => {
-             const broker_id = socket.user._id
+            const broker_id = socket.user._id
             const newRequest = new Request({
                 broker,
                 trip: request.trip,
@@ -59,7 +69,7 @@ module.exports = function (io) {
                 return_date: request.return_date,
                 status: "pending",
             });
-            
+
             await newRequest.save();
             const operators = await User.find({ role: "operator" });
             const request_id = newRequest._id
@@ -76,18 +86,18 @@ module.exports = function (io) {
             io.to(request_id).emit('notification', newRequest, notification)
             const requests = await Request.find();
             io.emit("getRequests", requests)
-        
-        })
-    
 
-        socket.on("newBid", async (bid,req) => {
+        })
+
+
+        socket.on("newBid", async (bid, req) => {
             const request_id = req._id
             const new_bid = {
                 operator: socket.user._id,
                 aircraft: bid.aircraft,
                 price: bid.price
             };
-            const request = await Request.findOneAndUpdate({_id : request_id}, {$push:{bids:new_bid}},)
+            const request = await Request.findOneAndUpdate({ _id: request_id }, { $push: { bids: new_bid } },)
             if (!request) {
                 return "request not found";
             }
@@ -96,9 +106,9 @@ module.exports = function (io) {
                 receiver: [req.broker_id],
                 type: "bid",
                 notification: `A new bid has been submitted`
-              });
-              await notification.save();
-              io.to(request_id).emit('notification',request, notification)
+            });
+            await notification.save();
+            io.to(request_id).emit('notification', request, notification)
         })
 
 
