@@ -11,7 +11,9 @@ export class LoginComponent{
 model : Login = new Login();
 
 login() {
-  
+  if(!this.model.email || this.model.password){
+    alert(`Email and password can not be empty`)
+  }
 }
 
 }
