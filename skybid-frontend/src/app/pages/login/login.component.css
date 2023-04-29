@@ -6,38 +6,47 @@
 .solid{
     background-color: var(--darkblue);
     height: 100vh;
-    width: 60%;
+    width: 55%;
 }
 .logo{
     color :var(--darkblue);
     font-family: 'racing sans one';
     font-size: 2.5rem;
-    margin-top: 20%;
-    margin-left: 10%;
+}
+.bid{
+    color: var(--green)
 }
 
 .login{
-    width: 40%
+    width: 45%
 }
 
 .login-text{
     color: var(--darkblue);
-    padding-left: 10%
 }
 
 .signup{
     color: var(--darkblue);
-    padding-left: 10%
 }
 
 form{
     padding-left: 10%;
-    padding-right:10%
+    padding-right:10%;
+    margin-top: 20%;
 }
 
 .form-label{
     color: var(--darkblue);
 }
-.bid{
-    color: var(--green)
+
+.forgot{
+    color: var(--darkblue);
+    position: relative;
+    bottom: 10px;
+}
+
+.login-button{
+    background-color: var(--green);
+    color: var(--white);
+    width: 100%
 }

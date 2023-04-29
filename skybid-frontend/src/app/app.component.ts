@@ -10,16 +10,9 @@ export class AppComponent {
 title = 'SkyBid';
 
 constructor(
-  private router: Router, 
 ){}
 
-login() {
-  this.router.navigate(['/login'])
-}
 
-signup(){
-  this.router.navigate(['/signup'])
-}
 
 }
 

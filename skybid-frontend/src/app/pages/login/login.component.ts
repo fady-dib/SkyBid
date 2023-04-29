@@ -10,4 +10,8 @@ export class LoginComponent{
 
 model : Login = new Login();
 
+login() {
+  
+}
+
 }

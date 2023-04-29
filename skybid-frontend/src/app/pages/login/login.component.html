@@ -1,16 +1,26 @@
 <div class="login-container">
     <div class="login">
+        <form>
         <div class="logo">
             <p>Sky<span class="bid">Bid</span></p>
         </div>
         <p class="login-text">Login</p>
         <p class="signup">Don’t have an account? <a [routerLink]="['/signup']">Sign up</a></p>
-        <form>
+        
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="email" placeholder="name@example.com">
               </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="name@example.com">
+                
+              </div>
+              <div class="forgot" >
+              <a [routerLink]="['forgot']" >Forgot password?</a>
+              </div>
+              <button type="button" class="login-button btn" (click)="login()">Login</button>
         </form>
     </div>
-    <div class="solid">hi</div>
+    <div class="solid"></div>
 </div>

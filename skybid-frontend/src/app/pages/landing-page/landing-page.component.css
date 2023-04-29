@@ -1,0 +1,186 @@
+.header {
+    background: var(--darkblue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    color: white
+}
+.sections{
+    display : flex;
+    gap : 30px;
+    align-items: center;
+}
+
+.login{
+    background-color: var(--green);
+    color: var(--white);
+}
+
+.logo{
+    width: 55px;
+    height: 50px;
+    color :var(--white);
+    font-family: 'racing sans one';
+    font-size: 1.5rem;
+}
+
+.bid{
+    color: var(--green)
+}
+
+
+.map{
+    background-image: url('../../../assets/images/map.jpg');
+    background-position: cover ;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin : 50px;
+    height : 80vh;
+    border-radius: 0.375rem;
+
+}
+
+.signup{
+    background-color: var(--green);
+    color : var(--white);
+    margin-top: 10px;
+}
+.text{
+    position: relative;
+    top: 260px;
+    padding-left: 1%
+}
+
+.platform{ 
+    background-color: var(--darkblue);
+    width: 60%;
+   margin: auto;
+   border-radius: 0.375rem;
+}
+.platform-title{
+text-align: center;
+padding-top: 5%;
+font-weight: bold;
+}
+
+.platform-text{
+    padding: 5% 5%;
+    font-weight: lighter;
+}
+
+.list{
+    padding-bottom: 5%;
+    margin-left: 5%;
+    font-weight: lighter;
+}
+
+.section{
+    margin-top: 50px;
+    color: var(--darkblue);
+}
+
+.section-title{
+    text-align: center;
+}
+
+.section-text{
+    width: 50%;
+   margin: auto;
+}
+
+.section img{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    border-radius: 0.375rem;
+    margin-bottom: 40px;
+}
+
+.row1{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    gap:30px;
+    margin-bottom : 20px
+}
+
+.box{
+    width: 50%
+}
+
+.box:hover{
+    background-color: var(--green);
+    border-radius: 0.375rem;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.row2{
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    gap:30px
+}
+
+.section p{
+    font-weight: lighter;
+}
+
+.footer{
+    background-color: var(--darkblue);
+    margin-top: 50px;
+}
+
+.about-us{
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.about-us h4{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.about-us p{
+    margin-bottom: 20px;
+    /* font-size: 0.8rem; */
+    color: #5f798f
+}
+
+.disclaimer{
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    font-weight: lighter;
+    margin-top: 60px;
+    font-size: 0.8rem;
+    color: #5f798f
+}
+
+.disclaimer-title{
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    margin-top: 80px;
+    /* margin-bottom: 5px; */
+    border-bottom: 1px solid #5f798f;
+    border-top: 1px solid #5f798f;
+}
+
+.rights{
+    color:#5f798f;
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 4%;
+    font-size: 0.8rem;
+
+}

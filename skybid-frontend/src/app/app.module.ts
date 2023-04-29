@@ -9,6 +9,7 @@ import { ChatComponentComponent } from './pages/chat/chat-component.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 
 
@@ -20,6 +21,7 @@ import { HeaderComponent } from './components/header/header.component';
     ChatComponentComponent,
     LoginComponent,
     HeaderComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
