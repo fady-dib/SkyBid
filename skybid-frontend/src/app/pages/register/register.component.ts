@@ -67,6 +67,16 @@ if (validations.length > 0) {
   });
   return;
 }
+const emailRegex = new RegExp('^[^\s@]+@[^\s@]+\.[^\s@]+$');
+  const passwordRegex = new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$')
+  if(!emailRegex.test(this.model.email)){
+    this.notificationService.show({
+      content: "Email is invalid",
+      type: {style: 'warning'},
+      position: this.notifPos
+    })
+    return
+  }
 
 
 

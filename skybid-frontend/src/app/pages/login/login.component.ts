@@ -35,7 +35,7 @@ login() {
   if(!emailRegex.test(this.model.email)){
     this.notificationService.show({
       content: "Email is invalid",
-      type: {style: 'info'},
+      type: {style: 'warning'},
       position: this.notifPos
     })
     return
