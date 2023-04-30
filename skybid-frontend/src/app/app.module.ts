@@ -12,6 +12,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+
 
 
 
@@ -35,6 +37,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
     HttpClientModule,
     BrowserAnimationsModule,
     ButtonsModule,
+    DropDownsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
