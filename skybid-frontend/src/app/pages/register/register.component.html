@@ -33,23 +33,30 @@
                 </div>
                 <div class="mb-3 item">
                     <label for="confirm_password" class="form-label">Confirm password</label>
-                    <input id="confirm_password" class="form-control" [(ngModel)]="model.confirm_password" name="confirm_password">
+                    <input type="password"id="confirm_password" class="form-control" [(ngModel)]="model.confirm_password" name="confirm_password">
                 </div>
             </div>
             <div class="flex">
                 <div class="mb-3 item">
                     <label for="country" class="form-label">Country</label>
-                    <input type="country" [(ngModel)]="model.country" name="country" class="form-control" id="country"
+                    <input type="text" [(ngModel)]="model.country" name="country" class="form-control" id="country"
                         required>
                 </div>
                 <div class="mb-3 item">
                     <label for="city" class="form-label">City</label>
-                    <input id="city" class="form-control" [(ngModel)]="model.city" name="city">
+                    <input type="text" id="city" class="form-control" [(ngModel)]="model.city" name="city">
                 </div>
             </div>
             <div class="mb-3 item">
                 <label for="address" class="form-label">Address</label>
-                <input id="address" class="form-control" [(ngModel)]="model.address" name="address">
+                <input id="address" class="form-control" [(ngModel)]="model.address" name="address" type="text">
+            </div>
+            <div class="flex">
+                <div class="mb-3 item">
+                    <label for="email" class="form-label">Company email</label>
+                    <input type="email" [(ngModel)]="model.email" name="email" class="form-control" id="email"
+                        required>
+                </div>
             </div>
             <button type="submit" class="register-button btn">Register</button>
         </form>
