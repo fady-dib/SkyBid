@@ -25,7 +25,7 @@ login() {
   if(!this.model.email || !this.model.password){
     this.notificationService.show({
       content: "`Email and password can not be empty",
-      type: {style: 'error'},
+      type: {style: 'info'},
       position: this.notifPos
     })
     return
@@ -35,7 +35,7 @@ login() {
   if(!emailRegex.test(this.model.email)){
     this.notificationService.show({
       content: "Email is invalid",
-      type: {style: 'error'},
+      type: {style: 'info'},
       position: this.notifPos
     })
     return
