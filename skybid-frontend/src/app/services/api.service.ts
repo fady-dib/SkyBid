@@ -20,4 +20,8 @@ export class ApiService {
   return this.http.post(`${this.apiBaseUrl}/auth/login`,model,{headers: this.headers})
  }
 
+ register(model): Observable<any> {
+  return this.http.post(`${this.apiBaseUrl}/auth/register`,model,{headers: this.headers})
+ }
+
 }
