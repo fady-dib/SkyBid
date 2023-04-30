@@ -57,6 +57,10 @@
                     <input type="email" [(ngModel)]="model.email" name="email" class="form-control" id="email"
                         required>
                 </div>
+                <div class="mb-3 item">
+                    <label for="phone" class="form-label">Company phone</label>
+                    <input id="phone" class="form-control" [(ngModel)]="model.phone" name="phone" type="number">
+                </div>
             </div>
             <button type="submit" class="register-button btn">Register</button>
         </form>
