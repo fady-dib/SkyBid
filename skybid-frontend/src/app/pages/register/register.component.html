@@ -36,6 +36,13 @@
                     <input id="confirm_password" class="form-control" [(ngModel)]="model.confirm_password" name="confirm_password">
                 </div>
             </div>
+            <div class="flex">
+                <div class="mb-3 item">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="country" [(ngModel)]="model.country" name="country" class="form-control" id="country"
+                        required>
+                </div>
+            </div>
             <button type="submit" class="register-button btn">Register</button>
         </form>
     </div>
