@@ -44,7 +44,7 @@ exports.getUser = async (req,res) => {
 }
 
 exports.getRequests = async (req,res) => {
-    const Requests = await Request.find()
+    const Requests = await Request.find().select("-bids")
     return res.json(Requests)
 }
 
@@ -55,7 +55,7 @@ exports.getRequest = async (req,res) => {
 
     const request = await Request.findOne({_id : request_id})
 
-    if (!request) return res.json("User not found")
+    if (!request) return res.json("Request not found")
 
     return res.json(request)
 
