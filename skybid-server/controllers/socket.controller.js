@@ -57,7 +57,7 @@ module.exports = function (io) {
         });
 
         socket.on('createRequest', async (request) => {
-            const broker_id = socket.user._id
+            const broker = socket.user._id
             const newRequest = new Request({
                 broker,
                 trip: request.trip,
@@ -72,12 +72,12 @@ module.exports = function (io) {
 
             await newRequest.save();
             const operators = await User.find({ role: "operator" });
-            const request_id = newRequest._id
+            const request_id = newRequest.id
             console.log(request_id)
             socket.join(request_id)
             io.in("operators").socketsJoin(request_id)
             const notification = new Notification({
-                sender: broker_id,
+                sender: broker,
                 receiver: operators.map(operator => operator._id),
                 type: "request",
                 notification: `A new request has been created`
@@ -86,6 +86,7 @@ module.exports = function (io) {
             io.to(request_id).emit('notification', newRequest, notification)
             const requests = await Request.find();
             io.emit("getRequests", requests)
+            console.log("newRequest",request_id)
 
         })
 
@@ -109,6 +110,7 @@ module.exports = function (io) {
             });
             await notification.save();
             io.to(request_id).emit('notification', request, notification)
+            console.log("newBid",request_id)
         })
 
 

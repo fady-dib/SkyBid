@@ -1,5 +1,20 @@
 const mongoose = require("mongoose");
 
+const imagesSchema = new mongoose.Schema({
+    name:{
+        type: String,
+       required:true
+    },
+    image_type:{
+        type: String,
+        required:true
+    },
+    url:{
+        type: String,
+        required:true
+    }
+})
+
 const aircraftSchema = new mongoose.Schema({
     operator:{
         type: mongoose.Schema.Types.ObjectId,
@@ -10,20 +25,8 @@ const aircraftSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    images:{
-        name:{
-            type: String,
-           required:true
-        },
-        image_type:{
-            type: String,
-            required:true
-        },
-        url:{
-            type: String,
-            required:true
-        }
-    },
+    images:[imagesSchema],
+    
     passengers:{
         type:Number,
         required:true

@@ -43,6 +43,11 @@ exports.getUser = async (req,res) => {
     return res.json(user)
 }
 
+exports.getRequests = async (req,res) => {
+    const Requests = await Request.find()
+    return res.json(Requests)
+}
+
 exports.getRequest = async (req,res) => {
 
    const request_id = req.params.id

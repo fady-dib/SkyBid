@@ -40,9 +40,6 @@ const userSchema = new mongoose.Schema({
     role:{
         type:String,
         enum:["broker","operator","admin"]
-    },
-    socket:{
-        type:String,
     }
 })
 
