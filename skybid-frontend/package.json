@@ -19,7 +19,7 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-    "@progress/kendo-angular-buttons": "^12.0.0",
+    "@progress/kendo-angular-buttons": "12.0.0",
     "@progress/kendo-angular-common": "12.0.0",
     "@progress/kendo-angular-dropdowns": "^12.0.0",
     "@progress/kendo-angular-icons": "12.0.0",
@@ -27,6 +27,7 @@
     "@progress/kendo-angular-intl": "12.0.0",
     "@progress/kendo-angular-l10n": "12.0.0",
     "@progress/kendo-angular-label": "12.0.0",
+    "@progress/kendo-angular-layout": "^12.0.0",
     "@progress/kendo-angular-navigation": "12.0.0",
     "@progress/kendo-angular-notification": "^12.0.0",
     "@progress/kendo-angular-popup": "12.0.0",
@@ -40,7 +41,8 @@
     "rxjs": "~7.8.0",
     "socket.io-client": "^4.6.1",
     "tslib": "^2.3.0",
-    "zone.js": "~0.12.0"
+    "zone.js": "~0.12.0",
+    "@progress/kendo-angular-progressbar": "12.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.2.6",

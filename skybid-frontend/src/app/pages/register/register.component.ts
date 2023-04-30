@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Register } from 'src/app/models/register';
 import { NotificationService, Position } from '@progress/kendo-angular-notification';
+import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +14,9 @@ import { NotificationService, Position } from '@progress/kendo-angular-notificat
 export class RegisterComponent {
 
   constructor(
-    private notificationService : NotificationService
+    private notificationService : NotificationService,
+    private apiService : ApiService,
+    private router: Router
   ){}
 
 model : Register = new Register();
@@ -78,7 +82,9 @@ const emailRegex = new RegExp('^[^\s@]+@[^\s@]+\.[^\s@]+$');
     return
   }
 
-
+  this.apiService.register(this.model).subscribe(() => {
+  this.router.navigate(['login'])
+  });
 
 }
 
