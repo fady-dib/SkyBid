@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/app/models/login';
 import { ApiService } from 'src/app/services/api.service';
 import { Observable, catchError } from 'rxjs';
-import { NotificationService } from '@progress/kendo-angular-notification';
+import { NotificationService, Position } from '@progress/kendo-angular-notification';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +17,7 @@ export class LoginComponent{
   ){}
 
 model : Login = new Login();
-
-
+notifPos : Position = { vertical: 'top', horizontal:'center'}
 
 login() {
 
@@ -27,6 +26,7 @@ login() {
     this.notificationService.show({
       content: "`Email and password can not be empty",
       type: {style: 'error'},
+      position: this.notifPos
     })
     return
   }
@@ -36,7 +36,7 @@ login() {
     this.notificationService.show({
       content: "Email is invalid",
       type: {style: 'error'},
-      
+      position: this.notifPos
     })
     return
   }
