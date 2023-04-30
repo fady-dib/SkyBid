@@ -4,4 +4,5 @@ export class CustomMenuItem {
     path: string;
     expanded : boolean;
     selected: boolean;
+    menu_id : number
 }

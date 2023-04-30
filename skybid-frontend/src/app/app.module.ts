@@ -16,12 +16,8 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { LayoutModule } from '@progress/kendo-angular-layout';
-
-
-
-
-
-
+import { RequestsListComponent } from './pages/requests-list/requests-list.component';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 
 
@@ -34,6 +30,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
     LandingPageComponent,
     RegisterComponent,
     DrawerComponent,
+    RequestsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +43,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
     DropDownsModule,
     NotificationModule,
     LayoutModule,
+    GridModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

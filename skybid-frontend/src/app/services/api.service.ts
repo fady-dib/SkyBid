@@ -11,10 +11,14 @@ export class ApiService {
   constructor(private http: HttpClient, ) { }
 
   apiBaseUrl = "http://localhost:3006"
-
+  token = localStorage.getItem('token')
+  
   headers = new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'authorization': `Bearer ${this.token}`
   });
+
+
 
  login(model): Observable<any> {
   return this.http.post(`${this.apiBaseUrl}/auth/login`,model,{headers: this.headers})
@@ -23,5 +27,11 @@ export class ApiService {
  register(model): Observable<any> {
   return this.http.post(`${this.apiBaseUrl}/auth/register`,model,{headers: this.headers})
  }
+
+ requests(): Observable<any> {
+  return this.http.get(`${this.apiBaseUrl}/user/requests`,{headers: this.headers})
+ }
+
+
 
 }
