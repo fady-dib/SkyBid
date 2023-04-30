@@ -25,6 +25,17 @@
                     </select>
                 </div>
             </div>
+            <div class="flex">
+                <div class="mb-3 item">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" [(ngModel)]="model.password" name="password" class="form-control" id="password"
+                        required>
+                </div>
+                <div class="mb-3 item">
+                    <label for="confirm_password" class="form-label">Confirm password</label>
+                    <input id="confirm_password" class="form-control" [(ngModel)]="model.confirm_password" name="confirm_password">
+                </div>
+            </div>
             <button type="submit" class="register-button btn">Register</button>
         </form>
     </div>
