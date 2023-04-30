@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/app/models/login';
 import { ApiService } from 'src/app/services/api.service';
 import { Observable, catchError } from 'rxjs';
+import { NotificationService } from '@progress/kendo-angular-notification';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ export class LoginComponent{
 
   constructor(
     private apiService : ApiService,
+    private notificationService : NotificationService
   ){}
 
 model : Login = new Login();
@@ -22,13 +24,20 @@ login() {
 
 
   if(!this.model.email || !this.model.password){
-    alert(`Email and password can not be empty`)
+    this.notificationService.show({
+      content: "`Email and password can not be empty",
+      type: {style: 'error'},
+    })
     return
   }
   const emailRegex = new RegExp('^[^\s@]+@[^\s@]+\.[^\s@]+$');
   const passwordRegex = new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$')
   if(!emailRegex.test(this.model.email)){
-    alert(`Email is invalid`)
+    this.notificationService.show({
+      content: "Email is invalid",
+      type: {style: 'error'},
+      
+    })
     return
   }
   // if(!passwordRegex.test(this.model.password)){

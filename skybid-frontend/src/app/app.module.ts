@@ -13,6 +13,8 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { RegisterComponent } from './pages/register/register.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { NotificationModule } from '@progress/kendo-angular-notification';
+
 
 
 
@@ -38,6 +40,7 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     BrowserAnimationsModule,
     ButtonsModule,
     DropDownsModule,
+    NotificationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
