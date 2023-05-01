@@ -31,7 +31,11 @@
 </div>
 <div class="flex">
     <div class="mb-3 ">
-        <label for="return" class="form-label">Return</label>
+        <label for="departure" class="form-label">Departure Date</label>
+        <input id="departure" class="form-control" [(ngModel)]="model.departure_date" name="departure" readonly>
+    </div>
+    <div class="mb-3 ">
+        <label for="return" class="form-label">Return Date</label>
         <input id="return" class="form-control" [(ngModel)]="model.return_date" name="return" readonly>
     </div>
 </div>
