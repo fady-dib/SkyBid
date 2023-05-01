@@ -20,6 +20,8 @@ import { RequestsListComponent } from './pages/requests-list/requests-list.compo
 import { GridModule } from '@progress/kendo-angular-grid';
 import { RequestDetailComponent } from './pages/request-detail/request-detail.component';
 import { NavigationModule } from '@progress/kendo-angular-navigation';
+import { DialogsModule } from '@progress/kendo-angular-dialog';
+
 
 
 
@@ -49,6 +51,7 @@ import { NavigationModule } from '@progress/kendo-angular-navigation';
     LayoutModule,
     GridModule,
     NavigationModule,
+    DialogsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

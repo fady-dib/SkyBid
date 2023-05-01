@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { GridDataResult } from '@progress/kendo-angular-grid';
+import { Component, ComponentRef, OnInit } from '@angular/core';
+import { CellClickEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { SortDescriptor, orderBy, process } from '@progress/kendo-data-query';
 import { Subscription, finalize, tap } from 'rxjs';
 import { Request } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
+import { RequestDetailComponent } from '../request-detail/request-detail.component';
+import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 
 @Component({
   selector: 'app-requests-list',
@@ -27,7 +29,7 @@ ngOnInit(): void {
 constructor(
   private apiService : ApiService,
   private socketService : SocketService,
-
+  private windowService : WindowService,
 ) { }
 
 public gridData: GridDataResult;
@@ -37,6 +39,9 @@ sort: SortDescriptor[] = [{
   dir: 'desc'
 }];
 loading = false;
+mySelection : number[] =[];
+clickedItem: Request
+opened = false
 
 
 requests: Request[] = []
@@ -53,6 +58,33 @@ private search () {
     console.log(this.requests)
   })
   
+}
+onDblClick() {
+  if(this.clickedItem) {
+    const windowRef = this.windowService.open({
+      title : `REQUEST DETAILS`,
+      content: RequestDetailComponent,
+      width :635,
+    });
+
+
+    windowRef.result.subscribe((result) => {
+      if(result instanceof WindowCloseResult) {
+        this.opened =false;
+        this.search();
+      }
+    })
+    this.opened = true ;
+  }
+}
+
+cellClick(event : CellClickEvent){
+this.mySelection = event.dataItem._id
+
+this.clickedItem = event.dataItem;
+setTimeout(() => {
+  this.clickedItem = null
+}, 300)
 }
 
 public sortChange(sort : SortDescriptor[]) : void{

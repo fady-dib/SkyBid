@@ -5,6 +5,7 @@
 <h5 class="title">Requests</h5>
 <div class="grid">
 <kendo-grid [data]="gridData"
+(cellClick)="cellClick($event)"
 [filterable]="false"
 [sortable]="{mode: 'multiple'}"
 [sort]="sort"
@@ -19,6 +20,7 @@
 [style.width.%]="100"
 kendoGridSelectBy="_id"
 [(selectedKeys)]="mySelection"
+(dblclick)="onDblClick()"
 >
 <kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
 </kendo-grid-checkbox-column>
