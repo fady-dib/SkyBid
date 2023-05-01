@@ -1,8 +1,51 @@
 <div class="requests-container">
 <h5>Requests</h5>
 <div class="grid">
-<kendo-grid >
-
+<kendo-grid [data]="gridView"
+[filterable]="false"
+[sortable]="{mode: 'multiple'}"
+[sort]="sort"
+(sortChange)="sortChange($event)"
+[resizable]="true"
+[navigable]="true"
+[reorderable]="true"
+[pageable]="true"
+[selectable]="true"
+[loading]="loading"
+[style.height.%]="100"
+[style.width.%]="100"
+>
+<kendo-grid-checkbox-column [width]="30" [showSelectAll]="true">
+</kendo-grid-checkbox-column>
+<ng-template kendoGridToolbarTemplate>
+    <button kendoButton
+            [icon]="'add'"
+            >Add</button>
+    <button kendoButton
+            [icon]="'edit'"
+            >Edit</button>
+    <button kendoButton
+            [icon]="'delete'"
+            >Delete</button>
+</ng-template>
+<kendo-grid-column field="broker"
+                               title="Broker"
+                               [width]="100"
+                               [class]="{'text-right': true}"
+                               [headerClass]="{'text-center': true}">
+            </kendo-grid-column>
+            <kendo-grid-column field="from"
+                               title="From"
+                               [width]="40"
+                               [class]="{'text-left': true}"
+                               [headerClass]="{'text-center': true}">
+            </kendo-grid-column>
+            <kendo-grid-column field="to"
+                               title="To"
+                               [width]="180"
+                               [class]="{'text-left': true}"
+                               [headerClass]="{'text-left': true}">
+            </kendo-grid-column>
 </kendo-grid>
 </div>
 </div>
