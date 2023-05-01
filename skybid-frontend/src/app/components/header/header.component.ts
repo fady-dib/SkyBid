@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit{
     this.getNotification()
   }
   notifications : string[] = ['jhjjgjhgjgjkgjkgjghjkgjghgjg'];
-  notificationData : ListItemModel [] =[{text: this.notifications[0]}]
+  notificationData : ListItemModel [] =[{text: 'Notifications'}]
   userData: ListItemModel [] =[]
 
  
@@ -25,9 +25,11 @@ export class HeaderComponent implements OnInit{
   private getNotification() {
     console.log('getNotification called')
     this.socketService.notifications.subscribe(notification => {
-      this.notifications.push(notification)
+      if(!notification){
+      this.notifications.push(notification)}
       console.log(notification)
-      console.log("aaa")
+      console.log(this.notifications)
+      this.notificationData.push({text: notification});
     })
   }
 }

@@ -1,4 +1,7 @@
+<app-header></app-header>
 <div class="requests-container">
+    <app-drawer></app-drawer>
+    <div class="requests-content">
 <h5 class="title">Requests</h5>
 <div class="grid">
 <kendo-grid [data]="gridData"
@@ -41,5 +44,6 @@
                                [headerClass]="{'text-left': true}">
             </kendo-grid-column>
 </kendo-grid>
+</div>
 </div>
 </div>

@@ -1,6 +1,6 @@
 .register-container{
     display: flex;
-    height: 130vh
+    height: 100vh
 }
 
 .solid{
@@ -8,7 +8,11 @@
     flex:1
 }
 .register{
-    flex: 3
+    flex: 3;
+    overflow-y:auto
+}
+.register::-webkit-scrollbar{
+   display:none
 }
 .logo{
     color :var(--darkblue);
