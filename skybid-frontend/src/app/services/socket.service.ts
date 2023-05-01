@@ -8,6 +8,7 @@ import { io } from "socket.io-client";
 export class SocketService {
 
   public message: BehaviorSubject<string> = new BehaviorSubject('');
+  public requests: BehaviorSubject<string> = new BehaviorSubject('');
   constructor() { }
 
   socket = io('http://localhost:3006', 
@@ -28,5 +29,11 @@ export class SocketService {
 
     return this.message.asObservable();
   };
+
+  public getRequest = () => {
+    this.socket.on("getRequests", (requests) => {
+      this.requests.next(requests)
+    })
+  }
 
 }
