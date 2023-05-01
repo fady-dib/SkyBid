@@ -1,0 +1,13 @@
+.page-container{
+    margin: 2%;
+    color: var(--darkblue)
+}
+
+.flex{
+    display: flex;
+    gap : 50px
+}
+
+.flex > * {
+    flex: 1
+}

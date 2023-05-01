@@ -18,6 +18,7 @@ import { DrawerComponent } from './components/drawer/drawer.component';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { RequestsListComponent } from './pages/requests-list/requests-list.component';
 import { GridModule } from '@progress/kendo-angular-grid';
+import { RequestDetailComponent } from './pages/request-detail/request-detail.component';
 
 
 
@@ -31,6 +32,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
     RegisterComponent,
     DrawerComponent,
     RequestsListComponent,
+    RequestDetailComponent,
   ],
   imports: [
     BrowserModule,
