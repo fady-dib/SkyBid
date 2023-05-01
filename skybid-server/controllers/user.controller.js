@@ -44,7 +44,7 @@ exports.getUser = async (req,res) => {
 }
 
 exports.getRequests = async (req,res) => {
-    const Requests = await Request.find().select("-bids")
+    const Requests = await Request.find().populate("broker").select("-bids")
     return res.json(Requests)
 }
 
