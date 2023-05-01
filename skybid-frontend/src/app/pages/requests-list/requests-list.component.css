@@ -11,3 +11,7 @@
 .requests-content{
     color:var(--darkblue);
 }
+
+.k-table-row{
+    background-color: var(--darkblue);
+}
