@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { GridDataResult } from '@progress/kendo-angular-grid';
-import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
-import { finalize, tap } from 'rxjs';
+import { SortDescriptor, orderBy, process } from '@progress/kendo-data-query';
+import { Subscription, finalize, tap } from 'rxjs';
 import { Request } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-requests-list',
@@ -14,15 +15,21 @@ export class RequestsListComponent implements OnInit {
 
 ngOnInit(): void {
   this.search()
+
+  this.dataSubscription = this.socketService.requests.subscribe(data => {
+    this.gridData = process(data, {skip: 0, take: 10})
+  })
   
 }
 
 constructor(
   private apiService : ApiService,
+  private socketService : SocketService,
 
 ) { }
 
-gridView : GridDataResult;
+public gridData: GridDataResult;
+private dataSubscription: Subscription;
 sort = [] ;
 loading = false;
 
@@ -49,7 +56,7 @@ public sortChange(sort : SortDescriptor[]) : void{
 }
 
 private loadItems(): void {
-  this.gridView = {
+  this.gridData = {
     data: orderBy(this.requests, this.sort),
     total: this.requests.length
   };

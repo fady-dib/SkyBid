@@ -10,16 +10,16 @@
   <kendo-drawer-container>
     <kendo-drawer
       #drawer
-      [items]="items"
+      [items]="menu_items"
       [width]="200"
       mode="push"
       [(expanded)]="expanded"
     >
       <ng-template kendoDrawerItemTemplate let-item>
-        <div class="k-drawer-link" [routerLink]="item.path">
+        <a class="k-drawer-link" [routerLink]="item.path">
           <span class="k-item-text">{{ item.text }}</span>
           <span class="k-icon {{ item.icon }}"></span>
-        </div>
+        </a>
       </ng-template>
     </kendo-drawer>
 

@@ -8,8 +8,10 @@ import { io } from "socket.io-client";
 export class SocketService {
 
   public message: BehaviorSubject<string> = new BehaviorSubject('');
-  public requests: BehaviorSubject<string> = new BehaviorSubject('');
-  constructor() { }
+  public requests: BehaviorSubject<any[]> = new BehaviorSubject([]);
+  constructor() { 
+    this.getRequests()
+  }
 
   socket = io('http://localhost:3006', 
   //{autoConnect:false},
@@ -30,11 +32,10 @@ export class SocketService {
     return this.message.asObservable();
   };
 
-  public getRequest = () => {
+  public getRequests = () => {
     this.socket.on("getRequests", (requests) => {
       this.requests.next(requests)
     })
-    return this.requests.asObservable
   }
 
 }
