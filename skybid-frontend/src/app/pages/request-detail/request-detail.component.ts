@@ -17,7 +17,7 @@ export class RequestDetailComponent implements OnInit {
 
   model : Request = new Request();
 
-  gridView : GridDataResult;
+  gridData : GridDataResult;
   sort = [] ;
   loading = false;
 
