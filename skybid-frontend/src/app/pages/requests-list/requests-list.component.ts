@@ -17,7 +17,9 @@ ngOnInit(): void {
   this.search()
 
   this.dataSubscription = this.socketService.requests.subscribe(data => {
-    this.gridData = process(data, {skip: 0, take: 10})
+    this.updateRequests(data);
+    this.loadItems();
+
   })
   
 }
@@ -30,7 +32,10 @@ constructor(
 
 public gridData: GridDataResult;
 private dataSubscription: Subscription;
-sort = [] ;
+sort: SortDescriptor[] = [{
+  field: 'createdAt',
+  dir: 'desc'
+}];
 loading = false;
 
 
@@ -43,7 +48,7 @@ private search () {
     finalize(()=> this.loading = false)
   )
   .subscribe(data => {
-    this.requests = data
+    this.updateRequests(data);
     this.loadItems()
     console.log(this.requests)
   })
@@ -60,6 +65,17 @@ private loadItems(): void {
     data: orderBy(this.requests, this.sort),
     total: this.requests.length
   };
+}
+
+private updateRequests(data: Request[]): void {
+  this.requests = [...data];
+  this.requests.sort((a, b) => {
+    if (this.sort[0].dir === 'desc') {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    } else {
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+    }
+  });
 }
 
 }

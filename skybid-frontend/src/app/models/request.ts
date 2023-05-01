@@ -8,4 +8,5 @@ export class Request {
     departure_date: Date;
     return_date: Date;
     status: string;
+    createdAt : Date
 }
