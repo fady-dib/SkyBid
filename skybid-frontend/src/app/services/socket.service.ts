@@ -34,6 +34,7 @@ export class SocketService {
     this.socket.on("getRequests", (requests) => {
       this.requests.next(requests)
     })
+    return this.requests.asObservable
   }
 
 }
