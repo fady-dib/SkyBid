@@ -15,7 +15,7 @@ const bidSchema = new mongoose.Schema({
         type:Number,
         required:true
     }
-})
+},{timestamps: true})
 
 const requestSchema = new mongoose.Schema({
     broker:{

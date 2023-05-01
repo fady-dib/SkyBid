@@ -47,6 +47,15 @@ exports.getRequests = async (req,res) => {
     const Requests = await Request.find().populate("broker","-password").select("-bids")
     return res.json(Requests)
 }
+exports.getBidsByRequestID = async (req,res) => {
+    const request_id = req.request_id
+    if(!request_id) return res.json(" Invalid request ID")
+    const request = await Request.find({_id: request_id})
+    if (!request) return res.json("Request not found")
+    if (!request.bids) return res.json("No available bids on this request")
+    return res.json(request.bids)
+
+}
 
 exports.getRequest = async (req,res) => {
 

@@ -84,9 +84,10 @@ module.exports = function (io) {
             })
             await notification.save()
             io.to(request_id).emit('notification', newRequest, notification)
-            const requests = await Request.find();
+            const requests = await Request.find().populate('broker');
             io.emit("getRequests", requests)
             console.log("newRequest",request_id)
+            io.emit("notification",notification.notification)
 
         })
 
@@ -104,12 +105,12 @@ module.exports = function (io) {
             }
             const notification = new Notification({
                 sender: socket.user._id,
-                receiver: [req.broker_id],
+                receiver: [req.broker],
                 type: "bid",
                 notification: `A new bid has been submitted`
             });
             await notification.save();
-            io.to(request_id).emit('notification', request, notification)
+            io.to(request_id).emit('notification', notification)
             console.log("newBid",request_id)
         })
 
