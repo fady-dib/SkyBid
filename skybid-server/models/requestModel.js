@@ -57,7 +57,7 @@ const requestSchema = new mongoose.Schema({
     },
 
     bids:[bidSchema]
-})
+},{timestamps : true})
 
 const Request = mongoose.model("Request",requestSchema);
 
