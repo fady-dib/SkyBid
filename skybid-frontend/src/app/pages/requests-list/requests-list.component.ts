@@ -30,7 +30,11 @@ loading = false;
 requests: Request[] = []
 
 private search () {
+  this.loading = true
   this.apiService.requests()
+  .pipe(
+    finalize(()=> this.loading = false)
+  )
   .subscribe(data => {
     this.requests = data
     this.loadItems()

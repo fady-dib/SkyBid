@@ -20,15 +20,9 @@
 <ng-template kendoGridToolbarTemplate>
     <button kendoButton
             [icon]="'add'"
-            >Add</button>
-    <button kendoButton
-            [icon]="'edit'"
-            >Edit</button>
-    <button kendoButton
-            [icon]="'delete'"
-            >Delete</button>
+            >Add </button>
 </ng-template>
-<kendo-grid-column field="broker"
+<kendo-grid-column field="broker.company_name"
                                title="Broker"
                                [width]="100"
                                [class]="{'text-right': true}"
