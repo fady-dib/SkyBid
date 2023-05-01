@@ -66,7 +66,8 @@ onDblClick() {
       content: RequestDetailComponent,
       width :635,
     });
-
+    let windowRefCmp : ComponentRef<RequestDetailComponent> = windowRef.content;
+    windowRefCmp.instance.request_id = this.clickedItem._id
 
     windowRef.result.subscribe((result) => {
       if(result instanceof WindowCloseResult) {

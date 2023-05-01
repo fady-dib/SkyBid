@@ -1,5 +1,6 @@
 export class Request {
-    broker : string;
+    _id : string;
+    broker : {};
     trip: string;
     passengers : number;
     luggage: number;
@@ -8,5 +9,7 @@ export class Request {
     departure_date: Date;
     return_date: Date;
     status: string;
-    createdAt : Date
+    createdAt : Date;
+    bids : [];
+    updatedAt : Date
 }

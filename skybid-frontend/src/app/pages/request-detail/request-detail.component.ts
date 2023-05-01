@@ -20,5 +20,6 @@ export class RequestDetailComponent implements OnInit {
   gridData : GridDataResult;
   sort = [] ;
   loading = false;
+  request_id : string
 
 }
