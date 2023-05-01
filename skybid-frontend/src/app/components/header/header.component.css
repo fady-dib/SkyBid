@@ -1,0 +1,23 @@
+.header {
+    background: var(--darkblue);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    color: white
+}
+
+.logo{
+    width: 55px;
+    height: 50px;
+}
+.notification{
+    color:var(--darkblue);
+    margin-right: 10%
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }

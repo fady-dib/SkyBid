@@ -26,7 +26,7 @@ export class DrawerComponent {
 
   menu_items : CustomMenuItem[] = [
     {menu_id: 1, text: 'Requests', icon: 'k-i-track-changes-enable', expanded: false, selected: false, path: '/request-list'},
-    {menu_id: 2, text: 'Bids', icon: 'k-i-inherited', expanded: false, selected: false, path: '/login'},
+    {menu_id: 2, text: 'Bids', icon: 'k-i-inherited', expanded: false, selected: false, path: '/'},
     {menu_id: 3, text: 'Messages', icon: 'k-i-inherited', expanded: false, selected: false, path: '/register'},
     {menu_id: 4, text: 'Fleet', icon: 'k-i-inherited', expanded: false, selected: false, path: '.'}
   ]
