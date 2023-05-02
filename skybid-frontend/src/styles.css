@@ -17,6 +17,14 @@
     color: var(--white)
   }
 
+  .logo{
+    width: 80px;
+    height: 80px;
+    color :var(--white);
+    font-family: 'racing sans one';
+    font-size: 1.5rem;
+}
+
   p{
     margin-bottom: 0rem;
 }
@@ -46,4 +54,14 @@
 .k-checkbox:indeterminate, .k-checkbox.k-indeterminate {
   color: var(--blue) !important;
   background-image: none;
+}
+
+
+.k-drawer-item > .k-drawer-link {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.k-drawer-item.k-selected {
+  background-color: var(--green) !important;
 }
