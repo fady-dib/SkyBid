@@ -49,3 +49,9 @@
     background-color: var(--green);
     color: white
   }
+
+
+.card-text {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
