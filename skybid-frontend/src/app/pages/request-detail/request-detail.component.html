@@ -55,31 +55,35 @@
 [style.height.%]="100"
 [style.width.%]="100"
 >
-<kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
-</kendo-grid-checkbox-column>
 <ng-template kendoGridToolbarTemplate>
     <button kendoButton
             [icon]="'add'"
             >Add </button>
 </ng-template>
-<kendo-grid-column field="broker.company_name"
-                               title="Broker"
+<kendo-grid-column field="operator.company_name"
+                               title="Operator"
                                [width]="100"
                                [class]="{'text-right': true}"
                                [headerClass]="{'text-center': true}">
             </kendo-grid-column>
-            <kendo-grid-column field="from"
-                               title="From"
-                               [width]="40"
+            <kendo-grid-column field="aircraft.aircraft"
+                               title="Aircraft"
+                               [width]="100"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-center': true}">
             </kendo-grid-column>
-            <kendo-grid-column field="to"
-                               title="To"
-                               [width]="180"
+            <kendo-grid-column field="aircraft.year_of_manufacture"
+                               title="Year of manufacture"
+                               [width]="100"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
             </kendo-grid-column>
+            <kendo-grid-column field="price"
+            title="Bid"
+            [width]="100"
+            [class]="{'text-left': true}"
+            [headerClass]="{'text-left': true}">
+</kendo-grid-column>
 </kendo-grid>
     </div>
 </div>

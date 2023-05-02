@@ -17,6 +17,7 @@ export class RequestDetailComponent implements OnInit {
       data.return_date = this.formatDate(data.return_date);
       this.model = data
       console.log(this.model)
+      this.gridData = { data: this.model.bids, total: this.model.bids.length };
     })
   }
 
