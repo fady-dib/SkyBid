@@ -65,6 +65,7 @@ onDblClick() {
       title : `REQUEST DETAILS`,
       content: RequestDetailComponent,
       width :635,
+      top : 100
     });
     let windowRefCmp : ComponentRef<RequestDetailComponent> = windowRef.content;
     windowRefCmp.instance.request_id = this.clickedItem._id
