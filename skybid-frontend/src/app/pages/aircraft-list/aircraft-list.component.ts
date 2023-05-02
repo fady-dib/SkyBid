@@ -21,7 +21,15 @@ export class AircraftListComponent implements OnInit {
 
   aircrafts: any[] = []
 
+  addImage(){
 
+  }
+
+  deleteImage(){
+
+  }
+
+  deleteAircraft(){}
 
 
 }
