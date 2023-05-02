@@ -1,8 +1,9 @@
 
 .demo-header {
     padding: 5px;
-    background-color: var(--darkblue) 
+    display :flex;
   }
+
 
   kendo-drawer-content {
     height: 500px;

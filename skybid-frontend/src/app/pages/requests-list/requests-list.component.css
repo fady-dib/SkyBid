@@ -15,3 +15,8 @@
 .k-table-row{
     background-color: var(--darkblue);
 }
+
+.toolbar-btn{
+background-color: var(--green);
+color:white
+}

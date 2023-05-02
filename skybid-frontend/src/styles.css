@@ -65,3 +65,26 @@
 .k-drawer-item.k-selected {
   background-color: var(--green) !important;
 }
+
+.k-grid-toolbar{
+  background-color: var(--blue);
+
+}
+
+.k-grid-md .k-table-th > .k-cell-inner > .k-link {
+  color: var(--darkblue);
+  font-weight: Bold;
+  font-size: 1rem;
+}
+
+.k-grid-header, .k-grid-header-wrap, .k-grouping-header, .k-grid .k-table-th, .k-grid td, .k-grid .k-table-td, .k-grid-footer, .k-grid-footer-wrap, .k-grid-content-locked, .k-grid-footer-locked, .k-grid-header-locked, .k-filter-row > .k-table-th, .k-filter-row > td, .k-filter-row > .k-table-td{
+  color:var(--darkblue)
+}
+
+.drawer-btn{
+  background-color: var(--blue) !important;
+}
+
+.form-control, .form-label{
+  color: var(--darkblue)
+}
