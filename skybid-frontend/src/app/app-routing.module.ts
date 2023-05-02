@@ -8,6 +8,7 @@ import { DrawerComponent } from './components/drawer/drawer.component';
 import { RequestsListComponent } from './pages/requests-list/requests-list.component';
 import { RequestDetailComponent } from './pages/request-detail/request-detail.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.component';
 
 const routes = [
   { path: 'chat', component: ChatComponentComponent },
@@ -17,7 +18,8 @@ const routes = [
   {path: 'drawer', component: DrawerComponent},
   {path: 'request-list', component: RequestsListComponent},
   {path: 'request-detail', component : RequestDetailComponent},
-  {path: 'header', component: HeaderComponent} 
+  {path: 'header', component: HeaderComponent},
+  {path: 'aircrafts', component: AircraftListComponent}
 ];
 
 

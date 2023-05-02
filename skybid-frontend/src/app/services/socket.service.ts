@@ -5,17 +5,20 @@ import { io } from "socket.io-client";
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class SocketService {
 
   public message: BehaviorSubject<string> = new BehaviorSubject('');
   public requests: BehaviorSubject<any[]> = new BehaviorSubject([]);
   public notifications : BehaviorSubject<string> = new BehaviorSubject('');
-  public bid : BehaviorSubject<{}> = new BehaviorSubject({});
+  public bid : BehaviorSubject<[]> = new BehaviorSubject([]);
   public bid_request_id : BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor() { 
     this.getRequests()
     this.getNotification()
+    this.getBids()
   }
 
   socket = io('http://localhost:3006', 
@@ -52,7 +55,7 @@ export class SocketService {
   }
 
   public getBids = () => {
-    this.socket.on("newBid", (bid,request_id) => {
+    this.socket.on("newBid", (bid , request_id) => {
       this.bid.next(bid)
       this.bid_request_id.next(request_id)
     })

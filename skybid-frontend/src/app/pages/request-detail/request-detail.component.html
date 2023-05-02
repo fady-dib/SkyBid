@@ -43,13 +43,7 @@
     <h6>Bids</h6>
     <div class="grid">
         <kendo-grid [data]="gridData"
-[filterable]="false"
-[sortable]="{mode: 'multiple'}"
-[sort]="sort"
 [resizable]="true"
-[navigable]="true"
-[reorderable]="true"
-[pageable]="true"
 [selectable]="true"
 [loading]="loading"
 [style.height.%]="100"
@@ -74,13 +68,13 @@
             </kendo-grid-column>
             <kendo-grid-column field="aircraft.year_of_manufacture"
                                title="Year of manufacture"
-                               [width]="100"
+                               [width]="130"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
             </kendo-grid-column>
             <kendo-grid-column field="price"
             title="Bid"
-            [width]="100"
+            [width]="50"
             [class]="{'text-left': true}"
             [headerClass]="{'text-left': true}">
 </kendo-grid-column>

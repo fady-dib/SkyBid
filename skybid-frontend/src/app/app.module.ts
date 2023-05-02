@@ -21,6 +21,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { RequestDetailComponent } from './pages/request-detail/request-detail.component';
 import { NavigationModule } from '@progress/kendo-angular-navigation';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
+import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.component';
 
 
 
@@ -37,6 +38,7 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
     DrawerComponent,
     RequestsListComponent,
     RequestDetailComponent,
+    AircraftListComponent,
   ],
   imports: [
     BrowserModule,
