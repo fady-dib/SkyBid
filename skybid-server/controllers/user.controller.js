@@ -44,11 +44,11 @@ exports.getUser = async (req,res) => {
 }
 
 exports.getRequests = async (req,res) => {
-    const Requests = await Request.find().populate("broker","-password").select("-bids")
+    const Requests = await Request.find().populate("broker","-password")
     return res.json(Requests)
 }
 exports.getBidsByRequestID = async (req,res) => {
-    
+
     const request_id = req.body.request_id
     if(!request_id) return res.json(" Invalid request ID")
 
@@ -65,7 +65,7 @@ exports.getRequest = async (req,res) => {
    const request_id = req.params.id
     if(!request_id) return res.json(" Invalid request ID")
 
-    const request = await Request.findOne({_id : request_id})
+    const request = await Request.findOne({_id : request_id}).populate("broker").populate("bids.aircraft").populate("bids.operator")
 
     if (!request) return res.json("Request not found")
 
