@@ -9,4 +9,8 @@ export class AddAircraftComponent {
 
   model;
 
+  add(){
+    
+  }
+
 }

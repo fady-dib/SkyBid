@@ -2,3 +2,18 @@
     display: flex;
     gap : 50px
 }
+
+.flex > * {
+    flex: 1
+}
+
+form{
+    padding-left: 10%;
+    padding-right:10%;
+    margin-top: 5%;
+    color :var(--darkblue);
+}
+
+.form-label{
+    color: var(--darkblue);
+}
