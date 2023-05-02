@@ -1,20 +1,26 @@
 <app-header></app-header>
 <div class="page-container">
     <app-drawer></app-drawer>
-<div class="aircraft-container">
-    <div *ngFor="let aircraft of aircrafts" class="card">
-      <img *ngIf="aircraft.image; else noImage" [src]="serverUrl + aircraft.image.url" alt="Aircraft image" class="card-img-top">
-      <ng-template #noImage>
-        <div class="card-img-placeholder">No image available</div>
-      </ng-template>
-      <div class="card-body">
-        <h5 class="card-title">{{ aircraft.aircraft }}</h5>
-        <p class="card-text">Passengers: {{ aircraft.passengers }}</p>
-        <p class="card-text">Year of manufacture: {{ aircraft.year_of_manufacture }}</p>
-        <button class="btn add" (click)="addImage()">Add Image</button>
-        <button *ngIf="aircraft.image" class="btn danger" (click)="deleteImage()">Delete Image</button>
-        <button class="btn danger" (click)="deleteAircraft()">Delete Aircraft</button>
-      </div>
+    <div class="content-container">
+        <div class="action-button">
+            <button class="btn add-button" (click)="addAircraft()">Add Aircraft</button>
+        </div>
+        <div class="aircraft-container">
+            <div *ngFor="let aircraft of aircrafts" class="card">
+                <img *ngIf="aircraft.image; else noImage" [src]="serverUrl + aircraft.image.url" alt="Aircraft image"
+                    class="card-img-top">
+                <ng-template #noImage>
+                    <div class="card-img-placeholder">No image available</div>
+                </ng-template>
+                <div class="card-body">
+                    <h5 class="card-title">{{ aircraft.aircraft }}</h5>
+                    <p class="card-text">Passengers: {{ aircraft.passengers }}</p>
+                    <p class="card-text">Year of manufacture: {{ aircraft.year_of_manufacture }}</p>
+                    <button class="btn add" (click)="addImage()">Add Image</button>
+                    <button *ngIf="aircraft.image" class="btn danger" (click)="deleteImage()">Delete Image</button>
+                    <button class="btn danger" (click)="deleteAircraft()">Delete Aircraft</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </div>

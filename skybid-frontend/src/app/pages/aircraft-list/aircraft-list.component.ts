@@ -32,5 +32,9 @@ export class AircraftListComponent implements OnInit {
 
   deleteAircraft(){}
 
+  addAircraft(){
+    
+  }
+
 
 }

@@ -88,3 +88,9 @@
 .form-control, .form-label{
   color: var(--darkblue)
 }
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+  color: var(--darkblue);
+  background-color: white;
+  border-color: var(--darkblue);
+}
