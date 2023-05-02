@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="aircraft-container">
     <div *ngFor="let aircraft of aircrafts" class="card">
       <img *ngIf="aircraft.image; else noImage" [src]="serverUrl + aircraft.image.url" alt="Aircraft image" class="card-img-top">
