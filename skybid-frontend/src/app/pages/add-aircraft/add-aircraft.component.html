@@ -1,3 +1,4 @@
+<form>
 <div class="flex">
     <div class="mb-3 item">
         <label for="name" class="form-label">Aircraft name</label>
@@ -10,3 +11,11 @@
             required>
     </div>
 </div>
+<div class="flex">
+    <div class="mb-3 item">
+        <label for="year-of-maufacture" class="form-label">Year-of-maufacture</label>
+        <input type="number" [(ngModel)]="model.aircraft" name="year-of-maufacture" class="form-control" id="year-of-maufacture" 
+            required>
+    </div>
+</div>
+</form>
