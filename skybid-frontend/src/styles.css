@@ -94,3 +94,8 @@
   background-color: white;
   border-color: var(--darkblue);
 }
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

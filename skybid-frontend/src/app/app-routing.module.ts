@@ -9,6 +9,7 @@ import { RequestsListComponent } from './pages/requests-list/requests-list.compo
 import { RequestDetailComponent } from './pages/request-detail/request-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.component';
+import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.component';
 
 const routes = [
   { path: 'chat', component: ChatComponentComponent },
@@ -19,7 +20,8 @@ const routes = [
   {path: 'request-list', component: RequestsListComponent},
   {path: 'request-detail', component : RequestDetailComponent},
   {path: 'header', component: HeaderComponent},
-  {path: 'aircrafts', component: AircraftListComponent}
+  {path: 'aircrafts', component: AircraftListComponent},
+  {path: 'add-aircraft', component: AddAircraftComponent}
 ];
 
 

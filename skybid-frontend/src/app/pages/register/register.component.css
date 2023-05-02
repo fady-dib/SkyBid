@@ -34,10 +34,8 @@ form{
 .form-label{
     color: var(--darkblue);
 }
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+
+
 .register-button{
     background-color: var(--green);
     color: var(--white);
