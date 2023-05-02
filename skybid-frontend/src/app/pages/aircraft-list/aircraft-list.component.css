@@ -21,3 +21,12 @@
   height: 300px;
   object-fit: cover;
 }
+
+.card-img-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-size: 14px;
+  }
