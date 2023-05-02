@@ -25,5 +25,25 @@
   white-space: pre-line;
 }
 
+.k-grid td.k-selected, .k-grid .k-table-row.k-selected > td, .k-grid .k-table-td.k-selected, .k-grid .k-table-row.k-selected > .k-table-td{
+  background-color: rgba(10, 44, 79, 0.2);
+}
 
+.k-drawer-wrapper{
+  width: 100% !important
+}
 
+.k-checkbox:checked, .k-checkbox.k-checked{
+  background-color: var(--blue);
+  border-color: var(--blue);;
+}
+
+.k-checkbox:checked:focus, .k-checkbox.k-checked.k-focus {
+  box-shadow:  none;
+  
+}
+
+.k-checkbox:indeterminate, .k-checkbox.k-indeterminate {
+  color: var(--blue) !important;
+  background-image: none;
+}

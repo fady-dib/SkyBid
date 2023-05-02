@@ -25,11 +25,12 @@ export class HeaderComponent implements OnInit{
   private getNotification() {
     console.log('getNotification called')
     this.socketService.notifications.subscribe(notification => {
-      if(!notification){
-      this.notifications.push(notification)}
-      console.log(notification)
+      // if(!notification){
+      // // this.notifications.push(notification)}
+      // // console.log(notification)
       console.log(this.notifications)
-      this.notificationData.push({text: notification});
+      if(!notification){
+      this.notificationData.push({text: notification})};
     })
   }
 }
