@@ -99,3 +99,22 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.k-i-close::before {
+  color: var(--green)
+}
+
+.k-i-window::before {
+  color: var(--green)
+}
+
+.k-i-window-minimize::before{
+  color: var(--green)
+}
+.k-window-title{
+color: var(--white)
+}
+
+.k-window-titlebar {
+  background-color: var(--blue);
+}

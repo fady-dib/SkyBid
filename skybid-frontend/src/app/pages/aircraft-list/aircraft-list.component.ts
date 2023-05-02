@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WindowService } from '@progress/kendo-angular-dialog';
 import { ApiService } from 'src/app/services/api.service';
+import { AddAircraftComponent } from '../add-aircraft/add-aircraft.component';
 
 @Component({
   selector: 'app-aircraft-list',
@@ -16,7 +18,8 @@ export class AircraftListComponent implements OnInit {
   }
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private windowService : WindowService,
   ){}
 
   aircrafts: any[] = []
@@ -33,7 +36,11 @@ export class AircraftListComponent implements OnInit {
   deleteAircraft(){}
 
   addAircraft(){
-    
+    const windowRef = this.windowService.open({
+      title: "A D D   A I R C R A F T ",
+      content : AddAircraftComponent,
+      width: 400
+    })
   }
 
 
