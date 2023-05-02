@@ -20,6 +20,7 @@ export class AircraftListComponent implements OnInit {
   ){}
 
   aircrafts: any[] = []
+  serverUrl = 'http://localhost:3006/'
 
   addImage(){
 
