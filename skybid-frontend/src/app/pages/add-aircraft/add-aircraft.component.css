@@ -17,3 +17,15 @@ form{
 .form-label{
     color: var(--darkblue);
 }
+
+.add-button{
+    background-color: var(--green);
+    color: var(--white);
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.btn-flex{
+    display:flex;
+   flex-direction: row-reverse;
+}
