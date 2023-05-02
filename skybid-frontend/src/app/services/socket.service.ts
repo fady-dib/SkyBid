@@ -10,6 +10,8 @@ export class SocketService {
   public message: BehaviorSubject<string> = new BehaviorSubject('');
   public requests: BehaviorSubject<any[]> = new BehaviorSubject([]);
   public notifications : BehaviorSubject<string> = new BehaviorSubject('');
+  public bid : BehaviorSubject<{}> = new BehaviorSubject({});
+  public bid_request_id : BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor() { 
     this.getRequests()
@@ -46,6 +48,13 @@ export class SocketService {
     this.socket.on("notification", (notification)=> {
       this.notifications.next(notification)
       console.log(notification)
+    })
+  }
+
+  public getBids = () => {
+    this.socket.on("newBid", (bid,request_id) => {
+      this.bid.next(bid)
+      this.bid_request_id.next(request_id)
     })
   }
 
