@@ -33,7 +33,7 @@ export class ApiService {
  }
 
  getRequestbyId(id): Observable<any>{
-  return this.http.get(`${this.apiBaseUrl}/user/requests/${id}`,{headers: this.headers})
+  return this.http.get(`${this.apiBaseUrl}/user/getRequest/${id}`,{headers: this.headers})
 }
 
  }
