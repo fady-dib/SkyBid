@@ -3,7 +3,7 @@
 <div class="flex">
     <div class="mb-3 ">
         <label for="broker" class="form-label">Broker</label>
-        <input id="broker" class="form-control" [(ngModel)]="model.broker" name="broker" readonly>
+        <input id="broker" class="form-control"[value]="model.broker?.company_name" name="broker" readonly>
     </div>
     <div class="mb-3 ">
         <label for="trip" class="form-label">Trip</label>
