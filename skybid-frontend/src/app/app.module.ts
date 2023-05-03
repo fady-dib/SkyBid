@@ -23,6 +23,7 @@ import { NavigationModule } from '@progress/kendo-angular-navigation';
 import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.component';
 import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 
@@ -41,6 +42,7 @@ import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.componen
     RequestDetailComponent,
     AircraftListComponent,
     AddAircraftComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
