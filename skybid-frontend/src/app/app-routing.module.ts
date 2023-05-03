@@ -11,6 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.component';
 import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
 
 const routes = [
   {path: 'chat', component: ChatComponentComponent },
@@ -23,7 +24,8 @@ const routes = [
   {path: 'header', component: HeaderComponent},
   {path: 'aircrafts', component: AircraftListComponent},
   {path: 'add-aircraft', component: AddAircraftComponent},
-  {path: 'edit-profile', component: EditProfileComponent}
+  {path: 'edit-profile', component: EditProfileComponent},
+  {path: 'side-menu', component: SideMenuComponent}
 ];
 
 

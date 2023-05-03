@@ -1,1 +1,5 @@
-<p>side-menu works!</p>
+<div class="side-menu">
+    <a [routerLink]="['/request-list']" [class.selected]="selected_page === 'request-list'" (click)="selectPage('request-list')">Requests</a>
+    <a [routerLink]="['/aircrafts']" [class.selected]="selected_page === 'aircrafts'" (click)="selectPage('aircrafts')">Aircrafts</a>
+    <a [routerLink]="['/edit-profile']" [class.selected]="selected_page === 'edit-profile'" (click)="selectPage('edit-profile')">Edit profile</a>
+  </div>

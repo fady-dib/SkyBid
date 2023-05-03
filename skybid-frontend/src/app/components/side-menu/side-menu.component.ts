@@ -7,10 +7,10 @@ import { Component } from '@angular/core';
 })
 export class SideMenuComponent {
 
-  selectedPage: string = 'request-list';
+  selected_page: string = 'request-list';
 
 selectPage(page: string): void {
-  this.selectedPage = page;
+  this.selected_page = page;
 }
 
 }

@@ -1,0 +1,22 @@
+.side-menu {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    background-color: var(--blue);
+    overflow-x: hidden;
+    padding-top: 10%;
+  }
+
+  .side-menu a {
+    padding: 5% 10%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .side-menu a:hover {
+    color: var(--green)
+  }
+  
