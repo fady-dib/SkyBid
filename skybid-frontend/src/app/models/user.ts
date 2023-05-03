@@ -1,4 +1,4 @@
-export class Register {
+export class User {
     company_name:string;
     role:string;
     email: string;

@@ -1,1 +1,41 @@
-<p>users works!</p>
+<app-header></app-header>
+<div class="requests-container">
+   <app-side-menu></app-side-menu>
+    <div class="requests-content">
+<h5 class="title">Users</h5>
+<div class="grid">
+<kendo-grid [data]="gridData"
+[resizable]="true"
+[loading]="loading"
+[style.height.%]="100"
+[style.width.%]="100"
+>
+<kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
+</kendo-grid-checkbox-column>
+<ng-template kendoGridToolbarTemplate>
+    <button kendoButton class="toolbar-btn btn"
+            [icon]="'add'"
+            >Add </button>
+</ng-template>
+<kendo-grid-column field="broker.company_name"
+                               title="Broker"
+                               [width]="100"
+                               [class]="{'text-right': true}"
+                               [headerClass]="{'text-center': true}">
+            </kendo-grid-column>
+            <kendo-grid-column field="from"
+                               title="From"
+                               [width]="40"
+                               [class]="{'text-left': true}"
+                               [headerClass]="{'text-center': true}">
+            </kendo-grid-column>
+            <kendo-grid-column field="to"
+                               title="To"
+                               [width]="180"
+                               [class]="{'text-left': true}"
+                               [headerClass]="{'text-left': true}">
+            </kendo-grid-column>
+</kendo-grid>
+</div>
+</div>
+</div>

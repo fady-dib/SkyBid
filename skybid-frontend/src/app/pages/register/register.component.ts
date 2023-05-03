@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Register } from 'src/app/models/register';
+import { User } from 'src/app/models/user';
 import { NotificationService, Position } from '@progress/kendo-angular-notification';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
@@ -19,7 +19,7 @@ export class RegisterComponent {
     private router: Router
   ){}
 
-model : Register = new Register();
+model : User = new User();
 notifPos : Position = { vertical: 'top', horizontal:'center'}
 
 register() {

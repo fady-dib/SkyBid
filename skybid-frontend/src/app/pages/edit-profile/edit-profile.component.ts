@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Register } from 'src/app/models/register';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-edit-profile',
@@ -8,7 +8,7 @@ import { Register } from 'src/app/models/register';
 })
 export class EditProfileComponent {
 
-  model : Register = new Register;
+  model : User = new User;
 
   update(){
 
