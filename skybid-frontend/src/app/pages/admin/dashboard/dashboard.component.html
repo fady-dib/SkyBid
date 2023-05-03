@@ -1,1 +1,11 @@
-<p>dashboard works!</p>
+<kendo-chart>
+    <kendo-chart-series>
+      <kendo-chart-series-item
+        type="column"
+        [data]="seriesData"
+        field="sales"
+        categoryField="product"
+      >
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+  </kendo-chart>
