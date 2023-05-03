@@ -24,7 +24,8 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.component';
 import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
-import { SideMenuComponent } from './pages/side-menu/side-menu.component';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+
 
 
 
@@ -44,7 +45,7 @@ import { SideMenuComponent } from './pages/side-menu/side-menu.component';
     AircraftListComponent,
     AddAircraftComponent,
     EditProfileComponent,
-    SideMenuComponent,
+    SideMenuComponent
   ],
   imports: [
     BrowserModule,
