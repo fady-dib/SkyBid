@@ -27,5 +27,7 @@ export class ChatComponentComponent {
     this.socketService.sendMessage(this.new_message);
     this.new_message = '';
   }
+
+
 }
 
