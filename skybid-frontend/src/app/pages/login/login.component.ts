@@ -45,6 +45,7 @@ login() {
   // }
   this.apiService.login(this.model).subscribe(data => {
     localStorage.setItem('token', data.token )
+    localStorage.setItem('role',data.role)
   });
   
 
