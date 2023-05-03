@@ -12,20 +12,19 @@ import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.compo
 import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { UsersComponent } from './pages/admin/users/users.component';
 
 const routes = [
   {path: 'chat', component: ChatComponentComponent },
   {path : 'login', component: LoginComponent},
   {path:'', component: LandingPageComponent},
   {path:'register', component: RegisterComponent},
-  {path: 'drawer', component: DrawerComponent},
   {path: 'request-list', component: RequestsListComponent},
   {path: 'request-detail', component : RequestDetailComponent},
-  {path: 'header', component: HeaderComponent},
   {path: 'aircrafts', component: AircraftListComponent},
   {path: 'add-aircraft', component: AddAircraftComponent},
   {path: 'edit-profile', component: EditProfileComponent},
-  {path: 'side-menu', component: SideMenuComponent}
+  {path: 'users', component: UsersComponent}
 ];
 
 
