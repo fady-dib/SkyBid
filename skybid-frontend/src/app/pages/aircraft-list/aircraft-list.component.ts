@@ -39,7 +39,7 @@ export class AircraftListComponent implements OnInit {
   addAircraft(){
     this.opened = true
     const windowRef = this.windowService.open({
-      title: "A D D   A I R C R A F T ",
+      title: "A D D" + " " + "A I R C R A F T ",
       content : AddAircraftComponent,
       width: 400
     })

@@ -10,10 +10,11 @@ import { RequestDetailComponent } from './pages/request-detail/request-detail.co
 import { HeaderComponent } from './components/header/header.component';
 import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.component';
 import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 const routes = [
-  { path: 'chat', component: ChatComponentComponent },
-  { path : 'login', component: LoginComponent},
+  {path: 'chat', component: ChatComponentComponent },
+  {path : 'login', component: LoginComponent},
   {path:'', component: LandingPageComponent},
   {path:'register', component: RegisterComponent},
   {path: 'drawer', component: DrawerComponent},
@@ -21,7 +22,8 @@ const routes = [
   {path: 'request-detail', component : RequestDetailComponent},
   {path: 'header', component: HeaderComponent},
   {path: 'aircrafts', component: AircraftListComponent},
-  {path: 'add-aircraft', component: AddAircraftComponent}
+  {path: 'add-aircraft', component: AddAircraftComponent},
+  {path: 'edit-profile', component: EditProfileComponent}
 ];
 
 

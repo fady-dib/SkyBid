@@ -1,0 +1,44 @@
+.edit-container{
+    display: flex;
+    height: 100vh
+}
+
+.edit{
+    flex: 3;
+    overflow-y:auto
+}
+.edit::-webkit-scrollbar{
+   display:none
+}
+
+form{
+    padding-left: 10%;
+    padding-right:10%;
+    margin-top: 5%;
+    color :var(--darkblue);
+}
+
+.form-label{
+    color: var(--darkblue);
+}
+
+
+.update-button{
+    background-color: var(--green);
+    color: var(--white);
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.flex{
+    display: flex;
+    gap : 50px
+
+}
+.btn-flex{
+    display:flex;
+   flex-direction: row-reverse;
+}
+
+.flex > * {
+    flex: 1
+}
