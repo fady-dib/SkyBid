@@ -17,24 +17,42 @@
             [icon]="'add'"
             >Add </button>
 </ng-template>
-<kendo-grid-column field="broker.company_name"
-                               title="Broker"
+<kendo-grid-column field="company_name"
+                               title="User name"
                                [width]="100"
                                [class]="{'text-right': true}"
                                [headerClass]="{'text-center': true}">
             </kendo-grid-column>
-            <kendo-grid-column field="from"
-                               title="From"
+            <kendo-grid-column field="role"
+                               title="User type"
                                [width]="40"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-center': true}">
             </kendo-grid-column>
-            <kendo-grid-column field="to"
-                               title="To"
+            <kendo-grid-column field="country"
+                               title="Country"
                                [width]="180"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
             </kendo-grid-column>
+            <kendo-grid-column field="phone"
+                               title="Phone"
+                               [width]="180"
+                               [class]="{'text-left': true}"
+                               [headerClass]="{'text-left': true}">
+            </kendo-grid-column>
+            <kendo-grid-column field="email"
+            title="Email"
+            [width]="180"
+            [class]="{'text-left': true}"
+            [headerClass]="{'text-left': true}">
+</kendo-grid-column>
+<kendo-grid-column field="createdAt"
+title="Join date"
+[width]="180"
+[class]="{'text-left': true}"
+[headerClass]="{'text-left': true}">
+</kendo-grid-column>
 </kendo-grid>
 </div>
 </div>

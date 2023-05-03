@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
     this.loading = true
     this.apiService.getUsers().pipe(finalize(()=> this.loading = false)).subscribe(data => {
        this.gridData = {  data: data, total: data.length };
+       console.log(data)
     })
   }
 
