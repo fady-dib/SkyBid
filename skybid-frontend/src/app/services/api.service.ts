@@ -41,6 +41,6 @@ getAircrafts() : Observable<any>{
 }
 
 getUsers() : Observable<any> {
-  return this.http.get(`${this.apiBaseUrl}/users`,{headers: this.headers})
+  return this.http.get(`${this.apiBaseUrl}/admin/users`,{headers: this.headers})
 }
 }
