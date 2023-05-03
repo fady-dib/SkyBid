@@ -1,19 +1,14 @@
 <app-header></app-header>
 <div class="requests-container">
-    <app-drawer></app-drawer>
+   <app-side-menu></app-side-menu>
     <div class="requests-content">
 <h5 class="title">Requests</h5>
 <div class="grid">
 <kendo-grid [data]="gridData"
 (cellClick)="cellClick($event)"
-[filterable]="false"
-[sortable]="{mode: 'multiple'}"
 [sort]="sort"
 (sortChange)="sortChange($event)"
 [resizable]="true"
-[navigable]="true"
-[reorderable]="true"
-[pageable]="true"
 [selectable]="true"
 [loading]="loading"
 [style.height.%]="100"

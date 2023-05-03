@@ -1,5 +1,6 @@
 .requests-container{
-    display:flex
+    display:flex;
+    height : 100vh
 }
 .title{
     margin: 2% 1%

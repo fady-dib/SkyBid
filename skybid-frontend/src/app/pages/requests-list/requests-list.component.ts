@@ -19,7 +19,7 @@ ngOnInit(): void {
   this.search()
 
   this.dataSubscription = this.socketService.requests.subscribe(data => {
-    this.updateRequests(data);
+    this.sortRequests(data);
     this.loadItems();
 
   })
@@ -53,7 +53,7 @@ private search () {
     finalize(()=> this.loading = false)
   )
   .subscribe(data => {
-    this.updateRequests(data);
+    this.sortRequests(data);
     this.loadItems()
     console.log(this.requests)
   })
@@ -101,7 +101,7 @@ private loadItems(): void {
   };
 }
 
-private updateRequests(data: Request[]): void {
+private sortRequests(data: Request[]): void {
   this.requests = [...data];
   this.requests.sort((a, b) => {
     if (this.sort[0].dir === 'desc') {
