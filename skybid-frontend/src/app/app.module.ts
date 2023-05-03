@@ -26,6 +26,11 @@ import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.componen
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { UsersComponent } from './pages/admin/users/users.component';
+import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
+
+
 
 
 
@@ -47,7 +52,8 @@ import { UsersComponent } from './pages/admin/users/users.component';
     AddAircraftComponent,
     EditProfileComponent,
     SideMenuComponent,
-    UsersComponent
+    UsersComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,7 @@ import { UsersComponent } from './pages/admin/users/users.component';
     GridModule,
     NavigationModule,
     DialogsModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
