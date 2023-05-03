@@ -145,7 +145,7 @@ exports.updateAircraft = async (req, res) => {
 exports.getAircraftsByOperator = async (req,res) => {
   try{
     const operator = req.user._id
-    const aircrafts = await Aircraft.find({operator}).select("-images")
+    const aircrafts = await Aircraft.find({operator})
     if(!aircrafts) return res.json("Operator doesn't have aircrafts")
     return res.json({
       aircrafts
@@ -199,7 +199,7 @@ exports.uploadImage = async (req,res) => {
         console.log("123",newImage)
 
        const aircraft = await Aircraft.findByIdAndUpdate(req.body.aircraft_id, {
-            $push: { images: newImage }
+            $set: { image: newImage }
         },
             { new: true })
             return    res.json({message:'Image uploaded and saved successfully',aircraft});
@@ -209,6 +209,7 @@ exports.uploadImage = async (req,res) => {
   res.status(500).json({ message: 'Something went wrong. Please try again later.' });
 }
 }
+
 
 exports.deleteImage = async (req,res) => {
 

@@ -110,6 +110,16 @@ module.exports = function (io) {
                 notification: `A new bid has been submitted`
             });
             await notification.save();
+            const bids = await Request.findOne({ _id: request_id }).populate({
+                path: 'bids.operator',
+                select: 'company_name _id' 
+              })
+              .populate({
+                path: 'bids.aircraft',
+                select: 'aircraft year_of_manufacture' 
+              })
+              .select('bids')
+            io.emit('newBid', new_bid, request_id);
             io.to(request_id).emit('notification', notification)
             console.log("newBid",request_id)
         })

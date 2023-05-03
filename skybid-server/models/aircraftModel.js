@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const imagesSchema = new mongoose.Schema({
+const imageSchema = new mongoose.Schema({
     name:{
         type: String,
        required:true
@@ -25,7 +25,7 @@ const aircraftSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    images:[imagesSchema],
+    image:imageSchema,
     
     passengers:{
         type:Number,
