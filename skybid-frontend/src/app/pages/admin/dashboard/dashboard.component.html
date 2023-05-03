@@ -4,6 +4,7 @@
     <div class="requests-content">
         <div class="dashboard">Dashboard</div>
 <kendo-chart class="chart" style="width: 800px; height: 600px">
+    <kendo-chart-title text="Number of Brokers and Operators" color="rgb(10, 44, 79)" font="20px Roboto"></kendo-chart-title>
     <kendo-chart-series>
       <kendo-chart-series-item
         aggregate="count"
@@ -12,8 +13,8 @@
         categoryField="category"
         field="number"
         color="rgb(8, 154, 130)"
-      
       >
+  
       </kendo-chart-series-item>
       <kendo-chart-value-axis>
         <kendo-chart-value-axis-item [min]="0" [majorUnit]="1">
