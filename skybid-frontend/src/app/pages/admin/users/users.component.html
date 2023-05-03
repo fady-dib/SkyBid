@@ -10,12 +10,7 @@
 [style.height.%]="100"
 [style.width.%]="100"
 >
-<kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
-</kendo-grid-checkbox-column>
 <ng-template kendoGridToolbarTemplate>
-    <button kendoButton class="toolbar-btn btn"
-            [icon]="'add'"
-            >Add </button>
 </ng-template>
 <kendo-grid-column field="company_name"
                                title="User name"
@@ -25,19 +20,19 @@
             </kendo-grid-column>
             <kendo-grid-column field="role"
                                title="User type"
-                               [width]="40"
+                               [width]="100"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-center': true}">
             </kendo-grid-column>
             <kendo-grid-column field="country"
                                title="Country"
-                               [width]="180"
+                               [width]="120"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
             </kendo-grid-column>
             <kendo-grid-column field="phone"
                                title="Phone"
-                               [width]="180"
+                               [width]="100"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
             </kendo-grid-column>
