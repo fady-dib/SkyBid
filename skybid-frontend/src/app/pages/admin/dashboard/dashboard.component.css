@@ -1,0 +1,15 @@
+.requests-container{
+    display:flex;
+    height : 120vh
+  }
+  
+  .chart{
+    margin-left : 40%;
+  
+  }
+  
+  .dashboard{
+    font-size: 1.5rem;
+    margin: 10%;
+    color: var(--darkblue)
+  }

@@ -9,18 +9,27 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class DashboardComponent implements OnInit {
 
-  ngOnInit(): void {
-    this.apiService.getUsers().subscribe(data => {
-this.data = data
-      console.log(data)
-   })
-  }
-
   constructor(
     private apiService : ApiService
   ){}
 
-  data : User = new User
-  seriesData: [] =[]
+  seriesData: any[] = [];
+ 
+  public integerFormat: string = '{0:n0}';
+ 
+  ngOnInit(): void {
+      this.apiService.getUsers().subscribe((data) => {
+        this.seriesData = data.map((item) => {
+          return { ...item, number: 1 ,category: this.getCategoryLabel(item.role)};
+        });
+      console.log(data)
+   })
+  }
+  getCategoryLabel(role: string): string {
+    if (role === 'broker')  return 'Brokers';
+     else return 'Operators';
+  
+  }
 
-}
+
+ }
