@@ -1,1 +1,70 @@
-<p>edit-profile works!</p>
+<div class="edit-container">
+    <div class="solid"></div>
+    <div class="edit">
+        <form>
+            <div class="logo">
+                <p>Sky<span class="bid">Bid</span></p>
+            </div>
+            <p>Edit Profile</p>
+            <div class="flex">
+                <div class="mb-3 item">
+                    <label for="name" class="form-label">Compnay name</label>
+                    <input type="text" [(ngModel)]="model.company_name" name="name" class="form-control" id="name"
+                        required>
+                </div>
+                <div class="mb-3 item">
+                    <label for="role" class="form-label">Register as</label>
+                    <select id="role" class="form-select" [(ngModel)]="model.role" name="role">
+                        <option value="operator">Operator</option>
+                        <option value="broker">Broker</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="mb-3 item">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" [(ngModel)]="model.password" name="password" class="form-control"
+                        id="password" required>
+                </div>
+                <div class="mb-3 item">
+                    <label for="confirm_password" class="form-label">Confirm password</label>
+                    <input type="password" id="confirm_password" class="form-control"
+                        [(ngModel)]="model.confirm_password" name="confirm_password">
+                </div>
+            </div>
+            <div class="flex">
+                <div class="mb-3 item">
+                    <label for="country" class="form-label">Country</label>
+                    <input type="text" [(ngModel)]="model.country" name="country" class="form-control" id="country"
+                        required>
+                </div>
+                <div class="mb-3 item">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" id="city" class="form-control" [(ngModel)]="model.city" name="city">
+                </div>
+            </div>
+            <div class="mb-3 item">
+                <label for="address" class="form-label">Address</label>
+                <input id="address" class="form-control" [(ngModel)]="model.address" name="address" type="text">
+            </div>
+            <div class="flex">
+                <div class="mb-3 item">
+                    <label for="email" class="form-label">Company email</label>
+                    <input type="email" [(ngModel)]="model.email" name="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3 item">
+                    <label for="phone" class="form-label">Company phone</label>
+                    <input id="phone" class="form-control" [(ngModel)]="model.phone" name="phone" type="number">
+                </div>
+            </div>
+            <div class="mb-3 item">
+                <label for="bio" class="form-label">Bio</label>
+                <textarea id="bio" class="form-control" [(ngModel)]="model.bio" name="bio" rows="3"></textarea>
+            </div>
+            <div class="btn-flex">
+                <button type="submit" class="register-button btn" (click)="update()">update()</button>
+            </div>
+        </form>
+    </div>
+
+</div>
