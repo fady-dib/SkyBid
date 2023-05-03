@@ -31,6 +31,7 @@ exports.login = async(req,res) => {
     const{email, password} = req.body;
 
     const existing_user = await User.findOne({email});
+    role = existing_user.role
 
     if(!existing_user) return res.status(400).json({message: "Invalid credentials"});
 
@@ -40,5 +41,6 @@ exports.login = async(req,res) => {
 
     const token = jwt.sign({ id : existing_user._id, email: existing_user.email}, process.env.SECRET_KEY);
 
-    res.json({token})
+
+    res.json({token :token, role:role})
 }
