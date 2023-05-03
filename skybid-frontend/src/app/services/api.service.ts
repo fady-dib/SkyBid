@@ -39,6 +39,8 @@ export class ApiService {
 getAircrafts() : Observable<any>{
   return this.http.get(`${this.apiBaseUrl}/aircraft`,{headers: this.headers})
 }
- 
-}
 
+getUsers() : Observable<any> {
+  return this.http.get(`${this.apiBaseUrl}/users`,{headers: this.headers})
+}
+}

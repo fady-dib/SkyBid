@@ -25,6 +25,7 @@ import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.compo
 import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { UsersComponent } from './pages/admin/users/users.component';
 
 
 
@@ -45,7 +46,8 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
     AircraftListComponent,
     AddAircraftComponent,
     EditProfileComponent,
-    SideMenuComponent
+    SideMenuComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
