@@ -5,6 +5,7 @@
     margin: 5% 2%;
     justify-content: space-between;
   }
+  
 
   .card {
     width: 320px;
@@ -87,6 +88,16 @@
     margin-right: 2%;
     width: 120px;
     margin-top: 1%;
+  }
+
+  .app-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .page-container {
+    display: flex;
+    flex-grow: 1;
   }
 
 

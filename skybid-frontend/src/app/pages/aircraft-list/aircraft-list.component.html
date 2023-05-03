@@ -1,5 +1,7 @@
+<div class="wrapper">
 <app-header></app-header>
 <div class="page-container">
+    <app-side-menu></app-side-menu>
     <div class="content-container">
         <div class="action-button">
             <button class="btn add-button" (click)="addAircraft()">Add Aircraft</button>
@@ -22,6 +24,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="k-overlay"
      *ngIf="opened"></div>
