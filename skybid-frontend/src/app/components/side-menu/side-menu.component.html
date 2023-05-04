@@ -1,4 +1,4 @@
-<div class="side-menu">
+<div class="side-menu" [ngClass]="{'loading': is_loading, 'loaded': !is_loading}">
     <a [routerLink]="['/request-list']" *ngIf="user_role === 'operator'" [class.selected]="selected_page === 'request-list'" (click)="selectPage('request-list')">Requests</a>
     <a [routerLink]="['/aircrafts']" *ngIf="user_role === 'operator'" [class.selected]="selected_page === 'aircrafts'" (click)="selectPage('aircrafts')">Aircrafts</a>
     <a [routerLink]="['/dashboard']" *ngIf="user_role === 'admin'"[class.selected]="selected_page === 'aircrafts'" (click)="selectPage('dashboard')">Dashboard</a>

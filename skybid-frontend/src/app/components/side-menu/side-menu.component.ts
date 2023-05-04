@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -6,11 +6,20 @@ import { AuthService } from 'src/app/auth/auth.service';
   templateUrl: './side-menu.component.html',
   styleUrls: ['./side-menu.component.css']
 })
-export class SideMenuComponent {
+export class SideMenuComponent implements OnInit {
 
   constructor(public authService: AuthService) {}
 
+  ngOnInit() {
+    setTimeout(() => {
+      this.is_loading = false;
+    }, 2000);
+  }
+  
+
   selected_page: string = 'request-list';
+
+  is_loading = true
 
 
 selectPage(page: string): void {

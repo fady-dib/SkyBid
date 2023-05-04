@@ -18,4 +18,12 @@
   .side-menu a:hover {
     color: var(--green)
   }
+
+  .loading {
+    height: 100vh;
+  }
+  
+  .loaded {
+    height: 100%; 
+  }
   
