@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit{
   ];
 
   onItemClick(event){
-    const action = event.item.action;
+    const action = event.action;
     switch (action) {
       case 'logout':
         this.authService.logout();
