@@ -56,5 +56,12 @@ sortChange(sort :SortDescriptor[]){
 onDblClick(){
 
 }
+onEdit() {
+
+}
+
+onDelete(){
+  
+}
 
 }

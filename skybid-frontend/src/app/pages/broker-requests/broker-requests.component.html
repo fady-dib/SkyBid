@@ -22,7 +22,13 @@ kendoGridSelectBy="_id"
 <ng-template kendoGridToolbarTemplate>
     <button kendoButton class="toolbar-btn btn"
             [icon]="'add'"
-            >Add </button>
+            >Create request </button>
+            <button kendoButton
+            [icon]="'edit'"
+            (click)="onEdit()">Edit</button>
+    <button kendoButton
+            [icon]="'delete'"
+            (click)="onDelete()">Delete</button>
 </ng-template>
 <kendo-grid-column field="trip"
                                title="Trip"
