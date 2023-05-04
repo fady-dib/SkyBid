@@ -21,11 +21,13 @@ export class SocketService {
     this.getBids()
   }
 
+  token = localStorage.getItem('token')
+
   socket = io('http://localhost:3006', 
   //{autoConnect:false},
   {
     // withCredentials: true,
-    query: { token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0M2IwYjk4NGQxODEzZjI1MTA3MGYyZiIsImVtYWlsIjoicHJpc3RpbmVAaW5mby5jb20iLCJpYXQiOjE2ODI2MDMzNzZ9.xweObXCndwS1Ekn4nFbfuo4AvBEfYovMMbVhrSTRvP8' },
+    query: { token:this.token}
   });
 
   public sendMessage(message:string) {
