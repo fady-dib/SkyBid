@@ -15,6 +15,7 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import 'hammerjs';
+import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests.component';
 
 const routes = [
   {path: 'chat', component: ChatComponentComponent },
@@ -27,7 +28,8 @@ const routes = [
   {path: 'add-aircraft', component: AddAircraftComponent},
   {path: 'edit-profile', component: EditProfileComponent},
   {path: 'users', component: UsersComponent},
-  {path: 'dashboard', component: DashboardComponent}
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'broker-requests', component: BrokerRequestsComponent}
 ];
 
 

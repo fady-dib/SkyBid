@@ -32,7 +32,7 @@ login() {
     })
     return
   }
-  const emailRegex = new RegExp('^[^\s@]+@[^\s@]+\.[^\s@]+$');
+  const emailRegex = new RegExp(/^[^\s@]+@[^\s@]+(\.[^\s@]{2,})+$/);
   const passwordRegex = new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$')
   if(!emailRegex.test(this.model.email)){
     this.notificationService.show({

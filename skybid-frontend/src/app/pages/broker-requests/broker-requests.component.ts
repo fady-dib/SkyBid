@@ -31,7 +31,7 @@ mySelection : number[] =[];
 clickedItem: Request
 opened = false
 
-private search () {
+private search() {
   this.loading = true
   this.apiService.getRequestsByBroker()
   .pipe(
