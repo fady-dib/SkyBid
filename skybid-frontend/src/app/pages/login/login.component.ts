@@ -3,6 +3,7 @@ import { Login } from 'src/app/models/login';
 import { ApiService } from 'src/app/services/api.service';
 import { Observable, catchError } from 'rxjs';
 import { NotificationService, Position } from '@progress/kendo-angular-notification';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent{
 
   constructor(
     private apiService : ApiService,
-    private notificationService : NotificationService
+    private notificationService : NotificationService,
+    private router : Router
   ){}
 
 model : Login = new Login();
@@ -46,6 +48,9 @@ login() {
   this.apiService.login(this.model).subscribe(data => {
     localStorage.setItem('token', data.token )
     localStorage.setItem('role',data.role)
+    if(data.role == "admin") this.router.navigate(['/dashboard'])
+    if(data.role == "operator") this.router.navigate(['/request-list'])
+    if(data.role == "broker") this.router.navigate([''])
   });
   
 
