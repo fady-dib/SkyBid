@@ -12,7 +12,7 @@
 [scrollable]="'scrollable'"
 [selectable]="true"
 [loading]="loading"
-[style.height.%]="100"
+[style.height.px]="500"
 [style.width.%]="100"
 kendoGridSelectBy="_id"
 [(selectedKeys)]="mySelection"
@@ -20,11 +20,6 @@ kendoGridSelectBy="_id"
 >
 <kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
 </kendo-grid-checkbox-column>
-<ng-template kendoGridToolbarTemplate>
-    <button kendoButton class="toolbar-btn btn"
-            [icon]="'add'"
-            >Add </button>
-</ng-template>
 <kendo-grid-column field="broker.company_name"
                                title="Broker"
                                [width]="100"
