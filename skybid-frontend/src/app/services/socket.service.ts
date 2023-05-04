@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { io } from "socket.io-client";
+import { Request } from '../models/request';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +64,7 @@ export class SocketService {
     })
   }
 
-  public createRequest = (request:Request) => {
+  public createRequest = (request: Request) => {
     this.socket.emit('createRequest', request)
   }
 
