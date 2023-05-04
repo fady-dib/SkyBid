@@ -1,6 +1,7 @@
 .register-container{
     display: flex;
-    height: 100vh
+    height: 100vh;
+    color:var(--darkblue)
 }
 
 .solid{
@@ -9,7 +10,16 @@
 }
 .register{
     flex: 3;
-    overflow-y:auto
+    overflow-y:auto;
+    padding-left: 5%;
+    padding-right: 5%
+}
+
+.register-text{
+    color: var(--darkblue);
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 2%
 }
 .register::-webkit-scrollbar{
    display:none
@@ -18,9 +28,24 @@
     color :var(--darkblue);
     font-family: 'racing sans one';
     font-size: 2.5rem;
+    margin-bottom: 5%
 }
 .bid{
     color: var(--green)
+}
+
+.signup{
+    color: var(--darkblue);
+    margin-bottom: 6%
+    
+}
+a{
+    text-decoration: none !important;
+}
+
+.details{
+    font-weight: bold;
+    margin-bottom: 5%;
 }
 
 
