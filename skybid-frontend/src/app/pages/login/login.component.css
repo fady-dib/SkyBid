@@ -1,6 +1,6 @@
 .login-container{
     display: flex;
-    flex-direction: row;
+    height: 100vh
 }
 
 .solid{
@@ -12,21 +12,37 @@
     color :var(--darkblue);
     font-family: 'racing sans one';
     font-size: 2.5rem;
+    margin-bottom: 20%
 }
+
+.register::-webkit-scrollbar{
+    display:none
+ }
+ 
 .bid{
     color: var(--green)
 }
 
 .login{
-    width: 45%
+    width: 45%;
+    padding: 4%;
+    overflow-y:auto
 }
 
 .login-text{
     color: var(--darkblue);
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-bottom: 2%
 }
 
 .signup{
     color: var(--darkblue);
+    margin-bottom: 6%
+    
+}
+a{
+    text-decoration: none !important;
 }
 
 form{
@@ -42,7 +58,7 @@ form{
 .forgot{
     color: var(--darkblue);
     position: relative;
-    bottom: 10px;
+    margin-bottom: 6%;
 }
 
 .login-button{
@@ -50,3 +66,5 @@ form{
     color: var(--white);
     width: 100%
 }
+
+

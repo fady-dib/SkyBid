@@ -5,13 +5,13 @@
             <p>Sky<span class="bid">Bid</span></p>
         </div>
         <p class="login-text">Login</p>
-        <p class="signup">Don’t have an account? <a [routerLink]="['/register']">Sign up</a></p>
+        <p class="signup">Don’t have an account? <a  [routerLink]="['/register']">Sign up</a></p>
         
             <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
+                <label for="email" class="form-label">Email</label>
                 <input type="email" [(ngModel)]="model.email" name="email"  class="form-control" id="email" required placeholder="name@example.com">
               </div>
-              <div class="mb-3">
+              <div class="mb-3 password">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="model.password"  id="password" required placeholder="password">
                 
