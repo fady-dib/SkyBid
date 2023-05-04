@@ -46,7 +46,12 @@ private search() {
 }
 
 cellClick(event: CellClickEvent) {
+  this.mySelection = event.dataItem._id
 
+  this.clickedItem = event.dataItem;
+  setTimeout(() => {
+    this.clickedItem = null
+  }, 300)
 }
 
 sortChange(sort :SortDescriptor[]){
@@ -65,7 +70,8 @@ onDelete(){
 }
 
 onAdd(){
-  
+
 }
+
 
 }
