@@ -1,0 +1,57 @@
+.register-container{
+    display: flex;
+    height: 100vh
+}
+
+.solid{
+    background-color: var(--darkblue);
+    flex:1
+}
+.register{
+    flex: 3;
+    overflow-y:auto
+}
+.register::-webkit-scrollbar{
+   display:none
+}
+.logo{
+    color :var(--darkblue);
+    font-family: 'racing sans one';
+    font-size: 2.5rem;
+}
+.bid{
+    color: var(--green)
+}
+
+
+form{
+    padding-left: 10%;
+    padding-right:10%;
+    margin-top: 5%;
+    color :var(--darkblue);
+}
+
+.form-label{
+    color: var(--darkblue);
+}
+
+
+.create-button{
+    background-color: var(--green);
+    color: var(--white);
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.flex{
+    display: flex;
+    gap : 50px
+
+}
+.btn-flex{
+    display:flex;
+   flex-direction: row-reverse;
+}
+
+.flex > * {
+    flex: 1
+}
