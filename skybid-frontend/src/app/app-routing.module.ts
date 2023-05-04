@@ -16,20 +16,21 @@ import { UsersComponent } from './pages/admin/users/users.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import 'hammerjs';
 import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes = [
   {path: 'chat', component: ChatComponentComponent },
   {path : 'login', component: LoginComponent},
   {path:'', component: LandingPageComponent},
   {path:'register', component: RegisterComponent},
-  {path: 'request-list', component: RequestsListComponent},
-  {path: 'request-detail', component : RequestDetailComponent},
-  {path: 'aircrafts', component: AircraftListComponent},
-  {path: 'add-aircraft', component: AddAircraftComponent},
-  {path: 'edit-profile', component: EditProfileComponent},
-  {path: 'users', component: UsersComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'broker-requests', component: BrokerRequestsComponent}
+  {path: 'request-list', component: RequestsListComponent, canActivate: [AuthGuard],data: {allowed_role:['operator']}},
+  // {path: 'request-detail', component : RequestDetailComponent, canActivate: [AuthGuard], data},
+  {path: 'aircrafts', component: AircraftListComponent, canActivate: [AuthGuard],data: {allowed_role:['operator']}},
+  // {path: 'add-aircraft', component: AddAircraftComponent},
+  {path: 'edit-profile', component: EditProfileComponent,canActivate: [AuthGuard],data: {allowed_role:['operator','broker']}},
+  {path: 'users', component: UsersComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
+  {path: 'broker-requests', component: BrokerRequestsComponent,canActivate: [AuthGuard],data: {allowed_role:['broker']}}
 ];
 
 

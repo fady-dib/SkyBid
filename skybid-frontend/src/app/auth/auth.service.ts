@@ -7,13 +7,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
-  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
+  constructor(
+    private router: Router,
 
-  isAuthenticated() : boolean {
+    ) { }
+  
+
+  isAuthenticated(allowed_role) : boolean {
    const token = localStorage.getItem('token')
-   if(token){
+   const user_role = this.getUserRole()
+   if(token && allowed_role.includes(user_role)){
     return true
    }
    return false
@@ -25,6 +28,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     this.router.navigate(['/login'] );
   }
 
