@@ -18,7 +18,7 @@
                     <p class="card-text">Passengers: {{ aircraft.passengers }}</p>
                     <p class="card-text">Year of manufacture: {{ aircraft.year_of_manufacture }}</p>
                     <button *ngIf="!aircraft.image" class="btn add" (click)="addImage()">Add Image</button>
-                    <button *ngIf="aircraft.image" class="btn danger" (click)="deleteImage()">Delete Image</button>
+                    <button *ngIf="aircraft.image" class="btn update" (click)="updateImage()">Update Image</button>
                     <button class="btn danger" (click)="deleteAircraft()">Delete Aircraft</button>
                 </div>
             </div>

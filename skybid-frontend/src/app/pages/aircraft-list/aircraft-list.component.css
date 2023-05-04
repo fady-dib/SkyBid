@@ -56,6 +56,10 @@
     background-color: rgb(220,53,69);
     color: white
   }
+  .update{
+    background-color:var(--blue);
+    color: white
+  }
 
 
 .card-text {
@@ -88,6 +92,7 @@
     margin-right: 2%;
     width: 120px;
     margin-top: 1%;
+    transition: margin 0.3s ease-in-out;
   }
 
   .app-wrapper {

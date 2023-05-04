@@ -25,12 +25,13 @@ export class AircraftListComponent implements OnInit {
   aircrafts: any[] = []
   serverUrl = 'http://localhost:3006/'
   opened = false;
+  is_loading = true;
 
   addImage(){
 
   }
 
-  deleteImage(){
+  updateImage(){
 
   }
 
