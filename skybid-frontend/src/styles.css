@@ -118,3 +118,8 @@ color: var(--white)
 .k-window-titlebar {
   background-color: var(--blue);
 }
+
+.k-menu-group .k-item > .k-link:active, .k-menu-group .k-item > .k-link.k-active, .k-menu-group .k-item > .k-link.k-selected, .k-menu.k-context-menu .k-item > .k-link:active, .k-menu.k-context-menu .k-item > .k-link.k-active, .k-menu.k-context-menu .k-item > .k-link.k-selected {
+  color: white;
+  background-color: var(--green) !important;
+}

@@ -38,8 +38,6 @@ export class HeaderComponent implements OnInit{
       case 'editProfile':
         this.router.navigate(['/edit-profile']);
         break;
-      default:
-        break;
     }
   }
 
