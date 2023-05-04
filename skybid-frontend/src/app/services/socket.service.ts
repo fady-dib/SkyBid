@@ -63,4 +63,8 @@ export class SocketService {
     })
   }
 
+  public createRequest = (request:Request) => {
+    this.socket.emit('createRequest', request)
+  }
+
 }
