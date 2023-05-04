@@ -14,6 +14,7 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import 'hammerjs';
 
 const routes = [
   {path: 'chat', component: ChatComponentComponent },

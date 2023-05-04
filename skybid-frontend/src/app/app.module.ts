@@ -28,13 +28,6 @@ import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { ChartsModule } from '@progress/kendo-angular-charts';
-import 'hammerjs';
-
-
-
-
-
-
 
 
 @NgModule({
