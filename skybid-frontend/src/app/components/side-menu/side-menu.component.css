@@ -1,7 +1,7 @@
 .side-menu {
     height: 100%;
     width: 250px;
-    background-color: var(--blue);
+    background-color: var(--darkblue);
     overflow-x: hidden;
     padding-top: 10%;
   }
@@ -15,9 +15,6 @@
     transition: 0.3s;
   }
 
-  .side-menu a:hover {
-    color: var(--green)
-  }
 
   .loading {
     height: 100vh;
@@ -25,5 +22,10 @@
   
   .loaded {
     height: 100%; 
+  }
+
+  a.selected{
+    color:white;
+    background-color: var(--green);
   }
   

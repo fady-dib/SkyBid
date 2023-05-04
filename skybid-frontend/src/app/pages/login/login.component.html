@@ -1,26 +1,28 @@
 <div class="login-container">
     <div class="login">
-        <form>
-        <div class="logo">
-            <p>Sky<span class="bid">Bid</span></p>
+        <div class="green">
         </div>
-        <p class="login-text">Login</p>
-        <p class="signup">Don’t have an account? <a  [routerLink]="['/register']">Sign up</a></p>
-        
+        <form>
+            <div class="logo">
+                <p>Sky<span class="bid">Bid</span></p>
+            </div>
+            <p class="login-text">Login</p>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" [(ngModel)]="model.email" name="email"  class="form-control" id="email" required placeholder="name@example.com">
-              </div>
-              <div class="mb-3 password">
+                <input type="email" [(ngModel)]="model.email" name="email" class="form-control" id="email" required
+                    placeholder="name@example.com">
+            </div>
+            <div class="mb-3 password">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" [(ngModel)]="model.password"  id="password" required placeholder="password">
-                
-              </div>
-              <div class="forgot" >
-              <a [routerLink]="['forgot']" >Forgot password?</a>
-              </div>
-              <button type="submit" class="login-button btn" (click)="login()">Login</button>
+                <input type="password" class="form-control" name="password" [(ngModel)]="model.password" id="password"
+                    required placeholder="password">
+
+            </div>
+            <div class="forgot">
+                <a [routerLink]="['forgot']">Forgot password?</a>
+            </div>
+            <button type="submit" class="login-button btn" (click)="login()">Login</button>
+            <p class="signup">Don’t have an account? <a [routerLink]="['/register']">Sign up</a></p>
         </form>
     </div>
-    <div class="solid"></div>
 </div>

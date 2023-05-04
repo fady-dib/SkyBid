@@ -8,7 +8,8 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) {
+  }
 
   ngOnInit() {
     setTimeout(() => {
