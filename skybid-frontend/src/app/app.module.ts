@@ -30,6 +30,7 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests.component';
 import { CreateRequestComponent } from './pages/create-request/create-request.component';
+import { GridPagerComponent } from './components/grid-pager/grid-pager.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { CreateRequestComponent } from './pages/create-request/create-request.co
     UsersComponent,
     DashboardComponent,
     BrokerRequestsComponent,
-    CreateRequestComponent
+    CreateRequestComponent,
+    GridPagerComponent
   ],
   imports: [
     BrowserModule,

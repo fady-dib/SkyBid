@@ -94,6 +94,8 @@ public sortChange(sort : SortDescriptor[]) : void{
   this.loadItems()
 }
 
+
+
 private loadItems(): void {
   this.gridData = {
     data: orderBy(this.requests, this.sort),
