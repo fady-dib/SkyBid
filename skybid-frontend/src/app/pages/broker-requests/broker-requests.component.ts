@@ -3,6 +3,8 @@ import { CellClickEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { SortDescriptor } from '@progress/kendo-data-query';
 import { Subscription, finalize } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
+import { CreateRequestComponent } from '../create-request/create-request.component';
+import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 
 @Component({
   selector: 'app-broker-requests',
@@ -10,13 +12,13 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./broker-requests.component.css']
 })
 export class BrokerRequestsComponent implements OnInit {
-
   ngOnInit(): void {
     this.search()
   }
 
   constructor(
     private apiService : ApiService,
+    private windowService : WindowService,
   ) { }
   
 
@@ -70,8 +72,18 @@ onDelete(){
 }
 
 onAdd(){
-
+  this.opened = true
+const windowRef = this.windowService.open({
+    title : `CREATE REQUEST`,
+    content: CreateRequestComponent,
+    width :635,
+    top : 100
+  });
+  windowRef.result.subscribe((result) => {
+    if(result instanceof WindowCloseResult) {
+      this.opened =false;
+    }
+  })
 }
-
 
 }
