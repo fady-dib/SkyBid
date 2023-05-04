@@ -1,65 +1,67 @@
 <div class="header">
     <div class="logo-container">
-        <a [routerLink]="['/']"><img class="logo" src="assets/images/logo.svg"></a>
+        <a [routerLink]="['/']"><img class="header-logo" src="assets/images/logo.svg"></a>
     </div>
     <div class="sections">
         <div>Platform</div>
         <div>Operators</div>
         <div>Brokers</div>
         <div>AboutUs</div>
+        <button type="button" class="button btn" (click)="login()">Log in</button>
     </div>
-    <button type="button" class="login btn" (click)="login()">Login</button>
 </div>
 <div class="map text-light">
-    <div class="text">
-        <div class="logo">
-            <p>Sky<span class="bid">Bid</span></p>
-        </div>
+    <div class="map-text">
         <p>Real-time tools</p>
         <p>For Air Charter Professionnals</p>
-        <!-- <p>Accurate and transparent realtime pricing</p> -->
-        <button type="button" class="signup btn" (click)="signup()">Signup</button>
+        <p>Accurate and transparent realtime pricing</p>
+        <button type="button" class="button btn" (click)="login()">Sign up</button>
     </div>
 </div>
 <div class="platform text-light">
     <h4 class="platform-title">One platform - Endless opportunities</h4>
-    <p class="platform-text">Providing operators and brokers revolutionary solutions, ample possibilities, and new
-        opportunities to capitalize on their charter requests, making far better use of market demand in real-time.</p>
-    <p class="platform-text">Access our powerful tools and all the real-time information, both brokers and operators
-        need to make an informed decision without picking up the phone.</p>
-    <ul class="list">
-        <li>Live requests</li>
-        <li>Accurate pricing</li>
-        <li>Full transparency</li>
-        <li>Instant notifications</li>
-        <li>New business</li>
-    </ul>
+    <div class="card-container">
+        <div class="card-1">
+            <p class="platform-text">Providing operators and brokers revolutionary solutions, ample possibilities, and
+                new
+                opportunities to capitalize on their charter requests, making far better use of market demand in
+                real-time.
+            </p>
+        </div>
+        <div class="card-1">
+            <p class="platform-text">Access our powerful tools and all the real-time information, both brokers and
+                operators
+                need to make an informed decision without picking up the phone.</p>
+        </div>
+    </div>
+    <div>
+        <ul class="list">
+            <li>Live requests</li>
+            <li>Accurate pricing</li>
+            <li>Full transparency</li>
+            <li>Instant notifications</li>
+            <li>New business</li>
+        </ul>
+    </div>
 </div>
 <div class="section">
     <h4 class="section-title">SkyBid for Operators</h4>
-    <img src="assets/images/operator.jpg">
-    <div class="section-text">
-        <div class="row1">
+    <div class="section-content">
+        <img src="assets/images/operator.jpg">
+        <div class="section-text section-right">
             <div class="box">
-                <h6>Fair competition</h6>
+                <h4>Fair competition</h4>
                 <p>View other operator's quotes and win the business by offering a competitive bid or a better match for
                     a
                     broker's specific trip requirement.</p>
             </div>
             <div class="box">
-                <h6>Direct Messages</h6>
-                <p>Access Broker’s details via our Directory and use our in-app messaging feature to initiate business.
-                </p>
-            </div>
-        </div>
-        <div class="row2">
-            <div class="box">
-                <h6>Smart Marketing</h6>
+                <h4>Smart Marketing</h4>
                 <p>Upload your credentials and specifications and market your aircraft directly to brokers worldwide.
                 </p>
             </div>
             <div class="box">
-                <h6>Instant Alerts</h6>
+                <h4>Instant Alerts</h4>
                 <p>Get instant alerts about requested flights and messages.</p>
             </div>
         </div>
@@ -67,35 +69,31 @@
 </div>
 <div class="section">
     <h4 class="section-title">SkyBid for Brokers</h4>
-    <img src="assets/images/broker.jpg">
-    <div class="section-text">
-        <div class="row1">
+    <div class="section-content reverse">
+        <img src="assets/images/broker.jpg">
+        <div class="section-text section-left">
             <div class="box">
-                <h6>Real-time Pricing</h6>
+                <h4>Real-time Pricing</h4>
                 <p>Competitive bidding between operators. Receive price quotes and new bids in real-time</p>
             </div>
             <div class="box">
-                <h6>Direct Messages</h6>
-                <p>Access Operator’s details via our Directory and use our in-app messaging feature.</p>
-            </div>
-        </div>
-        <div class="row2">
-            <div class="box">
-                <h6>Full Transparency</h6>
+                <h4>Full Transparency</h4>
                 <p>Select a charter provider that best matches your business objectives and values not just on price.
                 </p>
             </div>
             <div class="box">
-                <h6>Efficient Purchase</h6>
+                <h4>Efficient Purchase</h4>
                 <p>SkyBid enables you to avoid lengthy negotiations and to immediately compare offers from participants
                 </p>
             </div>
         </div>
     </div>
 </div>
-<div class="footer text-light">
+<div class="footer">
     <div class="about-us">
-        <h4>About Us</h4>
+        <div class="about-us-title">
+        <p>About Us</p>
+        </div>
         <p>The Team behind SkyBid has decades of experience in aircraft management, operations, charter brokerage, and
             flight support. We realized there was a glaring issue within the charter market in regard to price accuracy
             and price transparency. We wanted to provide a level playing field for operators and brokers alike.</p>
@@ -109,9 +107,9 @@
         <p class="disclaimer-title">Disclaimer</p>
         <p>SkyBid is not an Air Carrier nor an Operator. AeroBid does not own or operate any aircraft.</p>
     </div>
-    <div class="footer-container">
+    <div class="header">
         <div class="logo-container">
-            <a [routerLink]="['/']"><img class="logo" src="assets/images/logo.svg"></a>
+            <a [routerLink]="['/']"><img class="header-logo" src="assets/images/logo.svg"></a>
         </div>
         <div class="sections">
             <div>Platform</div>
