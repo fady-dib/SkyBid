@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -6,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private router: Router) { }
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
@@ -21,6 +22,12 @@ export class AuthService {
   getUserRole(){
     return localStorage.getItem('role')
   }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login'] );
+  }
+
 
   
 }
