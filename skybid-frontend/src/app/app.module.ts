@@ -29,6 +29,7 @@ import { UsersComponent } from './pages/admin/users/users.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests.component';
+import { CreateRequestComponent } from './pages/create-request/create-request.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests
     SideMenuComponent,
     UsersComponent,
     DashboardComponent,
-    BrokerRequestsComponent
+    BrokerRequestsComponent,
+    CreateRequestComponent
   ],
   imports: [
     BrowserModule,
