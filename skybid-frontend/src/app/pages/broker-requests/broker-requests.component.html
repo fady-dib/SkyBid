@@ -21,13 +21,13 @@ kendoGridSelectBy="_id"
 </kendo-grid-checkbox-column>
 <ng-template kendoGridToolbarTemplate>
     <button kendoButton class="toolbar-btn btn"
-            [icon]="'add'"
+            [icon]="'add'"  (click)="onAdd()"
             >Create request </button>
             <button kendoButton
-            [icon]="'edit'"
+            [icon]="'edit'" class="toolbar-btn btn"
             (click)="onEdit()">Edit</button>
     <button kendoButton
-            [icon]="'delete'"
+            [icon]="'delete'" class="toolbar-btn btn"
             (click)="onDelete()">Delete</button>
 </ng-template>
 <kendo-grid-column field="trip"

@@ -61,6 +61,10 @@ onEdit() {
 }
 
 onDelete(){
+
+}
+
+onAdd(){
   
 }
 
