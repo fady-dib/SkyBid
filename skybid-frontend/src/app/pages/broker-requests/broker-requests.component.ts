@@ -38,6 +38,7 @@ private search() {
     finalize(()=> this.loading = false)
   )
   .subscribe(data => {
+    console.log(data)
     this.gridData = {
       data: data, total : data.length
     }
