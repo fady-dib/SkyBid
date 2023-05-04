@@ -31,9 +31,10 @@ exports.updateProfile = async (req, res) => {
     }
 }
 
+
 exports.getUser = async (req,res) => {
 
-   const user_id = req.params.id
+   const user_id = req.user._id
     if(!user_id) return res.json(" Invalid user ID")
 
     const user = await User.findOne({_id : user_id})
@@ -47,6 +48,7 @@ exports.getRequests = async (req,res) => {
     const Requests = await Request.find().populate("broker","-password")
     return res.json(Requests)
 }
+
 exports.getBidsByRequestID = async (req,res) => {
 
     const request_id = req.body.request_id
@@ -59,6 +61,24 @@ exports.getBidsByRequestID = async (req,res) => {
     return res.json(request.bids)
 
 }
+
+exports.getRequestsByBroker = async (req,res) => {
+    
+    try{
+    const user_id = req.user._id;
+    console.log('user_id:', user_id);
+    const requests = await Request.find({broker : user_id})
+    if (!requests || requests == null || requests.length == 0) return res.json("No Requests found")
+
+    return res.json(requests)
+
+}catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+
+}
+
+
 
 exports.getRequest = async (req,res) => {
 
