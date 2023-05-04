@@ -50,7 +50,7 @@ login() {
     localStorage.setItem('role',data.role)
     if(data.role == "admin") this.router.navigate(['/dashboard'])
     if(data.role == "operator") this.router.navigate(['/request-list'])
-    if(data.role == "broker") this.router.navigate([''])
+    if(data.role == "broker") this.router.navigate(['broker-requests'])
   });
   
 

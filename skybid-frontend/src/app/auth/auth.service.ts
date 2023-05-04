@@ -13,10 +13,9 @@ export class AuthService {
     ) { }
   
 
-  isAuthenticated(allowed_role) : boolean {
+  isAuthenticated() : boolean {
    const token = localStorage.getItem('token')
-   const user_role = this.getUserRole()
-   if(token && allowed_role.includes(user_role)){
+   if(token){
     return true
    }
    return false
