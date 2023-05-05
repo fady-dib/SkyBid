@@ -57,8 +57,7 @@ export class CreateRequestComponent {
           `+ validations.join('\n'),
         type: { style: 'warning' },
         position: this.notifPos,
-        appendTo: this.container
-        
+        appendTo: this.container,
       });
       return;
     }
