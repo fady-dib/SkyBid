@@ -124,3 +124,8 @@ color: var(--white)
   color: white;
   background-color: var(--green) !important;
 }
+
+
+.k-pager{
+  justify-content: flex-end ;
+}
