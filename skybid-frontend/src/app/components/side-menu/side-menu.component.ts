@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
@@ -8,7 +9,9 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class SideMenuComponent implements OnInit {
 
-  constructor(public authService: AuthService) {
+  constructor(
+    public authService: AuthService,
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -18,14 +21,12 @@ export class SideMenuComponent implements OnInit {
   }
   
 
-  selected_page: string = 'request-list';
+  isCurrentRoute(route: string): boolean {
+    return this.router.url === route;
+  }
 
   is_loading = true
 
-
-selectPage(page: string): void {
-  this.selected_page = page;
-}
 
 user_role = this.authService.getUserRole()
 
