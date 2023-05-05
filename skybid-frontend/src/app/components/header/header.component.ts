@@ -24,10 +24,6 @@ export class HeaderComponent implements OnInit{
 
   user_role = this.authService.getUserRole()
 
-  // visible(){
-  //   if(this.user_role === 'admin') return false
-  //   else return true
-  // }
   notifications : string[] = ['jhjjgjhgjgjkgjkgjghjkgjghgjg'];
   notificationData : ListItemModel [] =[{text: 'Notifications'}]
 

@@ -2,15 +2,19 @@
 <div class="requests-container">
    <app-side-menu></app-side-menu>
     <div class="requests-content">
-<h5 class="title">Users</h5>
+<h4 class="title">Users</h4>
 <div class="grid">
 <kendo-grid [data]="gridData"
 [resizable]="true"
+[pageable]="true"
 [loading]="loading"
 [style.height.px]="500"
 [style.width.%]="100"
 >
 <ng-template kendoGridToolbarTemplate>
+</ng-template>
+<ng-template  kendoPagerTemplate  let-total="total" >
+    <app-grid-pager [total]="total"></app-grid-pager>
 </ng-template>
 <kendo-grid-column field="company_name"
                                title="User name"

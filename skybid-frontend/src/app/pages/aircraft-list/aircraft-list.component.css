@@ -89,7 +89,8 @@
 
   .add-button{
     background-color: var(--green);
-    color: white
+    color: white;
+    margin-right: 2%
   }
 
   .action-button{

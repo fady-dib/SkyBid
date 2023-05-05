@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 2%;
-    padding-right:2%;
+    padding-right:1.7%;
     padding-top: 1%;
     padding-bottom: 1%;
     color: white
@@ -17,24 +17,20 @@
 }
 
 .notification{
-    color:var(--darkblue);
-    margin-right: 10%
+    color:var(--white);
+    margin-right: 10%;
 }
 
-
-.k-button-solid-base {
-    background-color: none !important;
-    color: white !important
-}
 
 .actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-right: 1.5%;
   }
 
- .button-header{
-    background-color: none !important;
-    color: white !important
- }
+  /* .k-menu-group .k-item:focus > .k-link, .k-menu-group .k-item.k-focus > .k-link, .k-menu.k-context-menu .k-item:focus > .k-link, .k-menu.k-context-menu .k-item.k-focus > .k-link{
+    background-color: var(--green) !important;
+  } */
+
   
