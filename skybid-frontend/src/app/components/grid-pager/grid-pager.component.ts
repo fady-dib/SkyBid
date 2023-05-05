@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-grid-pager',
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class GridPagerComponent {
 
-  total;
-  selected;
+  @Input()total : number;
+  @Input()selected : number;
 
 }
