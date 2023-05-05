@@ -20,6 +20,12 @@ kendoGridSelectBy="_id"
 >
 <kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
 </kendo-grid-checkbox-column>
+<ng-template kendoPagerTemplate
+                         let-total="total">
+                <app-grid-pager [total]="total"
+                                [selected]="mySelection.length">
+                </app-grid-pager>
+            </ng-template>
 <kendo-grid-column field="broker.company_name"
                                title="Broker"
                                [width]="100"
