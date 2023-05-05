@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IntlService } from '@progress/kendo-angular-intl';
 
 @Component({
   selector: 'app-grid-pager',

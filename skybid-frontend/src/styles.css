@@ -13,7 +13,6 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    font-family: 'Roboto';
     font-size: 16px;
     color: var(--white)
   }
@@ -58,15 +57,6 @@
 }
 
 
-.k-drawer-item > .k-drawer-link {
-  color: var(--white);
-  text-decoration: none;
-}
-
-.k-drawer-item.k-selected {
-  background-color: var(--green) !important;
-}
-
 .k-grid-toolbar{
   background-color: var(--blue);
 
@@ -82,9 +72,6 @@
   color:var(--darkblue)
 }
 
-.drawer-btn{
-  background-color: var(--blue) !important;
-}
 
 .form-control, .form-label{
   color: var(--darkblue)
@@ -125,7 +112,29 @@ color: var(--white)
   background-color: var(--green) !important;
 }
 
-
 .k-pager{
   justify-content: flex-end ;
 }
+
+.k-toolbar{
+  justify-content: flex-end;
+}
+
+.toolbar-btn{
+  background-color: var(--green);
+  color: var(--white);
+  font-weight: bold
+  }
+
+  .toolbar-btn:hover{
+  background-color: var(--green);
+  color: var(--white);
+  font-weight: bold
+  }
+
+  .k-button-solid-base:active{
+    background-color: var(--white);
+    color: var(--darkblue);
+    font-weight: bold;
+}
+
