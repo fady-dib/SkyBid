@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 
 @Component({
@@ -6,7 +6,11 @@ import { User } from 'src/app/models/user';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.css']
 })
-export class EditProfileComponent {
+export class EditProfileComponent implements OnInit {
+
+  ngOnInit(): void {
+    
+  }
 
   model : User = new User;
 
