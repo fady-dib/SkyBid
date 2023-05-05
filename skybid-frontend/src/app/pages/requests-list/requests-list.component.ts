@@ -81,7 +81,7 @@ onDblClick() {
 }
 
 cellClick(event : CellClickEvent){
-this.mySelection = event.dataItem._id
+this.mySelection = [event.dataItem._id]
 
 this.clickedItem = event.dataItem;
 setTimeout(() => {
