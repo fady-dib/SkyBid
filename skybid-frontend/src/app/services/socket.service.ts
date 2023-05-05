@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { io } from "socket.io-client";
 import { Request } from '../models/request';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,19 +17,21 @@ export class SocketService {
   public bid : BehaviorSubject<[]> = new BehaviorSubject([]);
   public bid_request_id : BehaviorSubject<string> = new BehaviorSubject('');
 
-  constructor() { 
+  constructor(
+    private authService: AuthService
+  ) { 
     this.getRequests()
     this.getNotification()
     this.getBids()
   }
 
-  token = localStorage.getItem('token')
+  
 
   socket = io('http://localhost:3006', 
   //{autoConnect:false},
   {
     // withCredentials: true,
-    query: { token:this.token}
+    query: { token : this.authService.getToken()}
   });
 
   public sendMessage(message:string) {
