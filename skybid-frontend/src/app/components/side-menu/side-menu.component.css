@@ -1,5 +1,5 @@
 .side-menu {
-    height: 100%;
+    height: 100vh;
     width: 350px;
     background-color: var(--darkblue);
     overflow-x: hidden;
@@ -15,14 +15,6 @@
     transition: 0.3s;
   }
 
-
-  .loading {
-    height: 100vh;
-  }
-  
-  .loaded {
-    height: 100%; 
-  }
 
   a.selected{
     color:white;

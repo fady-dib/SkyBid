@@ -42,7 +42,8 @@ export class AircraftListComponent implements OnInit {
     const windowRef = this.windowService.open({
       title: "A D D" + " " + "A I R C R A F T ",
       content : AddAircraftComponent,
-      width: 400
+      width: 500,
+      top: 150
     })
 
     windowRef.result.subscribe((result) => {

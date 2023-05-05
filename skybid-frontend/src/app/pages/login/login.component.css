@@ -18,18 +18,19 @@
 .green{
     background-color: var(--green);
     width: 50%;
-    border-radius: 0.375rem;
+    border-radius: 0.375rem 0 0 0.375rem;
 }
 
 .login{
-    width: 80%;
-    height: 80vh;
-    padding: 0.5%;
+    width: 30%;
+    height: 70vh;
     background-color:white;
-    box-shadow: 1px 1px 10px 5px lightgray;
+    box-shadow: 1px 1px 10px 5px var(--green);
     z-index: 1000;
     border-radius: 0.375rem;
-    display: flex
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .account-text{
@@ -53,7 +54,7 @@ form{
     padding-left: 10%;
     padding-right:10%;
     margin-top: 3%;
-    width:50%
+    width: 85%
 }
 
 .form-label{

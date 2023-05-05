@@ -3,10 +3,13 @@
     <div class="page-container">
         <app-side-menu></app-side-menu>
         <div class="content-container">
-            <ng-container *ngIf="aircrafts.length > 0; else emptyState">
+            <div class="title">
+                <h4>Requests</h4>
                 <div class="action-button">
                     <button class="btn add-button" (click)="addAircraft()">Add Aircraft</button>
                 </div>
+            </div>
+            <ng-container *ngIf="aircrafts.length > 0; else emptyState">
                 <div class="aircraft-container">
                     <div *ngFor="let aircraft of aircrafts" class="card">
                         <img *ngIf="aircraft.image; else noImage" [src]="serverUrl + aircraft.image.url"
@@ -27,10 +30,9 @@
                 </div>
             </ng-container>
             <ng-template #emptyState>
-                <div class="content-container">
-                <div class="action-button">
-                    <button class="btn add-button" (click)="addAircraft()">Add Aircraft</button>
-                </div>
+                <div class="empty-container">
+                    <h2>No available aircrafts</h2>
+                    <img class="empty" src="../../../assets/images/aircraft1.png">
                 </div>
             </ng-template>
         </div>
