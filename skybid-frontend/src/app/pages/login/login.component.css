@@ -32,7 +32,7 @@
     display: flex
 }
 
-.login-text{
+.account-text{
     color: var(--darkblue);
     font-weight: bold;
     font-size: 1.4rem;

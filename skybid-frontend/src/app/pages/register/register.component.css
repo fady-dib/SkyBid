@@ -6,20 +6,18 @@
 
 .solid{
     background-color: var(--darkblue);
-    flex:1
+    flex: 1
 }
 .register{
     flex: 3;
     overflow-y:auto;
-    padding-left: 5%;
-    padding-right: 5%
 }
 
 .register-text{
     color: var(--darkblue);
     font-weight: bold;
     font-size: 1.3rem;
-    margin-bottom: 2%
+    margin-bottom: 3%
 }
 .register::-webkit-scrollbar{
    display:none
@@ -50,8 +48,8 @@ a{
 
 
 form{
-    padding-left: 10%;
-    padding-right:10%;
+    padding-left: 5%;
+    padding-right:5%;
     margin-top: 5%;
     color :var(--darkblue);
 }
@@ -65,7 +63,7 @@ form{
     background-color: var(--green);
     color: var(--white);
     margin-bottom: 30px;
-    margin-top: 30px;
+    font-weight: bold;
 }
 .flex{
     display: flex;
