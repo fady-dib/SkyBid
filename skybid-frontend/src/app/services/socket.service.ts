@@ -18,7 +18,7 @@ export class SocketService {
   public bid_request_id : BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
   ) { 
     this.getRequests()
     this.getNotification()
