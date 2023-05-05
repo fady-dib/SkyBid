@@ -1,9 +1,11 @@
 .side-menu {
-    height: 100vh;
+    height: 100%;
+    position: sticky;
     width: 350px;
     background-color: var(--darkblue);
     overflow-x: hidden;
     padding-top: 20%;
+    overflow: auto;
   }
 
   .side-menu a {
@@ -20,4 +22,10 @@
     color:white;
     background-color: var(--green);
   }
+
+  /* .loading{
+    height: 100vh
+  } */
+
+  
   

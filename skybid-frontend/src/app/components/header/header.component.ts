@@ -19,15 +19,19 @@ export class HeaderComponent implements OnInit{
 
   ngOnInit(): void {
     this.getNotification()
+    this.setUserData()
   }
 
   user_role = this.authService.getUserRole()
+
+  // visible(){
+  //   if(this.user_role === 'admin') return false
+  //   else return true
+  // }
   notifications : string[] = ['jhjjgjhgjgjkgjkgjghjkgjghgjg'];
   notificationData : ListItemModel [] =[{text: 'Notifications'}]
-  userData = [
-    { text: 'Edit Profile', action: 'editProfile' },
-    { text: 'Logout', action: 'logout' }
-  ];
+
+  userData = []
 
   onItemClick(event){
     const action = event.action;
@@ -40,6 +44,18 @@ export class HeaderComponent implements OnInit{
         break;
     }
   }
+
+  setUserData() {
+    this.userData = [
+      { text: 'Edit Profile', action: 'editProfile' },
+      { text: 'Logout', action: 'logout' },
+    ];
+
+    if (this.user_role === 'admin') {
+      this.userData = this.userData.filter((item) => item.action !== 'editProfile');
+    }
+  }
+
 
  
 

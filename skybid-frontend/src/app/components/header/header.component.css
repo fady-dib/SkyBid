@@ -21,10 +21,20 @@
     margin-right: 10%
 }
 
+
+.k-button-solid-base {
+    background-color: none !important;
+    color: white !important
+}
+
 .actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
 
+ .button-header{
+    background-color: none !important;
+    color: white !important
+ }
   

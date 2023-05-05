@@ -17,3 +17,9 @@
     background-color: var(--darkblue);
 }
 
+.k-button-solid-base:active{
+    background-color: var(--white);
+    color: var(--darkblue);
+    font-weight: bold;
+}
+

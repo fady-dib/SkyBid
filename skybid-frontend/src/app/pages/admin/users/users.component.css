@@ -17,7 +17,8 @@
     background-color: var(--darkblue);
 }
 
-.toolbar-btn{
-background-color: var(--green);
-color:white
+.k-button-solid-base:active{
+    background-color: var(--white);
+    color: var(--darkblue);
+    font-weight: bold;
 }
