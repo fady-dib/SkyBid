@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-bid',
@@ -21,12 +22,13 @@ export class BidComponent implements OnInit {
       this.aircrafts = data.aircrafts;
     });
   }
-
-  request_id;
-  broker_id;
-
+request={
+  request_id:"",
+  broker_id:""
+}
   constructor(
     private apiService : ApiService,
+    private socketService : SocketService
    
   ){}
 
@@ -35,6 +37,7 @@ export class BidComponent implements OnInit {
     price: ''
   }
   add(){
+ this.socketService.addBid(this.model,this.request)
  
 
   }
