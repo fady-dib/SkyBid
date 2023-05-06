@@ -9,6 +9,7 @@ export class Request {
         address: string;
         phone:number;
         bio?:string;
+        _id: string
     };
     trip: string;
     passengers: number;

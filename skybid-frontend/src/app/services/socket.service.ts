@@ -71,4 +71,8 @@ export class SocketService {
     this.socket.emit('createRequest', request)
   }
 
+  public addBid = (bid) => {
+    this.socket.emit('newBid',bid)
+  }
+
 }

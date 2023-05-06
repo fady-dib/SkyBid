@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, OnInit } from '@angular/core';
 import { GridDataResult } from '@progress/kendo-angular-grid';
 import { Request } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
 import { Subscription, finalize } from 'rxjs';
 import { orderBy } from '@progress/kendo-data-query';
+import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
+import { BidComponent } from '../bid/bid.component';
 
 
 
@@ -21,7 +23,8 @@ export class RequestDetailComponent implements OnInit {
 
   constructor(
     private apiService : ApiService,
-    private socketService: SocketService
+    private socketService: SocketService,
+    private windowService : WindowService,
   ){}
 
   model : Request = new Request();
@@ -32,6 +35,7 @@ export class RequestDetailComponent implements OnInit {
   sort = [] ;
   loading = false;
   request_id : string
+  broker_id;
   private subscription : Subscription
 
   getBids() {
@@ -59,9 +63,27 @@ export class RequestDetailComponent implements OnInit {
   
     return `${year}-${month}-${day}`;
   }
-
+  opened = false
   
+add(){
+  this.opened = true ;
+  const windowRef = this.windowService.open({
+    title : `New Bid`,
+    content: BidComponent,
+    width :635,
+    top : 100,
+  });
 
+  let windowRefCmp : ComponentRef<BidComponent> = windowRef.content;
+  windowRefCmp.instance.request_id = this.model._id
+    windowRefCmp.instance.broker_id = this.model.broker._id
+
+  windowRef.result.subscribe((result) => {
+    if(result instanceof WindowCloseResult) {
+      this.opened =false;
+    }
+  })
+}
 
 
 }
