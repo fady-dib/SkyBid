@@ -88,7 +88,24 @@ export class BrokerRequestsComponent implements OnInit {
 
 
   onDblClick() {
-
+    if(this.clickedItem) {
+      const windowRef = this.windowService.open({
+        title : `Bids`,
+        content: "hi",
+        width :635,
+        top : 100
+      });
+      // let windowRefCmp : ComponentRef<> = windowRef.content;
+      // windowRefCmp.instance.request_id = this.clickedItem._id
+  
+      windowRef.result.subscribe((result) => {
+        if(result instanceof WindowCloseResult) {
+          this.opened =false;
+          this.search();
+        }
+      })
+      this.opened = true ;
+    }
   }
 
 
