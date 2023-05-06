@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-edit-profile',
@@ -9,8 +10,15 @@ import { User } from 'src/app/models/user';
 export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
-    
+    this.apiService.getUser().subscribe(data => {
+      this.model = data
+      console.log(data)
+    })
   }
+
+  constructor(
+    private apiService : ApiService
+  ){}
 
   model : User = new User;
 
