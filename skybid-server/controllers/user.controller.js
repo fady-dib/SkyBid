@@ -37,7 +37,7 @@ exports.getUser = async (req,res) => {
    const user_id = req.user._id
     if(!user_id) return res.json(" Invalid user ID")
 
-    const user = await User.findOne({_id : user_id})
+    const user = await User.findOne({_id : user_id}).select('-password')
 
     if (!user) return res.json("User not found")
 

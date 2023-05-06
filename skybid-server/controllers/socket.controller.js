@@ -4,7 +4,7 @@ const Notification = require("../models/notificationModel");
 const User = require("../models/userModel");
 const short_id = require('shortid')
 
-let users = [];
+// let users = [];
 
 module.exports = function (io) {
 
@@ -12,34 +12,64 @@ module.exports = function (io) {
 
     io.on('connection', (socket) => {
 
-        const user_id = socket.user._id
-        const socket_id = socket.id
-        const user_index = users.findIndex(user => user.user_id === user_id);
-        if (user_index === -1) {
-            users.push({ user_id, socket_id })
-         } 
-        //else {
+        // const user_id = socket.user._id
+        // const socket_id = socket.id
+        // const user_index = users.findIndex(user => user.user_id === user_id);
+        // if (user_index === -1) {
+        //     users.push({ user_id, socket_id })
+        //  } 
+        // else {
         //     users[user_index].socket_id = socket_id
         // }
-        console.log(users)
+        // console.log(users)
 
-        if (socket.user.role === "operator") {
-            socket.join("operators")
+
+        function joinRooms(socket) {
+            if (socket.user.role === "operator") {
+                socket.join("operators");
+                Request.find({})
+                    .then(requests => {
+                        requests.forEach(request => {
+                            socket.join(request._id.toString());
+                        });
+                    })
+                    .catch(err => {
+                        console.error('Error fetching requests for operator:', err);
+                    });
+        
+            } else if (socket.user.role === "broker") {
+                socket.join("brokers");
+                Request.find({ broker: socket.user._id })
+                    .then(requests => {
+                        requests.forEach(request => {
+                            socket.join(request._id.toString());
+                        });
+                    })
+                    .catch(err => {
+                        console.error('Error fetching requests for broker:', err);
+                    });
+            }
         }
-        else if (socket.user.role === "broker") {
-            socket.join("brokers")
-        }
+
+        joinRooms(socket)
+
+        // if (socket.user.role === "operator") {
+        //     socket.join("operators")
+        // }
+        // else if (socket.user.role === "broker") {
+        //     socket.join("brokers")
+        // }
 
         console.log(`Client ${socket.id} connected`);
 
 
         socket.on('disconnect', () => {
             console.log(`Client ${socket.id} disconnected`);
-            const user_index = users.findIndex(user => user.user_id === user_id);
-            if (user_index !== -1) {
-                users.splice(user_index, 1);
-            }
-            console.log(users)
+            // const user_index = users.findIndex(user => user.user_id === user_id);
+            // if (user_index !== -1) {
+            //     users.splice(user_index, 1);
+            // }
+            // console.log(users)
         });
 
         socket.on('chatMessage', (msg) => {
@@ -87,7 +117,7 @@ module.exports = function (io) {
             const requests = await Request.find().populate('broker');
             io.emit("getRequests", requests)
             console.log("newRequest",request_id)
-            io.emit("notification",notification.notification)
+            // io.emit("notification",notification.notification)
 
         })
 
@@ -119,7 +149,7 @@ module.exports = function (io) {
                 select: 'aircraft year_of_manufacture' 
               })
               .select('bids')
-            io.emit('newBid', new_bid, request_id);
+            // io.emit('newBid', new_bid, request_id);
             io.to(request_id).emit('notification', notification)
             console.log("newBid",request_id)
         })
