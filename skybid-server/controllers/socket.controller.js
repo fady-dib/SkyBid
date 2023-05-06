@@ -113,17 +113,15 @@ module.exports = function (io) {
                 notification: `A new request has been created`
             })
             await notification.save()
-            io.to(request_id).emit('notification', newRequest, notification)
+            io.to(request_id).emit('notification', notification.notification)
             const requests = await Request.find().populate('broker');
             io.emit("getRequests", requests)
             console.log("newRequest",request_id)
-            // io.emit("notification",notification.notification)
-
         })
 
 
         socket.on("newBid", async (bid, req) => {
-            const request_id = req._id
+            const request_id = req.request_id
             const new_bid = {
                 operator: socket.user._id,
                 aircraft: bid.aircraft,
@@ -135,7 +133,7 @@ module.exports = function (io) {
             }
             const notification = new Notification({
                 sender: socket.user._id,
-                receiver: [req.broker],
+                receiver: [req.broker_id],
                 type: "bid",
                 notification: `A new bid has been submitted`
             });
@@ -150,7 +148,7 @@ module.exports = function (io) {
               })
               .select('bids')
             // io.emit('newBid', new_bid, request_id);
-            io.to(request_id).emit('notification', notification)
+            io.to(request_id).emit('notification', notification.notification)
             console.log("newBid",request_id)
         })
 
