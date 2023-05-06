@@ -2,8 +2,8 @@
 <div class="edit-container">
     <app-side-menu></app-side-menu>
     <div class="edit">
+        <h4 class="title">Edit Profile</h4>
         <form>
-            <p>Edit Profile</p>
             <div class="flex">
                 <div class="mb-3 item">
                     <label for="name" class="form-label">Compnay name</label>
@@ -51,11 +51,12 @@
             <div class="mb-3 item">
                 <label for="bio" class="form-label">Bio</label>
                 <textarea id="bio" class="form-control" [(ngModel)]="model.bio" name="bio" rows="3"></textarea>
-            </div>
-            <div class="btn-flex">
-                <button type="submit" class="update-button btn" (click)="update()">Update</button>
+                <div class="btn-flex">
+                    <button type="submit" class="update-button btn" (click)="update()">Update</button>
+                </div>
             </div>
         </form>
+       
     </div>
 
 </div>

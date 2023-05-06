@@ -35,21 +35,13 @@
 .bid{
     color: var(--green)
 }
-.green{
-    background-color: var(--green);
-    width: 50%;
-    border-radius: 0.375rem 0 0 0.375rem;
-}
-
-
-
-
 
 .signup{
     color: var(--darkblue);
     margin-bottom: 6%
     
 }
+
 a{
     text-decoration: none !important;
 }

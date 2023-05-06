@@ -4,16 +4,16 @@
 }
 
 .edit{
-    flex: 3;
-    overflow-y:auto
-}
-.edit::-webkit-scrollbar{
-   display:none
+    flex: 1;
 }
 
+.title{
+    margin:4% 4%;
+    color: var(--darkblue)
+}
 form{
-    padding-left: 10%;
-    padding-right:10%;
+    padding-left: 15%;
+    padding-right:15%;
     margin-top: 5%;
     color :var(--darkblue);
 }
