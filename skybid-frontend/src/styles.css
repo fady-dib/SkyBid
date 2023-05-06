@@ -132,5 +132,9 @@ color: var(--white)
   font-weight: bold
   }
 
+  .k-pager *, .k-pager *::before, .k-pager *::after {
+    color: var(--darkblue);
+}
+
 
 
