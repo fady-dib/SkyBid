@@ -1,10 +1,11 @@
 .requests-container{
     display:flex;
-    height : 120vh
+    height : 100%
   }
   
   .chart{
-    margin-left : 40%;
+    margin-left : 20%;
+    margin-bottom: 7%;
   }
   
   .dashboard{

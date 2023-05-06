@@ -1,7 +1,7 @@
 .side-menu {
     height: 100%;
     position: sticky;
-    width: 350px;
+    width: 20vw;
     background-color: var(--darkblue);
     overflow-x: hidden;
     padding-top: 20%;

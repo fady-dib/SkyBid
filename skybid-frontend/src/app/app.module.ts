@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ElementRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { RegisterComponent } from './pages/register/register.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
-import { NotificationModule } from '@progress/kendo-angular-notification';
+import { NOTIFICATION_CONTAINER, NotificationModule } from '@progress/kendo-angular-notification';
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { RequestsListComponent } from './pages/requests-list/requests-list.component';
@@ -70,7 +70,13 @@ import { GridPagerComponent } from './components/grid-pager/grid-pager.component
     DialogsModule,
     ChartsModule,
   ],
-  providers: [],
+  providers: [  {
+    provide: NOTIFICATION_CONTAINER,
+    useFactory: () => {
+       //return the container ElementRef, where the notification will be injected
+       return { nativeElement: document.body } as ElementRef;
+    }
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
