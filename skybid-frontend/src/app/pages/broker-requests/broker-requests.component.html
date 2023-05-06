@@ -8,7 +8,7 @@
 (cellClick)="cellClick($event)"
 [sort]="sort"
 (sortChange)="sortChange($event)"
-[resizable]="true"
+[navigable]="true"
 [pageable]="true"
 [selectable]="true"
 [loading]="loading"
@@ -36,39 +36,53 @@ kendoGridSelectBy="_id"
 </ng-template>
 <kendo-grid-column field="trip"
                                title="Trip"
-                               [width]="60"
+                               [width]="50"
                                [class]="{'text-right': true}"
                                [headerClass]="{'text-center': true}">
             </kendo-grid-column>
             <kendo-grid-column field="from"
                                title="From"
-                               [width]="60"
+                               [width]="40"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-center': true}">
             </kendo-grid-column>
             <kendo-grid-column field="to"
                                title="To"
-                               [width]="60"
+                               [width]="40"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
             </kendo-grid-column>
             <kendo-grid-column field="departure_date"
                                title="Departure date"
-                               [width]="110"
+                               [width]="50"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
+                               <ng-template kendoGridCellTemplate let-dataItem>
+                                {{ dataItem.departure_date | date: 'yyyy-MM-dd' }}
+                              </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="return_date"
             title="Return date"
-            [width]="110"
+            [width]="50"
             [class]="{'text-left': true}"
             [headerClass]="{'text-left': true}">
+            <ng-template kendoGridCellTemplate let-dataItem>
+                {{ dataItem.return_date | date: 'yyyy-MM-dd' }}
+              </ng-template>
 </kendo-grid-column>
 <kendo-grid-column field="passengers"
-title="Passengers"
+title="Pax"
+[width]="30"
+[class]="{'text-left': true}"
+[headerClass]="{'text-left': true}"></kendo-grid-column>
+<kendo-grid-column field="createdAt"
+title="Date of creation"
 [width]="50"
 [class]="{'text-left': true}"
 [headerClass]="{'text-left': true}">
+<ng-template kendoGridCellTemplate let-dataItem>
+    {{ dataItem.createdAt | date: 'yyyy-MM-dd' }}
+  </ng-template>
 </kendo-grid-column>
 </kendo-grid>
 </div>

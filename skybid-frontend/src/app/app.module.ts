@@ -32,6 +32,7 @@ import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests
 import { CreateRequestComponent } from './pages/create-request/create-request.component';
 import { GridPagerComponent } from './components/grid-pager/grid-pager.component';
 import { BidComponent } from './pages/bid/bid.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -75,10 +76,9 @@ import { BidComponent } from './pages/bid/bid.component';
   providers: [  {
     provide: NOTIFICATION_CONTAINER,
     useFactory: () => {
-       //return the container ElementRef, where the notification will be injected
        return { nativeElement: document.body } as ElementRef;
-    }
-  }],
+    },
+  }, [DatePipe] ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

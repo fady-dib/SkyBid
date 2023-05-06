@@ -49,7 +49,7 @@ export class BrokerRequestsComponent implements OnInit {
       )
       .subscribe(data => {
         console.log(data)
-        this.requests = data
+        this.sortRequests(data);
         this.loadItems()
       })
   }
@@ -74,6 +74,18 @@ export class BrokerRequestsComponent implements OnInit {
       total: this.requests.length
     };
   }
+
+  private sortRequests(data: Request[]): void {
+    this.requests = [...data];
+    this.requests.sort((a, b) => {
+      if (this.sort[0].dir === 'desc') {
+        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+      } else {
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+      }
+    });
+  }
+
 
   onDblClick() {
 
