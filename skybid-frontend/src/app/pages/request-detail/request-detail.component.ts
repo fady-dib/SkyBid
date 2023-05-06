@@ -77,6 +77,7 @@ add(){
   let windowRefCmp : ComponentRef<BidComponent> = windowRef.content;
   windowRefCmp.instance.request.request_id = this.model._id
     windowRefCmp.instance.request.broker_id = this.model.broker._id
+    windowRefCmp.instance.windowRef = windowRef
 
   windowRef.result.subscribe((result) => {
     if(result instanceof WindowCloseResult) {

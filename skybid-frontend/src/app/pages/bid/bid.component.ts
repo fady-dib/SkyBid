@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WindowRef } from '@progress/kendo-angular-dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
 
@@ -26,6 +27,9 @@ request={
   request_id:"",
   broker_id:""
 }
+
+windowRef : WindowRef
+
   constructor(
     private apiService : ApiService,
     private socketService : SocketService
@@ -38,7 +42,7 @@ request={
   }
   add(){
  this.socketService.addBid(this.model,this.request)
- 
+ this.windowRef.close()
 
   }
 
