@@ -50,4 +50,9 @@ getUsers() : Observable<any> {
 getRequestsByBroker(): Observable <any>{
   return this.http.get(`${this.apiBaseUrl}/user/broker-requests`,{headers: this.getHeaders()})
 }
+
+getUser() : Observable <any> {
+  return this.http.get(`${this.apiBaseUrl}/user`,{headers: this.getHeaders()})
+}
+
 }
