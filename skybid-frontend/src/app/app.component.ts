@@ -22,7 +22,7 @@ constructor(
   private notificationService : NotificationService,
 ){}
 
-notifPos : Position = { vertical: 'top', horizontal:'right'}
+notifPos : Position = { vertical: 'top', horizontal:'center'}
 
 
 notifications(){
