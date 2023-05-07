@@ -33,7 +33,10 @@ export class HeaderComponent implements OnInit{
     const action = event.action;
     switch (action) {
       case 'logout':
-        this.authService.logout();
+        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+        this.socketService.disconnect()
+        this.router.navigate(['/login'] );
         break;
       case 'editProfile':
         this.router.navigate(['/edit-profile']);

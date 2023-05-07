@@ -4,6 +4,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { Observable, catchError } from 'rxjs';
 import { NotificationService, Position } from '@progress/kendo-angular-notification';
 import { Router } from '@angular/router';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent{
   constructor(
     private apiService : ApiService,
     private notificationService : NotificationService,
-    private router : Router
+    private router : Router,
+    private socketService : SocketService
   ){}
 
 model : Login = new Login();
@@ -53,6 +55,7 @@ login() {
     if(data.role == "admin") this.router.navigate(['/dashboard'])
     if(data.role == "operator") this.router.navigate(['/request-list'])
     if(data.role == "broker") this.router.navigate(['broker-requests'])
+    this.socketService.connect()
   });
   
 

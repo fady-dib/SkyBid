@@ -114,24 +114,24 @@ export class BrokerRequestsComponent implements OnInit {
     }
   }
 
-  onDelete() {
+//   onDelete() {
 
-    if(!this.mySelection){
-      this.notificationService.show({
-          content: 'Select a request',
-          type: { style: 'warning' }
-        });
-        return;
-      }
+//     if(!this.mySelection){
+//       this.notificationService.show({
+//           content: 'Select a request',
+//           type: { style: 'warning' }
+//         });
+//         return;
+//       }
     
-    this.socketService.deleteRequest(this.mySelection[0])
-        this.notificationService.show({
-          content: 'Request deleted succesfully',
-          type: { style: 'success' }
-        });
-        this.mySelection = []
-        this.search()
-}
+//     this.socketService.deleteRequest(this.mySelection[0])
+//         this.notificationService.show({
+//           content: 'Request deleted succesfully',
+//           type: { style: 'success' }
+//         });
+//         this.mySelection = []
+//         this.search()
+// }
 
   onAdd() {
     this.opened = true

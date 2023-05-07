@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, forwardRef } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { io } from "socket.io-client";
 import { Request } from '../models/request';
@@ -18,21 +18,26 @@ export class SocketService {
   public bid_request_id : BehaviorSubject<string> = new BehaviorSubject('');
 
   constructor(
-    private authService: AuthService,
+     private authService: AuthService
   ) { 
-    this.getRequests()
+    
+  }
+
+  private socket: any;
+
+  public connect() {
+    if (!this.socket || this.socket.disconnected) {
+      this.socket = io('http://localhost:3006', { query: { token: this.authService.getToken() } });
+      this.getRequests()
     this.getNotification()
     this.getBids()
   }
+}
 
-  
-
-  socket = io('http://localhost:3006', 
-  //{autoConnect:false},
-  {
-    // withCredentials: true,
-    query: { token : this.authService.getToken()}
-  });
+  // socket = io('http://localhost:3006', 
+  // {
+  //   query: { token : this.authService.getToken()}
+  // });
 
   public sendMessage(message:string) {
     this.socket.emit('chatMessage', message);
@@ -72,12 +77,20 @@ export class SocketService {
     this.socket.emit('createRequest', request)
   }
 
-  public deleteRequest = (request_id) => {
-    this.socket.emit('deleteRequest', request_id)
-  }
+  // public deleteRequest = (request_id) => {
+  //   this.socket.emit('deleteRequest', request_id)
+  // }
 
   public addBid = (bid,request) => {
     this.socket.emit('newBid',bid,request)
   }
+
+  public disconnect(): void {
+    if (this.socket) {
+      this.socket.disconnect();
+    }
+  }
+
+
 
 }

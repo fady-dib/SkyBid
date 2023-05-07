@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, forwardRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { SocketService } from '../services/socket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +30,11 @@ export class AuthService {
     return localStorage.getItem('token')
   }
 
-  logout(): void {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    this.router.navigate(['/login'] );
-  }
+  // logout(): void {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('role');
+  //   this.router.navigate(['/login'] );
+  // }
 
 
   
