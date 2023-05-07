@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class BidsComponent implements OnInit {
 
   ngOnInit(): void {
-
+this.getBids()
   }
 
   constructor(
@@ -26,7 +26,8 @@ export class BidsComponent implements OnInit {
         finalize(() => this.loading = false)
       )
       .subscribe(data => {
-
+        this.sortBids(data.bids)
+        this.loadItems()
       })
   }
 
@@ -47,7 +48,9 @@ export class BidsComponent implements OnInit {
     this.loadItems()
   }
 
-
+onDblClick(){
+  
+}
 
   private loadItems(): void {
     this.gridData = {
@@ -66,7 +69,7 @@ export class BidsComponent implements OnInit {
   }
 
 
-  private sortRequests(data: Request[]): void {
+  private sortBids(data: Request[]): void {
     this.bids = [...data];
     this.bids.sort((a, b) => {
       if (this.sort[0].dir === 'desc') {

@@ -34,6 +34,7 @@ import { GridPagerComponent } from './components/grid-pager/grid-pager.component
 import { AddBidComponent } from './pages/add-bid/add-bid.component';
 import { DatePipe } from '@angular/common';
 import { BidsComponent } from './pages/bids/bids.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { BidsComponent } from './pages/bids/bids.component';
     GridPagerComponent,
     AddBidComponent,
     BidsComponent,
+    ConfirmationComponent,
   ],
   imports: [
     BrowserModule,

@@ -98,7 +98,7 @@ export class BrokerRequestsComponent implements OnInit {
       const windowRef = this.windowService.open({
         title : `Bids`,
         content: BidsComponent,
-        width :635,
+        width :720,
         top : 100
       });
       let windowRefCmp : ComponentRef<BidsComponent> = windowRef.content;

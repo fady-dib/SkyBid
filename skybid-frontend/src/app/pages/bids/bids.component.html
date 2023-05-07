@@ -4,6 +4,7 @@
     [sort]="sort"
     (sortChange)="sortChange($event)"
     [resizable]="true"
+    [navigable]="true"
     [pageable]="true"
     [scrollable]="'scrollable'"
     [selectable]="true"
@@ -12,12 +13,23 @@
     [style.width.%]="100"
     kendoGridSelectBy="_id"
     [(selectedKeys)]="mySelection"
+    
 >
 <ng-template kendoGridToolbarTemplate>
 <button kendoButton class="toolbar-btn"
         [icon]="'add'" (click)="accept()"
         >Accept</button>
 </ng-template>
+<kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
+</kendo-grid-checkbox-column>
+<ng-template kendoPagerTemplate
+                         let-total="total">
+                <app-grid-pager [total]="total"
+                                [selected]="mySelection.length">
+                </app-grid-pager>
+            </ng-template>
+            <ng-template kendoGridToolbarTemplate>
+        </ng-template>
 <kendo-grid-column field="operator.company_name"
                            title="Operator"
                            [width]="100"
@@ -44,3 +56,5 @@
 </kendo-grid-column>
 </kendo-grid>
 </div>
+<div class="k-overlay"
+     *ngIf="opened"></div>
