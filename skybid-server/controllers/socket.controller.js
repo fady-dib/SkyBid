@@ -88,7 +88,7 @@ module.exports = function (io) {
 
         socket.on('createRequest', async (request) => {
             try{
-            const broker = socket.user._id
+            const broker = socket.user.id
             const newRequest = new Request({
                 broker,
                 trip: request.trip,
@@ -103,7 +103,7 @@ module.exports = function (io) {
 
             await newRequest.save();
             const operators = await User.find({ role: "operator" });
-            const request_id = newRequest.id
+            const request_id = newRequest._id
             console.log(request_id)
             socket.join(request_id.toString())
             io.in("operators").socketsJoin(request_id.toString())
@@ -123,6 +123,7 @@ module.exports = function (io) {
         }
         })
 
+     
         socket.on('deleteRequest', async (request_id) => {
             try {
        

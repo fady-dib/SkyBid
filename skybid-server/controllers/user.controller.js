@@ -111,3 +111,23 @@ exports.deleteRequest = async (req,res) => {
     
 
 }
+
+exports.updateRequest = async (req,res) => {
+    const request_id = req.body.request_id;
+    if(!request_id) return res.json(" Invalid request ID")
+
+    try {
+        const update_request = await Request.findOneAndUpdate(
+            {_id : request_id},
+            {$set : {status: 'closed'}}
+        );
+        if (!update_request) {
+          return res.status(404).json("Request not found");
+        }
+
+        return res.status(200).json({ message: "Request closed" });
+
+      } catch (error) {
+        return res.status(500).json({ message: "Error updating request", error });
+      }
+}
