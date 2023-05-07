@@ -59,6 +59,9 @@ deleteRequest(request_id) : Observable < any> {
   return this.http.delete(`${this.apiBaseUrl}/user/${request_id}`, {headers: this.getHeaders()})
 }
 
+acceptBid(request_id) : Observable <any> {
+  return this.http.post(`${this.apiBaseUrl}/user/accept-bid`,request_id, {headers: this.getHeaders()})
+}
 
 
 }

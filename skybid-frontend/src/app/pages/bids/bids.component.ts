@@ -103,6 +103,13 @@ export class BidsComponent implements OnInit {
     let confirmDialogCmp : ComponentRef<ConfirmationComponent> = confirmDialog.content;
     confirmDialogCmp.instance.message = confirmation_text
 
+    confirmDialog.result.subscribe(() => {
+      this.opened = false
+      if(confirmDialogCmp.instance.result){
+        this.loading = true
+      }
+    })
+
   }
 
   get selectedDataItem(){
