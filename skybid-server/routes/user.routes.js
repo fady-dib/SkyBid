@@ -9,7 +9,7 @@ router.get("/getRequest/:id", getRequest)
 router.get("/bids",getBidsByRequestID)
 router.get("", getUser);
 router.get("/broker-requests", getRequestsByBroker)
-router.delete("", deleteRequest)
+router.delete("/:id", deleteRequest)
 
 
 

@@ -95,7 +95,7 @@ exports.getRequest = async (req,res) => {
 
 exports.deleteRequest = async (req,res) => {
 
-    const request_id = req.body.request_id;
+    const request_id = req.params.id;
     if(!request_id) return res.json(" Invalid request ID")
 
     try {
@@ -104,10 +104,10 @@ exports.deleteRequest = async (req,res) => {
           return res.status(404).json("Request not found");
         }
 
-        res.status(200).json({ message: "Request deleted successfully" });
+        return res.status(200).json({ message: "Request deleted successfully" });
 
       } catch (error) {
-        res.status(500).json({ message: "Error deleting request", error });
+        return res.status(500).json({ message: "Error deleting request", error });
       }
     
 

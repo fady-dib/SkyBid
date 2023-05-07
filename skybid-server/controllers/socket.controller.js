@@ -87,6 +87,7 @@ module.exports = function (io) {
         });
 
         socket.on('createRequest', async (request) => {
+            try{
             const broker = socket.user._id
             const newRequest = new Request({
                 broker,
@@ -104,8 +105,8 @@ module.exports = function (io) {
             const operators = await User.find({ role: "operator" });
             const request_id = newRequest.id
             console.log(request_id)
-            socket.join(request_id)
-            io.in("operators").socketsJoin(request_id)
+            socket.join(request_id.toString())
+            io.in("operators").socketsJoin(request_id.toString())
             const notification = new Notification({
                 sender: broker,
                 receiver: operators.map(operator => operator._id),
@@ -113,14 +114,43 @@ module.exports = function (io) {
                 notification: `A new request has been created`
             })
             await notification.save()
-            io.to(request_id).emit('notification', notification.notification)
+            io.to(request_id.toString()).emit('notification', notification.notification)
             const requests = await Request.find().populate('broker');
             io.emit("getRequests", requests)
             console.log("newRequest",request_id)
+        }catch (error) {
+            console.error("Error in createRequest event:", error);
+        }
         })
+
+        socket.on('deleteRequest', async (request_id) => {
+            try {
+       
+              const deleted_request = await Request.findByIdAndDelete(request_id);
+              const broker = socket.user._id;
+              const operators = await User.find({ role: 'operator' });
+              const notification = new Notification({
+                sender: broker,
+                receiver: operators.map(operator => operator._id),
+                type: 'request',
+                notification: `A request has been deleted`
+              });
+          
+              await notification.save();
+            //   io.to(requestId.toString()).emit('notification', notification.notification);
+          
+              const requests = await Request.find().populate('broker');
+              io.emit('getRequests', requests);
+          
+              console.log('Request deleted:', request_id);
+            } catch (error) {
+              console.error('Error in deleteRequest event:', error);
+            }
+          });
 
 
         socket.on("newBid", async (bid, req) => {
+            try{
             const request_id = req.request_id
             const new_bid = {
                 operator: socket.user._id,
@@ -148,8 +178,11 @@ module.exports = function (io) {
               })
               .select('bids')
             // io.emit('newBid', new_bid, request_id);
-            io.to(request_id).emit('notification', notification.notification)
+            io.to(request_id.toString()).emit('notification', notification.notification)
             console.log("newBid",request_id)
+            }catch (error) {
+                console.error("Error in createRequest event:", error);
+            }
         })
 
 
