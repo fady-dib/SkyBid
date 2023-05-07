@@ -1,4 +1,5 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { WindowRef } from '@progress/kendo-angular-dialog';
 import { NotificationService, Position } from '@progress/kendo-angular-notification';
 import { Request } from 'src/app/models/request';
 import { SocketService } from 'src/app/services/socket.service';
@@ -18,6 +19,7 @@ export class CreateRequestComponent {
   notifPos : Position = { vertical: 'bottom', horizontal:'center'}
   @ViewChild('container', { read: ViewContainerRef })
   public container: ViewContainerRef;
+  windowref : WindowRef
 
   create() {
 
@@ -63,7 +65,7 @@ export class CreateRequestComponent {
     }
 
     this.socketService.createRequest(this.model)
-    this.model = new Request()
+    this.windowref.close()
   }
 
 }

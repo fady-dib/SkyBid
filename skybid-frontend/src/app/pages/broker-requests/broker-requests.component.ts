@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, OnInit } from '@angular/core';
 import { CellClickEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { Subscription, finalize } from 'rxjs';
@@ -111,14 +111,6 @@ export class BrokerRequestsComponent implements OnInit {
     }
   }
 
-  get selectedDataItem(){
-    if (this.mySelection.length > 0)
-      return this.requests.find(id => id._id == this.mySelection[0])
-    else
-      return null;
-  }
-
-
   onDelete() {
 
     if(!this.mySelection){
@@ -134,6 +126,7 @@ export class BrokerRequestsComponent implements OnInit {
           content: 'Request deleted succesfully',
           type: { style: 'success' }
         });
+        this.search()
   })
 }
 
@@ -145,9 +138,13 @@ export class BrokerRequestsComponent implements OnInit {
       width: 635,
       top: 100
     });
+
+    let windowRefCmp : ComponentRef<CreateRequestComponent> = windowRef.content
+    windowRefCmp.instance.windowref = windowRef
     windowRef.result.subscribe((result) => {
       if (result instanceof WindowCloseResult) {
         this.opened = false;
+        this.search()
       }
     })
   }
