@@ -1,0 +1,27 @@
+.no{
+    background-color: var(--blue);
+    color : white;
+    flex :1;
+
+    margin-right: 10%; 
+    margin-left: 10%; 
+}
+.buttons {
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+   
+}
+
+.yes{
+    background-color: var(--green);
+    color : white;
+    flex: 1;
+    margin-left: 10%; 
+    margin-right: 10%;
+   
+}
+
+.information-body{
+    margin:2%
+}

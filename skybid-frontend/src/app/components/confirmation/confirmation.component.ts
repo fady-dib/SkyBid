@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WindowRef } from '@progress/kendo-angular-dialog';
 
 @Component({
   selector: 'app-confirmation',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent {
+
+  constructor(private windowRef : WindowRef) {
+  }
+
+  onClose(result) {
+    this.result = result;
+    this.windowRef.close();
+  }
+
+  message : string
+  result : boolean
 
 }

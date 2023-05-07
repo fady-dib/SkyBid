@@ -1,8 +1,8 @@
 <div class="window-information">
     <p class="information-body" [innerHTML]="message">
     </p>
-    <kendo-dialog-actions class="mt-4">
-        <button kendoButton (click)="onClose(true)" [primary]="true" icon="check">Yes</button>
-        <button kendoButton (click)="onClose(false)" icon="close">No</button>
-    </kendo-dialog-actions>
+    <div class="buttons">
+        <button kendoButton (click)="onClose(true)" class="yes" >Yes</button>
+        <button kendoButton (click)="onClose(false)" class="no" >No</button>
+        <div>
 </div>
