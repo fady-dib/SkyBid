@@ -33,6 +33,7 @@ import { CreateRequestComponent } from './pages/create-request/create-request.co
 import { GridPagerComponent } from './components/grid-pager/grid-pager.component';
 import { AddBidComponent } from './pages/add-bid/add-bid.component';
 import { DatePipe } from '@angular/common';
+import { BidsComponent } from './pages/bids/bids.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { DatePipe } from '@angular/common';
     BrokerRequestsComponent,
     CreateRequestComponent,
     GridPagerComponent,
-    AddBidComponent
+    AddBidComponent,
+    BidsComponent
   ],
   imports: [
     BrowserModule,

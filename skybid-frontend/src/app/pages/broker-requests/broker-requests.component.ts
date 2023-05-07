@@ -7,6 +7,8 @@ import { CreateRequestComponent } from '../create-request/create-request.compone
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 import { Request } from 'src/app/models/request';
 import { NotificationService } from '@progress/kendo-angular-notification';
+import { BidsComponent } from '../bids/bids.component';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-broker-requests',
@@ -28,6 +30,7 @@ export class BrokerRequestsComponent implements OnInit {
     private apiService: ApiService,
     private windowService: WindowService,
     private notificationService : NotificationService,
+    private socketService : SocketService
   ) { }
 
 
@@ -94,12 +97,12 @@ export class BrokerRequestsComponent implements OnInit {
     if(this.clickedItem) {
       const windowRef = this.windowService.open({
         title : `Bids`,
-        content: "hi",
+        content: BidsComponent,
         width :635,
         top : 100
       });
-      // let windowRefCmp : ComponentRef<> = windowRef.content;
-      // windowRefCmp.instance.request_id = this.clickedItem._id
+      let windowRefCmp : ComponentRef<BidsComponent> = windowRef.content;
+      windowRefCmp.instance.request_id = this.clickedItem._id
   
       windowRef.result.subscribe((result) => {
         if(result instanceof WindowCloseResult) {
@@ -121,13 +124,13 @@ export class BrokerRequestsComponent implements OnInit {
         return;
       }
     
-    this.apiService.deleteRequest(this.mySelection[0]).subscribe(data =>{
+    this.socketService.deleteRequest(this.mySelection[0])
         this.notificationService.show({
           content: 'Request deleted succesfully',
           type: { style: 'success' }
         });
+        this.mySelection = []
         this.search()
-  })
 }
 
   onAdd() {

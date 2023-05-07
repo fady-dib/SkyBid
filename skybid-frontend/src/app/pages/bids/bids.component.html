@@ -1,0 +1,46 @@
+<div class="grid">
+    <kendo-grid [data]="gridData"
+    (cellClick)="cellClick($event)"
+    [sort]="sort"
+    (sortChange)="sortChange($event)"
+    [resizable]="true"
+    [pageable]="true"
+    [scrollable]="'scrollable'"
+    [selectable]="true"
+    [loading]="loading"
+    [style.height.px]="500"
+    [style.width.%]="100"
+    kendoGridSelectBy="_id"
+    [(selectedKeys)]="mySelection"
+>
+<ng-template kendoGridToolbarTemplate>
+<button kendoButton class="toolbar-btn"
+        [icon]="'add'" (click)="accept()"
+        >Accept</button>
+</ng-template>
+<kendo-grid-column field="operator.company_name"
+                           title="Operator"
+                           [width]="100"
+                           [class]="{'text-right': true}"
+                           [headerClass]="{'text-center': true}">
+        </kendo-grid-column>
+        <kendo-grid-column field="aircraft.aircraft"
+                           title="Aircraft"
+                           [width]="100"
+                           [class]="{'text-left': true}"
+                           [headerClass]="{'text-center': true}">
+        </kendo-grid-column>
+        <kendo-grid-column field="aircraft.year_of_manufacture"
+                           title="Year of manufacture"
+                           [width]="130"
+                           [class]="{'text-left': true}"
+                           [headerClass]="{'text-left': true}">
+        </kendo-grid-column>
+        <kendo-grid-column field="price"
+        title="Bid"
+        [width]="50"
+        [class]="{'text-left': true}"
+        [headerClass]="{'text-left': true}">
+</kendo-grid-column>
+</kendo-grid>
+</div>

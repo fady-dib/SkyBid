@@ -49,6 +49,7 @@ export class SocketService {
   public getRequests = () => {
     this.socket.on("getRequests", (requests) => {
       this.requests.next(requests)
+      console.log(requests)
     })
   }
 
@@ -69,6 +70,10 @@ export class SocketService {
 
   public createRequest = (request: Request) => {
     this.socket.emit('createRequest', request)
+  }
+
+  public deleteRequest = (request_id) => {
+    this.socket.emit('deleteRequest', request_id)
   }
 
   public addBid = (bid,request) => {
