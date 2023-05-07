@@ -34,11 +34,6 @@ export class SocketService {
   }
 }
 
-  // socket = io('http://localhost:3006', 
-  // {
-  //   query: { token : this.authService.getToken()}
-  // });
-
   public sendMessage(message:string) {
     this.socket.emit('chatMessage', message);
   }
@@ -77,9 +72,9 @@ export class SocketService {
     this.socket.emit('createRequest', request)
   }
 
-  // public deleteRequest = (request_id) => {
-  //   this.socket.emit('deleteRequest', request_id)
-  // }
+  public deleteRequest = (request_id) => {
+    this.socket.emit('deleteRequest', request_id)
+  }
 
   public addBid = (bid,request) => {
     this.socket.emit('newBid',bid,request)
