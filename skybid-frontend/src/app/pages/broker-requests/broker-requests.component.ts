@@ -103,6 +103,7 @@ export class BrokerRequestsComponent implements OnInit {
       });
       let windowRefCmp : ComponentRef<BidsComponent> = windowRef.content;
       windowRefCmp.instance.request_id = this.clickedItem._id
+      windowRefCmp.instance.windowRef = windowRef
   
       windowRef.result.subscribe((result) => {
         if(result instanceof WindowCloseResult) {

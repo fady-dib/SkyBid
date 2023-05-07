@@ -1,5 +1,5 @@
 import { Component, ComponentRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { WindowService } from '@progress/kendo-angular-dialog';
+import { WindowRef, WindowService } from '@progress/kendo-angular-dialog';
 import { CellClickEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { finalize } from 'rxjs';
@@ -85,8 +85,10 @@ export class BidsComponent implements OnInit {
   dialog_title: string;
   @ViewChild('windowTitleBar', { read: TemplateRef, static: false })
   public windowTitleBar: TemplateRef<any>;
+  windowRef : WindowRef
 
   accept() {
+
     this.opened = true;
     this.dialog_title = 'Confirmation';
 
@@ -100,19 +102,31 @@ export class BidsComponent implements OnInit {
     let confirmation_text = `Are you sure you want to accept the bid ${this.selectedDataItem.price}`
 
 
-    let confirmDialogCmp : ComponentRef<ConfirmationComponent> = confirmDialog.content;
+    let confirmDialogCmp: ComponentRef<ConfirmationComponent> = confirmDialog.content;
     confirmDialogCmp.instance.message = confirmation_text
+   
 
     confirmDialog.result.subscribe(() => {
       this.opened = false
-      if(confirmDialogCmp.instance.result){
+      if (confirmDialogCmp.instance.result) {
         this.loading = true
+        this.apiService.acceptBid(this.request_id).pipe(finalize(() => (this.loading = false)))
+        .subscribe(data => {
+          if (data.message == "Request closed") {
+            this.windowRef.close()
+            const windowRef = this.windowService.open({
+              title : 'Congratulations',
+              content : 'Congratulations',
+              width : 635,
+            })
+          }
+        })
       }
     })
 
   }
 
-  get selectedDataItem(){
+  get selectedDataItem() {
     if (this.mySelection.length > 0)
       return this.bids.find(c => c._id == this.mySelection[0])
     else

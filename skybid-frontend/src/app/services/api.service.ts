@@ -60,7 +60,7 @@ deleteRequest(request_id) : Observable < any> {
 }
 
 acceptBid(request_id) : Observable <any> {
-  return this.http.post(`${this.apiBaseUrl}/user/accept-bid`,request_id, {headers: this.getHeaders()})
+  return this.http.post(`${this.apiBaseUrl}/user/accept-bid`,{request_id : request_id}, {headers: this.getHeaders()})
 }
 
 
