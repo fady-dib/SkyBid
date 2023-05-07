@@ -66,9 +66,8 @@ exports.getRequestsByBroker = async (req,res) => {
     
     try{
     const user_id = req.user._id;
-    console.log('user_id:', user_id);
     const requests = await Request.find({broker : user_id})
-    if (!requests || requests == null || requests.length == 0) return res.json("No Requests found")
+    if (!requests || requests == null || requests.length == 0) return res.json([])
 
     return res.json(requests)
 

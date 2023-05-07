@@ -29,7 +29,6 @@ exports.register = async (req,res) => {
 
 exports.login = async(req,res) => {
     const{email, password} = req.body;
-    console.log(email,password)
 
     const existing_user = await User.findOne({email});
     role = existing_user.role
@@ -37,7 +36,6 @@ exports.login = async(req,res) => {
     if(!existing_user) return res.status(400).json({message: "Invalid credentials"});
 
     const is_matched = await existing_user.matchPassword(password);
-    console.log(is_matched)
 
     if (!is_matched) return res.status(400).json({message:"Invalid credentials"});
 
