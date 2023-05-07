@@ -5,6 +5,8 @@ import { Subscription, finalize } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
 import { CreateRequestComponent } from '../create-request/create-request.component';
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
+import { Request } from 'src/app/models/request';
+import { NotificationService } from '@progress/kendo-angular-notification';
 
 @Component({
   selector: 'app-broker-requests',
@@ -25,6 +27,7 @@ export class BrokerRequestsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private windowService: WindowService,
+    private notificationService : NotificationService,
   ) { }
 
 
@@ -55,7 +58,7 @@ export class BrokerRequestsComponent implements OnInit {
   }
 
   cellClick(event: CellClickEvent) {
-    this.mySelection = event.dataItem._id
+    this.mySelection = [event.dataItem._id]
 
     this.clickedItem = event.dataItem;
     setTimeout(() => {
@@ -108,10 +111,31 @@ export class BrokerRequestsComponent implements OnInit {
     }
   }
 
+  get selectedDataItem(){
+    if (this.mySelection.length > 0)
+      return this.requests.find(id => id._id == this.mySelection[0])
+    else
+      return null;
+  }
+
 
   onDelete() {
 
-  }
+    if(!this.mySelection){
+      this.notificationService.show({
+          content: 'Select a request',
+          type: { style: 'warning' }
+        });
+        return;
+      }
+    
+    this.apiService.deleteRequest(this.mySelection[0]).subscribe(data =>{
+        this.notificationService.show({
+          content: 'Request deleted succesfully',
+          type: { style: 'success' }
+        });
+  })
+}
 
   onAdd() {
     this.opened = true

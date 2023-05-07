@@ -55,6 +55,10 @@ getUser() : Observable <any> {
   return this.http.get(`${this.apiBaseUrl}/user`,{headers: this.getHeaders()})
 }
 
+deleteRequest(request_id) : Observable < any> {
+  return this.http.delete(`${this.apiBaseUrl}/user/${request_id}`, {headers: this.getHeaders()})
+}
+
 
 
 }

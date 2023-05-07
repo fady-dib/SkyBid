@@ -25,17 +25,20 @@ constructor(
 notifPos : Position = { vertical: 'top', horizontal:'center'}
 
 
-notifications(){
+notifications() {
   this.socketService.notifications.subscribe(data => {
-    console.log('notification data',data)
-    if (data && data.trim() !== '') {
+    if (!data || data.trim() === '') {
+      return;
+    }
+
+    if (localStorage.getItem('token') && !window.location.pathname.startsWith('/login') && !window.location.pathname.startsWith('/register') && !window.location.pathname.startsWith('/landing')) {
       this.notificationService.show({
         content: data,
         type: { style: 'success' },
         position: this.notifPos,
       });
     }
-  })
+  });
 }
 
 }

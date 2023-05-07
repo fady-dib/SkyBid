@@ -46,6 +46,8 @@ login() {
   //   alert('Minimum password length is 8 character and should contain at least one lowercase, one uppercase, one')
   // }
   this.apiService.login(this.model).subscribe(data => {
+    console.log('token', data.token);
+    console.log('role', data.role);
     localStorage.setItem('token', data.token )
     localStorage.setItem('role',data.role)
     if(data.role == "admin") this.router.navigate(['/dashboard'])
