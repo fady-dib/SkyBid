@@ -73,7 +73,11 @@ export class SocketService {
   }
 
   public deleteRequest = (request_id) => {
-    this.socket.emit('deleteRequest', request_id)
+    if (this.socket) {
+      this.socket.emit('deleteRequest', request_id);
+    } else {
+      console.error('Socket not initialized');
+    }
   }
 
   public addBid = (bid,request) => {

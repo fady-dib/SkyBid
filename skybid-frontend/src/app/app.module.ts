@@ -34,7 +34,6 @@ import { GridPagerComponent } from './components/grid-pager/grid-pager.component
 import { AddBidComponent } from './pages/add-bid/add-bid.component';
 import { DatePipe } from '@angular/common';
 import { BidsComponent } from './pages/bids/bids.component';
-import { LogoutComponent } from './pages/logout/logout.component';
 
 
 @NgModule({
@@ -59,7 +58,6 @@ import { LogoutComponent } from './pages/logout/logout.component';
     GridPagerComponent,
     AddBidComponent,
     BidsComponent,
-    LogoutComponent
   ],
   imports: [
     BrowserModule,

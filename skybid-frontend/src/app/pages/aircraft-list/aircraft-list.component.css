@@ -8,7 +8,9 @@
   
 
   .card {
-    width: 280px;
+    /* width: 280px; */
+    max-width: calc(25% - 50px);
+  flex: 1 0 min(calc(25% - 50px), 100%);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     overflow: hidden;
@@ -77,6 +79,7 @@
 
   .page-container{
     display: flex;
+    height: calc(100vh - 100px);
   }
 
   .content-container {
