@@ -6,7 +6,7 @@ import { SocketService } from 'src/app/services/socket.service';
 import { Subscription, finalize } from 'rxjs';
 import { orderBy } from '@progress/kendo-data-query';
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
-import { BidComponent } from '../bid/bid.component';
+import {AddBidComponent } from '../add-bid/add-bid.component';
 
 
 
@@ -69,12 +69,12 @@ add(){
   this.opened = true ;
   const windowRef = this.windowService.open({
     title : `New Bid`,
-    content: BidComponent,
+    content: AddBidComponent,
     width :635,
     top : 100,
   });
 
-  let windowRefCmp : ComponentRef<BidComponent> = windowRef.content;
+  let windowRefCmp : ComponentRef<AddBidComponent> = windowRef.content;
   windowRefCmp.instance.request.request_id = this.model._id
     windowRefCmp.instance.request.broker_id = this.model.broker._id
     windowRefCmp.instance.windowRef = windowRef

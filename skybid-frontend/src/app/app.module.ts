@@ -31,7 +31,7 @@ import { ChartsModule } from '@progress/kendo-angular-charts';
 import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests.component';
 import { CreateRequestComponent } from './pages/create-request/create-request.component';
 import { GridPagerComponent } from './components/grid-pager/grid-pager.component';
-import { BidComponent } from './pages/bid/bid.component';
+import { AddBidComponent } from './pages/add-bid/add-bid.component';
 import { DatePipe } from '@angular/common';
 
 
@@ -55,7 +55,7 @@ import { DatePipe } from '@angular/common';
     BrokerRequestsComponent,
     CreateRequestComponent,
     GridPagerComponent,
-    BidComponent
+    AddBidComponent
   ],
   imports: [
     BrowserModule,

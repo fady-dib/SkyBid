@@ -4,11 +4,11 @@ import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
-  selector: 'app-bid',
-  templateUrl: './bid.component.html',
-  styleUrls: ['./bid.component.css']
+  selector: 'app-add-bid',
+  templateUrl: './add-bid.component.html',
+  styleUrls: ['./add-bid.component.css']
 })
-export class BidComponent implements OnInit {
+export class AddBidComponent implements OnInit {
 
   aircrafts: any;
   formValues: any = {
