@@ -34,8 +34,9 @@
             <div class="flex">
                 <div class="mb-3 item">
                     <label for="country" class="form-label">Country</label>
-                    <input type="text" [(ngModel)]="model.country" name="country" class="form-control" id="country"
-                        required>
+                    <select id="country" class="form-select" [(ngModel)]="model.country" name="country">
+                        <option *ngFor="let country of countries" value="country">{{country}}</option>
+                    </select>
                 </div>
                 <div class="mb-3 item">
                     <label for="city" class="form-label">City</label>

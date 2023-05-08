@@ -39,12 +39,16 @@ export class AircraftListComponent implements OnInit {
 
   }
 
-  deleteAircraft(){}
+  deleteAircraft(id){
+    this.apiService.deleteAircraft(id).subscribe(() => {
+      this.getAicrafts()
+    })
+  }
 
   addAircraft(){
     this.opened = true
     const windowRef = this.windowService.open({
-      title: "A D D" + " " + "A I R C R A F T ",
+      title: "Add",
       content : AddAircraftComponent,
       width: 500,
       top: 150

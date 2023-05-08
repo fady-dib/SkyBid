@@ -24,7 +24,7 @@
                             <button *ngIf="!aircraft.image" class="btn add" (click)="addImage()">Add Image</button>
                             <button *ngIf="aircraft.image" class="btn update" (click)="updateImage()">Update
                                 Image</button>
-                            <button class="btn danger" (click)="deleteAircraft()">Delete Aircraft</button>
+                            <button class="btn danger" (click)="deleteAircraft(aircraft._id)">Delete Aircraft</button>
                         </div>
                     </div>
                 </div>
