@@ -28,6 +28,13 @@ ngOnInit(): void {
 
   this.dataSubscription = this.socketService.requests.subscribe(data => {
     let newRequests: Request[] = [];
+
+    if (data.length < this.requests.length) {
+      this.requests = data;
+      this.sortRequests(this.requests);
+      this.loadItems();
+      return;
+    }
   
     data.forEach(newData => {
       const newDataTimestamp = new Date(newData.createdAt).getTime();
