@@ -31,7 +31,7 @@ kendoGridSelectBy="_id"
         </ng-template>
 <kendo-grid-column field="broker.company_name"
                                title="Broker"
-                               [width]="100"
+                               [width]="50"
                                [class]="{'text-right': true}"
                                [headerClass]="{'text-center': true}">
                                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
@@ -49,13 +49,45 @@ kendoGridSelectBy="_id"
             </kendo-grid-column>
             <kendo-grid-column field="to"
                                title="To"
-                               [width]="180"
+                               [width]="40"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
                                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                                 <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.to }}</div>
                               </ng-template>
             </kendo-grid-column>
+            <kendo-grid-column field="departure_date"
+            title="Departure date"
+            [width]="50"
+            [class]="{'text-left': true}"
+            [headerClass]="{'text-left': true}">
+            <ng-template kendoGridCellTemplate let-dataItem>
+             {{ dataItem.departure_date | date: 'yyyy-MM-dd' }}
+           </ng-template>
+           <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+            <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.departure_date }}</div>
+          </ng-template>
+</kendo-grid-column>
+<kendo-grid-column field="return_date"
+title="Return date"
+[width]="50"
+[class]="{'text-left': true}"
+[headerClass]="{'text-left': true}">
+<ng-template kendoGridCellTemplate let-dataItem>
+{{ dataItem.return_date | date: 'yyyy-MM-dd' }}
+</ng-template>
+<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+    <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.return_date }}</div>
+  </ng-template>
+</kendo-grid-column>
+<kendo-grid-column field="passengers"
+title="Pax"
+[width]="30"
+[class]="{'text-left': true}"
+[headerClass]="{'text-left': true}">
+<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+    <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.passengers }}</div>
+  </ng-template></kendo-grid-column>
 </kendo-grid>
 </div>
 </div>
