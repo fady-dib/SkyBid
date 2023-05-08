@@ -62,11 +62,8 @@ kendoGridSelectBy="_id"
             [class]="{'text-left': true}"
             [headerClass]="{'text-left': true}">
             <ng-template kendoGridCellTemplate let-dataItem>
-             {{ dataItem.departure_date | date: 'yyyy-MM-dd' }}
+             <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.departure_date | date: 'yyyy-MM-dd'}}</div>
            </ng-template>
-           <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-            <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.departure_date }}</div>
-          </ng-template>
 </kendo-grid-column>
 <kendo-grid-column field="return_date"
 title="Return date"
@@ -74,11 +71,8 @@ title="Return date"
 [class]="{'text-left': true}"
 [headerClass]="{'text-left': true}">
 <ng-template kendoGridCellTemplate let-dataItem>
-{{ dataItem.return_date | date: 'yyyy-MM-dd' }}
+<div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.return_date | date: 'yyyy-MM-dd'}}</div>
 </ng-template>
-<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-    <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.return_date }}</div>
-  </ng-template>
 </kendo-grid-column>
 <kendo-grid-column field="passengers"
 title="Pax"
