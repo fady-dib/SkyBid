@@ -32,6 +32,9 @@
 .k-notification-content {
   white-space: pre-line;
 }
+.k-notification-group {
+  z-index: 999999;
+}
 
 .k-grid td.k-selected, .k-grid .k-table-row.k-selected > td, .k-grid .k-table-td.k-selected, .k-grid .k-table-row.k-selected > .k-table-td{
   background-color: rgba(10, 44, 79, 0.2);
