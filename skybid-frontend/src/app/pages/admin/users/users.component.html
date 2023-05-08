@@ -51,6 +51,9 @@ title="Join date"
 [width]="180"
 [class]="{'text-left': true}"
 [headerClass]="{'text-left': true}">
+<ng-template kendoGridCellTemplate let-dataItem>
+    {{ dataItem.createdAt | date: 'yyyy-MM-dd' }}
+  </ng-template>
 </kendo-grid-column>
 </kendo-grid>
 </div>
