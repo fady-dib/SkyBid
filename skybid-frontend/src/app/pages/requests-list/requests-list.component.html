@@ -34,18 +34,27 @@ kendoGridSelectBy="_id"
                                [width]="100"
                                [class]="{'text-right': true}"
                                [headerClass]="{'text-center': true}">
+                               <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                                <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.broker.company_name }}</div>
+                              </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="from"
                                title="From"
                                [width]="40"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-center': true}">
+                               <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                                <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.from }}</div>
+                              </ng-template>
             </kendo-grid-column>
             <kendo-grid-column field="to"
                                title="To"
                                [width]="180"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
+                               <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                                <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.to }}</div>
+                              </ng-template>
             </kendo-grid-column>
 </kendo-grid>
 </div>

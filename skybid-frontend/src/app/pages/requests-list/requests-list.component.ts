@@ -7,11 +7,19 @@ import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
 import { RequestDetailComponent } from '../request-detail/request-detail.component';
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-requests-list',
   templateUrl: './requests-list.component.html',
-  styleUrls: ['./requests-list.component.css']
+  styleUrls: ['./requests-list.component.css'],
+  animations: [
+    trigger('newDataHighlight', [
+      state('new', style({ backgroundColor: ' rgba(8, 154, 130,0.6)' })),
+      state('old', style({ backgroundColor: '*' })),
+      transition('new => old', animate('1000ms ease-out')),
+    ]),
+  ],
 })
 export class RequestsListComponent implements OnInit {
 
@@ -19,8 +27,30 @@ ngOnInit(): void {
   this.search()
 
   this.dataSubscription = this.socketService.requests.subscribe(data => {
-    this.sortRequests(data);
+    let newRequests: Request[] = [];
+  
+    data.forEach(newData => {
+      const newDataTimestamp = new Date(newData.createdAt).getTime();
+      if (newDataTimestamp > this.latestRequestTimestamp) {
+        newData.isNew = true;
+        this.latestRequestTimestamp = newDataTimestamp;
+        newRequests.push(newData);
+      }
+    });
+  
+    this.requests = [...this.requests, ...newRequests];
+    this.sortRequests(this.requests);
     this.loadItems();
+
+    setTimeout(() => {
+      this.requests = this.requests.map((item) => {
+        if (item.isNew) {
+          return { ...item, isNew: false };
+        }
+        return item;
+      });
+      this.loadItems();
+    }, 5000);
 
   })
   
@@ -112,6 +142,8 @@ private sortRequests(data: Request[]): void {
       return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
     }
   });
+  this.latestRequestTimestamp = this.requests[0]?.createdAt ? new Date(this.requests[0].createdAt).getTime() : 0;
 }
 
+private latestRequestTimestamp: number = 0;
 }

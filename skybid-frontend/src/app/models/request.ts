@@ -22,4 +22,5 @@ export class Request {
     createdAt: Date;
     bids: [];
     updatedAt: Date
+    isNew : boolean
 }

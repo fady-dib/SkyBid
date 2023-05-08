@@ -36,6 +36,8 @@ import { DatePipe } from '@angular/common';
 import { BidsComponent } from './pages/bids/bids.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { AgreementComponent } from './components/agreement/agreement.component';
+import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+
 
 
 @NgModule({
@@ -78,6 +80,7 @@ import { AgreementComponent } from './components/agreement/agreement.component';
     NavigationModule,
     DialogsModule,
     ChartsModule,
+    IndicatorsModule,
   ],
   providers: [  {
     provide: NOTIFICATION_CONTAINER,
