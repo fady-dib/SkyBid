@@ -1,8 +1,10 @@
 import { Component, ComponentRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { WindowRef, WindowService } from '@progress/kendo-angular-dialog';
+import { WindowCloseResult, WindowRef, WindowService } from '@progress/kendo-angular-dialog';
 import { CellClickEvent, GridDataResult } from '@progress/kendo-angular-grid';
+import { NotificationService } from '@progress/kendo-angular-notification';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
-import { finalize } from 'rxjs';
+import { BehaviorSubject, finalize } from 'rxjs';
+import { AgreementComponent } from 'src/app/components/agreement/agreement.component';
 import { ConfirmationComponent } from 'src/app/components/confirmation/confirmation.component';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -18,7 +20,8 @@ export class BidsComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private windowService: WindowService
+    private windowService: WindowService,
+    private notificationService : NotificationService
   ) { }
 
   getBids() {
@@ -44,7 +47,7 @@ export class BidsComponent implements OnInit {
       dir: 'desc',
     },
   ];
-  opened = false;
+  opened = false
 
   public sortChange(sort: SortDescriptor[]): void {
     this.sort = sort;
@@ -88,8 +91,14 @@ export class BidsComponent implements OnInit {
   windowRef : WindowRef
 
   accept() {
-
-    this.opened = true;
+    if (!this.selectedDataItem) {
+      this.notificationService.show({
+        content: 'Select a bid',
+        type: { style: 'warning' }
+      })
+      return;
+    }
+    this.opened =true;
     this.dialog_title = 'Confirmation';
 
     const confirmDialog = this.windowService.open({
@@ -104,26 +113,41 @@ export class BidsComponent implements OnInit {
 
     let confirmDialogCmp: ComponentRef<ConfirmationComponent> = confirmDialog.content;
     confirmDialogCmp.instance.message = confirmation_text
-   
-
+  
     confirmDialog.result.subscribe(() => {
-      this.opened = false
+      this.opened =true
       if (confirmDialogCmp.instance.result) {
         this.loading = true
         this.apiService.acceptBid(this.request_id).pipe(finalize(() => (this.loading = false)))
         .subscribe(data => {
           if (data.message == "Request closed") {
             this.windowRef.close()
+            this.opened=true
+            console.log(this.opened) ;
             const windowRef = this.windowService.open({
               title : 'Congratulations',
-              content : 'Congratulations',
+              content : AgreementComponent,
               width : 635,
             })
+            let windowRefCmp : ComponentRef<AgreementComponent> = windowRef.content;
+            windowRefCmp.instance.model = this.selectedDataItem.operator
+            console.log(this.selectedDataItem)
+
+            windowRef.result.subscribe((result) => {
+              if(result instanceof WindowCloseResult) {
+                this.opened = false;
+                this.getBids();
+              }
+              this.opened = true
+            })
+           
           }
+
+          
         })
       }
     })
-
+    
   }
 
   get selectedDataItem() {

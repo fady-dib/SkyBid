@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-agreement',
   templateUrl: './agreement.component.html',
   styleUrls: ['./agreement.component.css']
 })
-export class AgreementComponent {
+export class AgreementComponent implements OnInit {
+
+  ngOnInit(): void {
+    
+  }
+
+  model;
 
 }

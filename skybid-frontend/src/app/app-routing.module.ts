@@ -17,6 +17,7 @@ import { DashboardComponent } from './pages/admin/dashboard/dashboard.component'
 import 'hammerjs';
 import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AgreementComponent } from './components/agreement/agreement.component';
 
 const routes = [
   {path: 'chat', component: ChatComponentComponent },
@@ -30,7 +31,8 @@ const routes = [
   {path: 'edit-profile', component: EditProfileComponent,canActivate: [AuthGuard],data: {allowed_role:['operator','broker']}},
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
-  {path: 'broker-requests', component: BrokerRequestsComponent,canActivate: [AuthGuard],data: {allowed_role:['broker']}}
+  {path: 'broker-requests', component: BrokerRequestsComponent,canActivate: [AuthGuard],data: {allowed_role:['broker']}},
+  {path: 'agg', component : AgreementComponent}
 ];
 
 
