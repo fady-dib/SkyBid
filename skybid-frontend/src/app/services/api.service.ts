@@ -71,6 +71,8 @@ deleteAircraft(aircraft_id) :Observable <any> {
   return this.http.delete(`${this.apiBaseUrl}/aircraft/${aircraft_id}`, {headers: this.getHeaders()})
 }
 
+uploadImage(image) :Observable <any> {
+  return this.http.post(`${this.apiBaseUrl}/aircraft`,image, {headers: this.getHeaders()})
 
-
+}
 }
