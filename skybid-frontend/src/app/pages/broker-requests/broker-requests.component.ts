@@ -126,10 +126,6 @@ export class BrokerRequestsComponent implements OnInit {
       }
     
     this.socketService.deleteRequest(this.mySelection[0])
-        this.notificationService.show({
-          content: 'Request deleted succesfully',
-          type: { style: 'success' }
-        });
         this.mySelection = []
         this.search()
 }

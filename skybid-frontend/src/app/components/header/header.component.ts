@@ -35,6 +35,7 @@ export class HeaderComponent implements OnInit{
       case 'logout':
         localStorage.removeItem('token');
         localStorage.removeItem('role');
+        console.log('disconecting socket from logout')
         this.socketService.disconnect()
         this.router.navigate(['/login'] );
         break;

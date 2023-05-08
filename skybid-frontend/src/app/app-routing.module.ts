@@ -18,12 +18,13 @@ import 'hammerjs';
 import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AgreementComponent } from './components/agreement/agreement.component';
+import { NotAuthGuard } from './auth/not-auth.guard';
 
 const routes = [
   {path: 'chat', component: ChatComponentComponent },
-  {path : 'login', component: LoginComponent},
-  {path:'', component: LandingPageComponent},
-  {path:'register', component: RegisterComponent},
+  {path : 'login', component: LoginComponent, canActivate: [NotAuthGuard]},
+  {path:'', component: LandingPageComponent,canActivate: [NotAuthGuard]},
+  {path:'register', component: RegisterComponent,canActivate: [NotAuthGuard]},
   {path: 'request-list', component: RequestsListComponent, canActivate: [AuthGuard],data: {allowed_role:['operator']}},
   // {path: 'request-detail', component : RequestDetailComponent, canActivate: [AuthGuard], data},
   {path: 'aircrafts', component: AircraftListComponent, canActivate: [AuthGuard],data: {allowed_role:['operator']}},

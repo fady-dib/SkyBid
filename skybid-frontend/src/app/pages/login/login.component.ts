@@ -52,7 +52,6 @@ login() {
     console.log('role', data.role);
     localStorage.setItem('token', data.token )
     localStorage.setItem('role',data.role)
-    this.socketService.connect()
     if(data.role == "admin") this.router.navigate(['/dashboard'])
     if(data.role == "operator") this.router.navigate(['/request-list'])
     if(data.role == "broker") this.router.navigate(['broker-requests'])

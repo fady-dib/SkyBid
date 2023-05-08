@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { SocketService } from '../services/socket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { AuthService } from './auth.service';
 
 export class AuthGuard implements CanActivate{
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private socketService: SocketService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     console.log('canActivate called');
@@ -21,6 +22,8 @@ export class AuthGuard implements CanActivate{
       const user_role = this.authService.getUserRole()
   
       if (allowed_role.includes(user_role)) {
+        this.socketService.connect();
+        console.log('connecting to socket from authguard')
         return true;
       } else {
         switch (user_role) {

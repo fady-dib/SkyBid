@@ -16,12 +16,12 @@ title = 'SkyBid';
 ngOnInit(): void {
   this.notifications();
 }
-ngOnDestroy(): void {
-  console.log('AppComponent destroyed');
-  if (this.notificationsSubscription) {
-    this.notificationsSubscription.unsubscribe();
-  }
-}
+// ngOnDestroy(): void {
+//   console.log('AppComponent destroyed');
+//   if (this.notificationsSubscription) {
+//     this.notificationsSubscription.unsubscribe();
+//   }
+// }
 private notificationsSubscription: Subscription;
 constructor(
   private socketService : SocketService,
@@ -39,6 +39,14 @@ notifications() {
       console.log(window.location.pathname)
       if (!data || data.trim() === '') {
         return;
+      }
+      if(data == 'A request has been deleted'){
+        this.notificationService.show({
+          content: data,
+          type: { style:'error' },
+          position: this.notifPos,
+        });
+        return
       }
       this.notificationService.show({
         content: data,
