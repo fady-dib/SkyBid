@@ -21,7 +21,7 @@
       </button>
     </ng-template>
 
-    <kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
+    <kendo-grid-checkbox-column [width]="25" [showSelectAll]="true">
     </kendo-grid-checkbox-column>
 
     <ng-template kendoPagerTemplate let-total="total">
@@ -34,7 +34,7 @@
     <kendo-grid-column
       field="operator.company_name"
       title="Operator"
-      [width]="100"
+      [width]="80"
       [class]="{ 'text-right': true }"
       [headerClass]="{ 'text-center': true }"
     >
@@ -42,7 +42,7 @@
     <kendo-grid-column
       field="aircraft.aircraft"
       title="Aircraft"
-      [width]="100"
+      [width]="80"
       [class]="{ 'text-left': true }"
       [headerClass]="{ 'text-center': true }"
     >
@@ -50,7 +50,7 @@
     <kendo-grid-column
       field="aircraft.year_of_manufacture"
       title="Year of manufacture"
-      [width]="130"
+      [width]="90"
       [class]="{ 'text-left': true }"
       [headerClass]="{ 'text-left': true }"
     >
@@ -58,10 +58,13 @@
     <kendo-grid-column
       field="price"
       title="Bid"
-      [width]="50"
+      [width]="60"
       [class]="{ 'text-left': true }"
       [headerClass]="{ 'text-left': true }"
     >
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span class="currency-symbol">USD</span> {{dataItem.price }}
+    </ng-template>
     </kendo-grid-column>
   </kendo-grid>
 </div>
