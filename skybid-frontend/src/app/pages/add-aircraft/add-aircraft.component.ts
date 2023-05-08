@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { WindowRef } from '@progress/kendo-angular-dialog';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-add-aircraft',
@@ -7,10 +9,24 @@ import { Component } from '@angular/core';
 })
 export class AddAircraftComponent {
 
-  model;
+  model = {
+    aircraft : "",
+    passengers :0,
+    year:0
+  }
+
+  constructor(
+    private apiService : ApiService
+  ){
+  }
+
+
+  windowRef : WindowRef
 
   add(){
-    
+    this.apiService.addAircraft(this.model).subscribe(() => {
+      this.windowRef.close()
+    })
   }
 
 }

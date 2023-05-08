@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, OnInit } from '@angular/core';
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { AddAircraftComponent } from '../add-aircraft/add-aircraft.component';
@@ -11,10 +11,7 @@ import { AddAircraftComponent } from '../add-aircraft/add-aircraft.component';
 export class AircraftListComponent implements OnInit {
 
   ngOnInit(): void {
-    this.apiService.getAircrafts().subscribe(data => {
-      this.aircrafts = data.aircrafts
-      console.log(data.aircrafts)
-    })
+   this.getAicrafts()
   }
 
   constructor(
@@ -29,6 +26,13 @@ export class AircraftListComponent implements OnInit {
 
   addImage(){
 
+  }
+
+  getAicrafts() {
+    this.apiService.getAircrafts().subscribe(data => {
+      this.aircrafts = data.aircrafts
+      console.log(data.aircrafts)
+    })
   }
 
   updateImage(){
@@ -46,9 +50,13 @@ export class AircraftListComponent implements OnInit {
       top: 150
     })
 
+    let windowRefCmp : ComponentRef<AddAircraftComponent> = windowRef.content;
+    windowRefCmp.instance.windowRef = windowRef
+
     windowRef.result.subscribe((result) => {
       if(result instanceof WindowCloseResult) {
         this.opened =false;
+        this.getAicrafts()
       }
     })
   }
