@@ -37,7 +37,6 @@ import { BidsComponent } from './pages/bids/bids.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { AgreementComponent } from './components/agreement/agreement.component';
 import { IndicatorsModule } from '@progress/kendo-angular-indicators';
-import { CountriesComponent } from './components/countries/countries.component';
 
 
 
@@ -64,8 +63,7 @@ import { CountriesComponent } from './components/countries/countries.component';
     AddBidComponent,
     BidsComponent,
     ConfirmationComponent,
-    AgreementComponent,
-    CountriesComponent,
+    AgreementComponent
   ],
   imports: [
     BrowserModule,
