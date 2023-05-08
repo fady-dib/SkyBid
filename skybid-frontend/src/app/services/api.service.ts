@@ -63,5 +63,10 @@ acceptBid(request_id) : Observable <any> {
   return this.http.post(`${this.apiBaseUrl}/user/accept-bid`,{request_id : request_id}, {headers: this.getHeaders()})
 }
 
+addAircraft(model) :Observable <any> {
+  return this.http.post(`${this.apiBaseUrl}/aircraft`,model, {headers: this.getHeaders()})
+}
+
+
 
 }
