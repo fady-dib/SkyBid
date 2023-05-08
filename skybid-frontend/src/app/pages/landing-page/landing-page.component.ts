@@ -20,4 +20,5 @@ export class LandingPageComponent {
     this.router.navigate(['/signup'])
   }
 
+
 }

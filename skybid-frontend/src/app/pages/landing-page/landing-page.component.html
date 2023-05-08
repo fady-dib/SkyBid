@@ -3,10 +3,10 @@
         <a [routerLink]="['/']"><img class="header-logo" src="assets/images/logo.svg"></a>
     </div>
     <div class="sections">
-        <div>Platform</div>
-        <div>Operators</div>
-        <div>Brokers</div>
-        <div>AboutUs</div>
+        <a href="#platform">Platform</a>
+    <a href="#operators">Operators</a>
+    <a href="#brokers">Brokers</a>
+    <a href="#about-us">About Us</a>
         <button type="button" class="button btn" (click)="login()">Log in</button>
     </div>
 </div>
@@ -15,10 +15,10 @@
         <h1>Live Marketplace</h1>
         <p>Connecting private Air Charter </p>
         <p>Brokers and operators</p>
-        <button type="button" class="button btn signup-btn" (click)="login()">Sign up</button>
+        <button type="button" class="button btn signup-btn" (click)="signup()">Sign up</button>
     </div>
 </div>
-<div class="platform text-light">
+<div class="platform text-light" id="platform">
     <h4 class="platform-title">One platform - Endless opportunities</h4>
     <div class="card-container">
         <div class="card-1">
@@ -44,7 +44,7 @@
         </ul>
     </div>
 </div>
-<div class="section">
+<div class="section" id="operators">
     <h4 class="section-title">SkyBid for Operators</h4>
     <div class="section-content">
         <img src="assets/images/operator.jpg">
@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-<div class="section">
+<div class="section" id="brokers">
     <h4 class="section-title">SkyBid for Brokers</h4>
     <div class="section-content reverse">
         <img src="assets/images/broker.jpg">
@@ -89,7 +89,7 @@
         </div>
     </div>
 </div>
-<div class="footer">
+<div class="footer" id="about-us">
     <div class="about-us">
         <div class="about-us-title">
         <p>About Us</p>
@@ -112,10 +112,10 @@
             <a [routerLink]="['/']"><img class="header-logo" src="assets/images/logo.svg"></a>
         </div>
         <div class="sections">
-            <div>Platform</div>
-            <div>Operators</div>
-            <div>Brokers</div>
-            <div>AboutUs</div>
+            <a href="#platform">Platform</a>
+            <a href="#operators">Operators</a>
+            <a href="#brokers">Brokers</a>
+            <a href="#about-us">About Us</a>
         </div>
     </div>
     <div class="rights">All Rights Reserved - © ACOM Aviation Ltd 2021 - 2023</div>
