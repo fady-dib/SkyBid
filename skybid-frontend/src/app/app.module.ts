@@ -32,7 +32,7 @@ import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests
 import { CreateRequestComponent } from './pages/create-request/create-request.component';
 import { GridPagerComponent } from './components/grid-pager/grid-pager.component';
 import { AddBidComponent } from './pages/add-bid/add-bid.component';
-import { DatePipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { BidsComponent } from './pages/bids/bids.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { AgreementComponent } from './components/agreement/agreement.component';
@@ -63,7 +63,7 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
     AddBidComponent,
     BidsComponent,
     ConfirmationComponent,
-    AgreementComponent
+    AgreementComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +87,7 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
     useFactory: () => {
        return { nativeElement: document.body } as ElementRef;
     },
-  }, [DatePipe] ],
+  }, [DatePipe] ,CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
