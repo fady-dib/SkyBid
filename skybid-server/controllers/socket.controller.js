@@ -115,7 +115,7 @@ module.exports = function (io) {
             })
             await notification.save()
             io.to(request_id.toString()).emit('notification', notification.notification)
-            const requests = await Request.find().populate('broker');
+            const requests = await Request.find({status : 'pending'}).populate('broker');
             io.emit("getRequests", requests)
             console.log("newRequest",request_id)
         }catch (error) {
@@ -138,9 +138,10 @@ module.exports = function (io) {
               });
           
               await notification.save();
-            //   io.to(requestId.toString()).emit('notification', notification.notification);
+              
           
-              const requests = await Request.find().populate('broker');
+              const requests = await Request.find({status : 'pending'}).populate('broker');
+              io.to(request_id.toString()).emit('notification', notification.notification);
               io.emit('getRequests', requests);
           
               console.log('Request deleted:', request_id);

@@ -66,8 +66,8 @@ const fs = require('fs')
 
 exports.addAircraft = async (req, res) => {
   try {
-    const { aircraft, passengers, year_of_manufacture } = req.body;
-    if (!aircraft || !passengers || !year_of_manufacture) {
+    const { aircraft, passengers, year } = req.body;
+    if (!aircraft || !passengers || !year) {
       return res.status(400).json({
         message: 'Content cannot be empty!'
       });
@@ -79,7 +79,7 @@ exports.addAircraft = async (req, res) => {
       operator,
       aircraft,
       passengers,
-      year_of_manufacture
+      year_of_manufacture : year
     });
 
     await newAircraft.save();

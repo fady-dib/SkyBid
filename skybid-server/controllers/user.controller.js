@@ -45,7 +45,7 @@ exports.getUser = async (req,res) => {
 }
 
 exports.getRequests = async (req,res) => {
-    const Requests = await Request.find().populate("broker","-password")
+    const Requests = await Request.find({status: 'pending'}).populate("broker","-password")
     return res.json(Requests)
 }
 
@@ -66,7 +66,7 @@ exports.getRequestsByBroker = async (req,res) => {
     
     try{
     const user_id = req.user._id;
-    const requests = await Request.find({broker : user_id})
+    const requests = await Request.find({broker : user_id , status : 'pending'})
     if (!requests || requests == null || requests.length == 0) return res.json([])
 
     return res.json(requests)
