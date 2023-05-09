@@ -2,9 +2,10 @@ const { socketMiddleware } = require("../middlewares/socketMiddleware");
 const Request = require("../models/requestModel");
 const Notification = require("../models/notificationModel");
 const User = require("../models/userModel");
-const short_id = require('shortid')
+const short_id = require('shortid');
+const { Chat } = require("../models/chatModel");
 
-// let users = [];
+let users = [];
 
 module.exports = function (io) {
 
@@ -12,19 +13,18 @@ module.exports = function (io) {
 
     io.on('connection', (socket) => {
 
-        // const user_id = socket.user._id
-        // const socket_id = socket.id
-        // const user_index = users.findIndex(user => user.user_id === user_id);
-        // if (user_index === -1) {
-        //     users.push({ user_id, socket_id })
-        //  } 
+        const user_id = socket.user._id
+        const socket_id = socket.id
+        const user_index = users.findIndex(user => user.user_id === user_id);
+        if (user_index === -1) {
+            users.push({ user_id, socket_id })
+         } 
         // else {
         //     users[user_index].socket_id = socket_id
         // }
-        // console.log(users)
 
 
-        function joinRooms(socket) {
+         function joinRooms(socket)  {
             if (socket.user.role === "operator") {
                 socket.join("operators");
                 Request.find({})
@@ -39,7 +39,7 @@ module.exports = function (io) {
         
             } else if (socket.user.role === "broker") {
                 socket.join("brokers");
-                Request.find({ broker: socket.user._id })
+                 Request.find({ broker: socket.user._id })
                     .then(requests => {
                         requests.forEach(request => {
                             socket.join(request._id.toString());
@@ -49,6 +49,18 @@ module.exports = function (io) {
                         console.error('Error fetching requests for broker:', err);
                     });
             }
+
+             Chat.find({users : user_id})
+             .then(chats => {
+                chats.forEach(chat => {
+                    socket.join(chat._id.toString())
+                })
+             })
+             .catch(err => {
+                console.error('Error fetching requests for broker:', err);
+            });
+
+
         }
 
         joinRooms(socket)
@@ -65,16 +77,44 @@ module.exports = function (io) {
 
         socket.on('disconnect', () => {
             console.log(`Client ${socket.id} disconnected`);
-            // const user_index = users.findIndex(user => user.user_id === user_id);
-            // if (user_index !== -1) {
-            //     users.splice(user_index, 1);
-            // }
-            // console.log(users)
+            const user_index = users.findIndex(user => user.user_id === user_id);
+            if (user_index !== -1) {
+                users.splice(user_index, 1);
+            }
         });
 
-        socket.on('chatMessage', (msg) => {
-            console.log('message: ' + msg);
-            io.emit('chatMessage', msg);
+        socket.on('chatMessage', async (msg,receiver) => {
+
+            sender = socket.user._id
+            try {
+            const chat = await Chat.findOne({ users : {$all: [sender,receiver]}})
+            if(chat){
+                chat.messages.push({
+                    sender: user_id,
+                    receiver: receiver,
+                    msg,
+                });
+                await chat.save();
+                io.to(chat._id.toString()).emit('chatMessage', { msg, sender_id: user_id });
+            }
+            else{
+                const new_chat = new Chat({
+                    users: [sender,receiver]
+                })
+                await new_chat.save()
+                socket.join(new_chat._id.toString())
+              const user = users.find(user => user.user_id == receiver)
+              if(user){
+                const receiver_socket = user.socket_id
+                receiver_socket.join(new_chat._id.toString())
+              }
+              io.to(new_chat._id.toString()).emit('chatMessage', { msg, sender_id: user_id });
+            }
+        }
+        catch (error) {
+            console.error('Error handling chat message:', error);
+        }
+            
         });
 
         socket.use((packet, next) => {
