@@ -6,6 +6,10 @@
         <!-- <kendo-dropdownbutton   *ngIf="user_role !== 'admin'" class="notification" icon="bell" [data]="notificationData">Notifications
         </kendo-dropdownbutton> -->
         <kendo-dropdownbutton class="profile" icon="user" [data]="userData" (itemClick)="onItemClick($event)">Profile
+            <ng-template kendoDropDownButtonItemTemplate let-dataItem>
+                <span class="k-icon k-i-{{ dataItem.icon }}"></span>
+                <span>{{ dataItem.text }}</span>
+              </ng-template>
         </kendo-dropdownbutton>
     </div>
 </div>

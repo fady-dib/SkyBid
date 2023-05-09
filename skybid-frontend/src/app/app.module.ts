@@ -37,6 +37,8 @@ import { BidsComponent } from './pages/bids/bids.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { AgreementComponent } from './components/agreement/agreement.component';
 import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+import { UploadsModule } from '@progress/kendo-angular-upload';
+
 
 
 
@@ -81,6 +83,7 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
     DialogsModule,
     ChartsModule,
     IndicatorsModule,
+    UploadsModule,
   ],
   providers: [  {
     provide: NOTIFICATION_CONTAINER,

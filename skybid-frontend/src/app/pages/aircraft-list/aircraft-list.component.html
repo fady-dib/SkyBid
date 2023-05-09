@@ -4,7 +4,7 @@
         <app-side-menu></app-side-menu>
         <div class="content-container">
             <div class="title">
-                <h4>Requests</h4>
+                <h4>Aircrafts</h4>
                 <div class="action-button">
                     <button class="btn add-button" (click)="addAircraft()">Add Aircraft</button>
                 </div>
@@ -21,8 +21,9 @@
                             <h5 class="card-title">{{ aircraft.aircraft }}</h5>
                             <p class="card-text">Passengers: {{ aircraft.passengers }}</p>
                             <p class="card-text">Year of manufacture: {{ aircraft.year_of_manufacture }}</p>
-                            <button *ngIf="!aircraft.image" class="btn add" (click)="addImage()">Add Image</button>
-                            <button *ngIf="aircraft.image" class="btn update" (click)="updateImage()">Update
+                            <button *ngIf="!aircraft.image" class="btn add" (click)="fileInput.click()">Add Image</button>
+                            <input #fileInput type="file" style="display: none;" (change)="onFileChange($event, aircraft._id,aircraft)" accept=".jpg, .jpeg, .png" />
+                            <button *ngIf="aircraft.image" class="btn update" (click)="fileInput.click()">Update
                                 Image</button>
                             <button class="btn danger" (click)="deleteAircraft(aircraft._id)">Delete Aircraft</button>
                         </div>

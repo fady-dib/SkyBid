@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  constructor(private http: HttpClient, ) { }
+  constructor(private http: HttpClient, private authService : AuthService ) { }
 
   apiBaseUrl = "http://localhost:3006"
 
@@ -71,8 +72,24 @@ deleteAircraft(aircraft_id) :Observable <any> {
   return this.http.delete(`${this.apiBaseUrl}/aircraft/${aircraft_id}`, {headers: this.getHeaders()})
 }
 
-uploadImage(image) :Observable <any> {
-  return this.http.post(`${this.apiBaseUrl}/aircraft`,image, {headers: this.getHeaders()})
+uploadImage(form_data:FormData) :Observable <any> {
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.authService.getToken()}`
+  });
+  return this.http.post(`${this.apiBaseUrl}/aircraft/image`,form_data, {headers})
 
 }
+
+deleteImage(model) : Observable <any> {
+  return this.http.post(`${this.apiBaseUrl}/aircraft/image`,model, {headers: this.getHeaders()})
+}
+
+deleteAndUpdateImage(formData: FormData): Observable<any> {
+  console.log('Sending FormData:', formData); 
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.authService.getToken()}`
+  });
+  return this.http.post(`${this.apiBaseUrl}/aircraft/update-image`, formData,{headers});
+}
+
 }

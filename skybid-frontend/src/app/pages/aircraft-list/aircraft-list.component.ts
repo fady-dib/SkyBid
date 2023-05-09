@@ -2,6 +2,7 @@ import { Component, ComponentRef, OnInit } from '@angular/core';
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { AddAircraftComponent } from '../add-aircraft/add-aircraft.component';
+import { FileRestrictions } from '@progress/kendo-angular-upload';
 
 @Component({
   selector: 'app-aircraft-list',
@@ -11,20 +12,25 @@ import { AddAircraftComponent } from '../add-aircraft/add-aircraft.component';
 export class AircraftListComponent implements OnInit {
 
   ngOnInit(): void {
-   this.getAicrafts()
+    this.getAicrafts()
   }
 
   constructor(
     private apiService: ApiService,
-    private windowService : WindowService,
-  ){}
+    private windowService: WindowService,
+  ) { }
 
   aircrafts: any[] = []
   serverUrl = 'http://localhost:3006/'
   opened = false;
   is_loading = true;
 
-  addImage(){
+  public imageRestrictions: FileRestrictions = {
+    allowedExtensions: ['.jpg', '.png', '.jpeg']
+  };
+
+
+  addImage() {
 
   }
 
@@ -35,31 +41,51 @@ export class AircraftListComponent implements OnInit {
     })
   }
 
-  updateImage(){
+  // updateImage(aircraft_id: string, image_url: string) {
+  //   const model = { aircraft_id: aircraft_id, image_url: image_url }
+  //   this.apiService.deleteImage(model).subscribe(() => {
+  //   });
+  // }
 
+  onFileChange(event, aircraft_id: string, aircraft) {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('aircraft_id', aircraft_id);
+    formData.append('image', file);
+    console.log('FormData:', formData);
+    if (aircraft.image) {
+      this.apiService.deleteAndUpdateImage(formData).subscribe(() => {
+        this.getAicrafts();
+      });
+    } else {
+      this.apiService.uploadImage(formData).subscribe(() => {
+        this.getAicrafts();
+      });
+    }
   }
+ 
 
-  deleteAircraft(id){
+  deleteAircraft(id) {
     this.apiService.deleteAircraft(id).subscribe(() => {
       this.getAicrafts()
     })
   }
 
-  addAircraft(){
+  addAircraft() {
     this.opened = true
     const windowRef = this.windowService.open({
       title: "Add",
-      content : AddAircraftComponent,
+      content: AddAircraftComponent,
       width: 500,
       top: 150
     })
 
-    let windowRefCmp : ComponentRef<AddAircraftComponent> = windowRef.content;
+    let windowRefCmp: ComponentRef<AddAircraftComponent> = windowRef.content;
     windowRefCmp.instance.windowRef = windowRef
 
     windowRef.result.subscribe((result) => {
-      if(result instanceof WindowCloseResult) {
-        this.opened =false;
+      if (result instanceof WindowCloseResult) {
+        this.opened = false;
         this.getAicrafts()
       }
     })
