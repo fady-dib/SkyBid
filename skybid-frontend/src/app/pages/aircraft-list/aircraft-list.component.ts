@@ -25,14 +25,6 @@ export class AircraftListComponent implements OnInit {
   opened = false;
   is_loading = true;
 
-  public imageRestrictions: FileRestrictions = {
-    allowedExtensions: ['.jpg', '.png', '.jpeg']
-  };
-
-
-  addImage() {
-
-  }
 
   getAicrafts() {
     this.apiService.getAircrafts().subscribe(data => {
@@ -41,18 +33,14 @@ export class AircraftListComponent implements OnInit {
     })
   }
 
-  // updateImage(aircraft_id: string, image_url: string) {
-  //   const model = { aircraft_id: aircraft_id, image_url: image_url }
-  //   this.apiService.deleteImage(model).subscribe(() => {
-  //   });
-  // }
-
   onFileChange(event, aircraft_id: string, aircraft) {
+    
     const file = event.target.files[0];
+
     const formData = new FormData();
     formData.append('aircraft_id', aircraft_id);
     formData.append('image', file);
-    console.log('FormData:', formData);
+
     if (aircraft.image) {
       this.apiService.deleteAndUpdateImage(formData).subscribe(() => {
         this.getAicrafts();

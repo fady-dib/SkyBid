@@ -73,22 +73,21 @@ deleteAircraft(aircraft_id) :Observable <any> {
 }
 
 uploadImage(form_data:FormData) :Observable <any> {
+
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${this.authService.getToken()}`
   });
+
   return this.http.post(`${this.apiBaseUrl}/aircraft/image`,form_data, {headers})
 
 }
 
-deleteImage(model) : Observable <any> {
-  return this.http.post(`${this.apiBaseUrl}/aircraft/image`,model, {headers: this.getHeaders()})
-}
-
 deleteAndUpdateImage(formData: FormData): Observable<any> {
-  console.log('Sending FormData:', formData); 
+
   const headers = new HttpHeaders({
     'Authorization': `Bearer ${this.authService.getToken()}`
   });
+
   return this.http.post(`${this.apiBaseUrl}/aircraft/update-image`, formData,{headers});
 }
 
