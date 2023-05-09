@@ -35,6 +35,9 @@ app.use('/user', authMiddleware, user_router)
 const aircraft_router = require('./routes/aircraft.routes')
 app.use('/aircraft', authMiddleware,operatorMiddleware, aircraft_router)
 
+const chat_router = require('./routes/chat.routes')
+app.use('/chats', authMiddleware, chat_router)
+
 const admin_router = require('./routes/admin.routes');
 app.use('/admin',authMiddleware, adminMiddleware, admin_router)
 
