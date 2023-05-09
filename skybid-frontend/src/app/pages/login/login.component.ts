@@ -50,14 +50,20 @@ login() {
   this.apiService.login(this.model).subscribe(data => {
     console.log('token', data.token);
     console.log('role', data.role);
-    localStorage.setItem('token', data.token )
-    localStorage.setItem('role',data.role)
-    if(data.role == "admin") this.router.navigate(['/dashboard'])
-    if(data.role == "operator") this.router.navigate(['/request-list'])
-    if(data.role == "broker") this.router.navigate(['broker-requests'])
     
+    Promise.all([
+      localStorage.setItem('token', data.token),
+      localStorage.setItem('role', data.role)
+    ]).then(() => {
+      if (data.role === 'admin') {
+        this.router.navigate(['/dashboard']);
+      } else if (data.role === 'operator') {
+        this.router.navigate(['/request-list']);
+      } else if (data.role === 'broker') {
+        this.router.navigate(['/broker-requests']);
+      }
+    });
   });
-  
 
 }
 

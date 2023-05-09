@@ -23,6 +23,7 @@ export class BrokerRequestsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log('ngOnInit triggered');
     this.search()
   }
 
@@ -57,6 +58,9 @@ export class BrokerRequestsComponent implements OnInit {
         console.log(data)
         this.sortRequests(data);
         this.loadItems()
+      },
+      error => {
+        console.log('Error:', error);
       })
   }
 

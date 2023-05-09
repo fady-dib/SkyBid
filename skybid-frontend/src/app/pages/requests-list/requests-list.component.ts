@@ -24,7 +24,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class RequestsListComponent implements OnInit {
 
 ngOnInit(): void {
-  this.search()
 
   this.dataSubscription = this.socketService.requests.subscribe(data => {
     let newRequests: Request[] = [];
@@ -60,7 +59,7 @@ ngOnInit(): void {
     }, 5000);
 
   })
-  
+  this.search()
 }
 
 constructor(

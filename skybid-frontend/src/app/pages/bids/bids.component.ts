@@ -179,8 +179,6 @@ export class BidsComponent implements OnInit {
 
     let windowRefCmp: ComponentRef<CommentComponent> = windowRef.content;
     windowRefCmp.instance.model.receiver = this.selectedDataItem.operator._id
-    console.log(this.selectedDataItem)
-    console.log(this.selectedDataItem.operator._id)
     windowRefCmp.instance.windowRef = windowRef
     windowRefCmp.instance.to = this.selectedDataItem.operator.company_name
 
