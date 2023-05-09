@@ -38,6 +38,7 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { AgreementComponent } from './components/agreement/agreement.component';
 import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 import { UploadsModule } from '@progress/kendo-angular-upload';
+import { CommentComponent } from './components/comment/comment.component';
 
 
 
@@ -66,6 +67,7 @@ import { UploadsModule } from '@progress/kendo-angular-upload';
     BidsComponent,
     ConfirmationComponent,
     AgreementComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

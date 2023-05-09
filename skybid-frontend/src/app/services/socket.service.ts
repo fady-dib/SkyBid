@@ -34,8 +34,8 @@ export class SocketService {
   }
 }
 
-  public sendMessage(message:string,receiver) {
-    this.socket.emit('chatMessage', {message,receiver});
+  public sendMessage(model) {
+    this.socket.emit('chatMessage', model);
   }
 
   public getNewMessage = () => {

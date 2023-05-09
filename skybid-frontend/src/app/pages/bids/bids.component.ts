@@ -5,8 +5,10 @@ import { NotificationService } from '@progress/kendo-angular-notification';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { BehaviorSubject, finalize } from 'rxjs';
 import { AgreementComponent } from 'src/app/components/agreement/agreement.component';
+import { CommentComponent } from 'src/app/components/comment/comment.component';
 import { ConfirmationComponent } from 'src/app/components/confirmation/confirmation.component';
 import { ApiService } from 'src/app/services/api.service';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-bids',
@@ -21,7 +23,8 @@ export class BidsComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private windowService: WindowService,
-    private notificationService : NotificationService
+    private notificationService : NotificationService,
+    private socketService : SocketService
   ) { }
 
   getBids() {
@@ -138,7 +141,7 @@ export class BidsComponent implements OnInit {
                 this.opened = false;
                 this.getBids();
               }
-              this.opened = true
+              
             })
            
           }
@@ -146,6 +149,7 @@ export class BidsComponent implements OnInit {
           
         })
       }
+      this.opened = false
     })
     
   }
@@ -155,6 +159,24 @@ export class BidsComponent implements OnInit {
       return this.bids.find(c => c._id == this.mySelection[0])
     else
       return null;
+  }
+
+  addComment(){
+    this.opened = true
+    const windowRef = this.windowService.open({
+      title: "Add",
+      content: CommentComponent,
+      width: 500,
+      top: 150
+    })
+
+    let windowRefCmp: ComponentRef<CommentComponent> = windowRef.content;
+
+    windowRef.result.subscribe((result) => {
+      if (result instanceof WindowCloseResult) {
+        this.opened = false;
+      }
+    })
   }
 
 

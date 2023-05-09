@@ -1,0 +1,22 @@
+form{
+    padding-left: 10%;
+    padding-right:10%;
+    margin-top: 5%;
+    color :var(--darkblue);
+}
+
+.form-label{
+    color: var(--darkblue);
+}
+
+.send-button{
+    background-color: var(--green);
+    color: var(--white);
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.btn-flex{
+    display:flex;
+   flex-direction: row-reverse;
+}
