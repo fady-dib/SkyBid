@@ -98,9 +98,18 @@ exports.deleteAircraft = async (req, res) => {
     const aircraft_id = req.params.id
     if (!aircraft_id) return res.json(" Invalid aircraft ID")
 
-    const aircraft = await Aircraft.findOneAndDelete({ _id: aircraft_id })
+   
 
+    const aircraft = await Aircraft.findOneAndDelete({ _id: aircraft_id })
+    
     if (!aircraft) return res.json("aircraft not found")
+
+    if (aircraft.image) {
+      await fs.promises.unlink(aircraft.image.url, (err) => {
+           if (err) console.log(err);
+       });
+    }
+
 
     return res.json({ message: 'Aircraft deleted successfully!', aircraft })
   }
