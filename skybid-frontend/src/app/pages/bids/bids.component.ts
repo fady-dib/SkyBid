@@ -162,15 +162,27 @@ export class BidsComponent implements OnInit {
   }
 
   addComment(){
+    if (!this.selectedDataItem) {
+      this.notificationService.show({
+        content: 'Select a bid',
+        type: { style: 'warning' }
+      })
+      return;
+    }
     this.opened = true
     const windowRef = this.windowService.open({
-      title: "Add",
+      title: "Message",
       content: CommentComponent,
       width: 500,
       top: 150
     })
 
     let windowRefCmp: ComponentRef<CommentComponent> = windowRef.content;
+    windowRefCmp.instance.model.receiver = this.selectedDataItem.operator._id
+    console.log(this.selectedDataItem)
+    console.log(this.selectedDataItem.operator._id)
+    windowRefCmp.instance.windowRef = windowRef
+    windowRefCmp.instance.to = this.selectedDataItem.operator.company_name
 
     windowRef.result.subscribe((result) => {
       if (result instanceof WindowCloseResult) {

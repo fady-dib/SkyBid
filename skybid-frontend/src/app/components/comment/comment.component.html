@@ -1,7 +1,8 @@
 <form>
+  <p class="message">Send message to {{to}}</p>
 <div class="mb-3">
-    <label for="message" class="form-label">Message</label>
-    <textarea class="form-control" [(ngModel)]="model.msg" id="message" rows="3" [placeholder]="placeholder" [readOnly]="readonly"></textarea>
+    <!-- <label for="message" class="form-label">Message</label> -->
+    <textarea class="form-control" [(ngModel)]="model.msg" name="message" id="message" rows="3" [placeholder]="placeholder" [readOnly]="readonly"></textarea>
   </div>
   <div class="btn-flex">
     <button type="submit" class="send-button btn" (click)="send()">Send</button>

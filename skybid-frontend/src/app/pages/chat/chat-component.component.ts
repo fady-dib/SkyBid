@@ -17,16 +17,16 @@ export class ChatComponentComponent {
   new_message: string = "";
   messageList: string[] = [];
 
-  ngOnInit(){
-    this.socketService.getNewMessage().subscribe((message: string) => {
-      this.messageList.push(message);
-    })
-  }
+  // ngOnInit(){
+  //   this.socketService.getNewMessage().subscribe((message: string) => {
+  //     this.messageList.push(message);
+  //   })
+  // }
 
-  sendMessage() {
-    this.socketService.sendMessage(this.new_message);
-    this.new_message = '';
-  }
+  // sendMessage() {
+  //   this.socketService.sendMessage(this.new_message);
+  //   this.new_message = '';
+  // }
 
 
 

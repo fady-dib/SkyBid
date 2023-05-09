@@ -32,9 +32,11 @@ export class SocketService {
     this.getNotification()
     this.getBids()
   }
+
 }
 
-  public sendMessage(model) {
+
+  public sendMessage = (model) => {
     this.socket.emit('chatMessage', model);
   }
 
@@ -42,8 +44,7 @@ export class SocketService {
     this.socket.on('chatMessage', (message) =>{
       this.message.next(message);
     });
-
-    return this.message.asObservable();
+    // return this.message.asObservable();
   };
 
   public getRequests = () => {
