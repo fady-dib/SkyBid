@@ -118,5 +118,12 @@ export class ApiService {
     });
   }
 
+  getConversations(): Observable<any> {
+    return this.http.get(`${this.apiBaseUrl}/chats`, {
+      headers: this.httpHeaders,
+    });
+  }
+
+
 
 }
