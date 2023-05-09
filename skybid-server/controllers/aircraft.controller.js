@@ -175,6 +175,10 @@ exports.getAircraftById = async (req,res) => {
 
 exports.uploadImage = async (req,res) => {
   try {
+
+
+    console.log('Request body:', req.body); 
+    console.log('Request files:', req.files);
     if (!req.files || !req.files.image) return res.status(400).send('No image uploaded');
 
 
@@ -211,30 +215,73 @@ exports.uploadImage = async (req,res) => {
 }
 
 
-exports.deleteImage = async (req,res) => {
+// exports.deleteImage = async (req,res) => {
 
-try{
+// try{
 
-  const {aircraft_id, image_url} = req.body
-  if(!aircraft_id || !image_url) return res.send("Information incomplete")
-  console.log(aircraft_id,image_url)
+//   const {aircraft_id, image_url} = req.body
+//   if(!aircraft_id || !image_url) return res.send("Information incomplete")
+//   console.log(aircraft_id,image_url)
 
- await fs.promises.unlink(image_url, (err) => {
-    if (err) console.log(err);
-  });
-  const aircraft = await Aircraft.findOneAndUpdate(
-    {_id : aircraft_id},
-    {$pull : {images: {url : image_url}}},
-    {new:true}
-  )
+//  await fs.promises.unlink(image_url, (err) => {
+//     if (err) console.log(err);
+//   });
+//   const aircraft = await Aircraft.findOneAndUpdate(
+//     {_id : aircraft_id},
+//     {$pull : {images: {url : image_url}}},
+//     {new:true}
+//   )
 
 
-  res.json({ message: 'Image deleted successfully', aircraft });
+//   res.json({ message: 'Image deleted successfully', aircraft });
   
-}
-catch (error) {
-  console.error(error);
-  res.status(500).json({ message: 'Something went wrong. Please try again later.' });
-}
+// }
+// catch (error) {
+//   console.error(error);
+//   res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+// }
 
-}
+// }
+
+exports.updateImage = async (req, res) => {
+  try {
+    console.log('Request headers:', req.headers);
+  console.log('Request body:', req.body);
+  console.log('Request files:', req.files);
+    if (!req.files || !req.files.image) return res.status(400).send('No image uploaded');
+
+    const image = req.files.image;
+    const aircraft_id = req.body.aircraft_id;
+    const aircraft = await Aircraft.findById(aircraft_id);
+
+    if (aircraft.image) {
+      const old_image_path = path.join(__dirname, '..', aircraft.image.url);
+      fs.unlinkSync(old_image_path);
+    }
+    const image_name = Date.now() + '-' + image.name;
+    const upload_path = path.join(__dirname, '..', 'Uploads', image_name);
+    image.mv(upload_path, async function (err) {
+      if (err) {
+        console.log(err);
+        return res.status(500).send('Error while saving image');
+      }
+
+      const newImage = {
+        name: image_name,
+        image_type: image.mimetype,
+        url: `Uploads/${image_name}`
+      };
+
+      const updated_aircraft = await Aircraft.findByIdAndUpdate(
+        aircraft_id,
+        { $set: { image: newImage } },
+        { new: true }
+      );
+
+      res.json({ message: 'Image updated successfully', aircraft: updated_aircraft });
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Something went wrong. Please try again later.' });
+  }
+};
