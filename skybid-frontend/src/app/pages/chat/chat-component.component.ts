@@ -22,9 +22,10 @@ export class ChatComponentComponent {
       this.messageList.push(message);
     })
   }
+  receiver
 
   sendMessage() {
-    this.socketService.sendMessage(this.new_message);
+    this.socketService.sendMessage(this.new_message,this.receiver);
     this.new_message = '';
   }
 

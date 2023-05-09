@@ -11,7 +11,7 @@ import { AuthService } from '../auth/auth.service';
 
 export class SocketService {
 
-  public message: BehaviorSubject<string> = new BehaviorSubject('');
+  public message: BehaviorSubject<{}> = new BehaviorSubject({});
   public requests: BehaviorSubject<any[]> = new BehaviorSubject([]);
   public notifications : BehaviorSubject<string> = new BehaviorSubject('');
   public bid : BehaviorSubject<[]> = new BehaviorSubject([]);
@@ -34,8 +34,8 @@ export class SocketService {
   }
 }
 
-  public sendMessage(message:string) {
-    this.socket.emit('chatMessage', message);
+  public sendMessage(message:string,receiver) {
+    this.socket.emit('chatMessage', {message,receiver});
   }
 
   public getNewMessage = () => {
