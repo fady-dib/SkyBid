@@ -83,32 +83,39 @@ module.exports = function (io) {
             }
         });
 
-        socket.on('chatMessage', async (msg,receiver) => {
+        socket.on('chatMessage', async (msg) => {
 
             sender = socket.user._id
+            receiver = msg.receiver
             try {
             const chat = await Chat.findOne({ users : {$all: [sender,receiver]}})
             if(chat){
                 chat.messages.push({
-                    sender: user_id,
+                    sender: sender,
                     receiver: receiver,
-                    msg,
+                    message : msg.msg,
                 });
                 await chat.save();
-                io.to(chat._id.toString()).emit('chatMessage', { msg, sender_id: user_id });
+                io.to(chat._id.toString()).emit('chatMessage', { msg, sender: sender });
             }
             else{
                 const new_chat = new Chat({
-                    users: [sender,receiver]
+                    users: [sender,receiver],
+                    messages:{
+                        sender: sender,
+                        receiver: receiver,
+                        message : msg.msg,
+                    }
                 })
                 await new_chat.save()
                 socket.join(new_chat._id.toString())
               const user = users.find(user => user.user_id == receiver)
               if(user){
-                const receiver_socket = user.socket_id
+                const receiver_socket = io.sockets.sockets.get(user.socket_id)
+                console.log(receiver_socket)
                 receiver_socket.join(new_chat._id.toString())
               }
-              io.to(new_chat._id.toString()).emit('chatMessage', { msg, sender_id: user_id });
+              io.to(new_chat._id.toString()).emit('chatMessage', { msg, sender: sender });
             }
         }
         catch (error) {
