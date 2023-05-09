@@ -111,4 +111,12 @@ export class ApiService {
       { headers }
     );
   }
+
+  updateProfile(model): Observable<any> {
+    return this.http.put(`${this.apiBaseUrl}/user`, model, {
+      headers: this.httpHeaders,
+    });
+  }
+
+
 }
