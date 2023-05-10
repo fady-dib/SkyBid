@@ -177,6 +177,16 @@ export class ApiService {
     });
   }
 
+  getChatById(){
+    this.httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${this.authService.getToken()}`,
+    });
+    return this.http.get(`${this.apiBaseUrl}/chats/chat`, {
+      headers: this.httpHeaders,
+    });
+  }
+
 
 
 }

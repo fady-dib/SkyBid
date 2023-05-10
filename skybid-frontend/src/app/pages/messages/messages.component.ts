@@ -41,7 +41,7 @@ export class MessagesComponent {
 
   loading = false;
   mySelection: number[] = [];
-  clickedItem: Request
+  clickedItem
   opened = false
 
   private search() {
@@ -100,7 +100,7 @@ export class MessagesComponent {
         height: 600
       });
       let windowRefCmp : ComponentRef<ChatComponent> = windowRef.content;
-      // windowRefCmp.instance.request_id = this.clickedItem._id
+       windowRefCmp.instance.chat_id = this.clickedItem._id
   
       windowRef.result.subscribe((result) => {
         if(result instanceof WindowCloseResult) {
