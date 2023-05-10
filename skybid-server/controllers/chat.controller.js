@@ -29,7 +29,7 @@ exports.getConversations = async (req, res) => {
 };
 
 exports.getChatById = async (req,res) => {
-    const chat_id = req.body.request_id
+    const chat_id = req.params.id
     if(!chat_id) return res.json(" Invalid chat ID")
     try{
 
