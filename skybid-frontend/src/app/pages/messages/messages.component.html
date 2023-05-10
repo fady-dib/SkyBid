@@ -2,7 +2,7 @@
 <div class="requests-container">
    <app-side-menu></app-side-menu>
     <div class="requests-content">
-<h4 class="title">Requests</h4>
+<h4 class="title">Messages</h4>
 <div class="grid">
 <kendo-grid [data]="gridData"
 (cellClick)="cellClick($event)"
@@ -33,7 +33,7 @@ kendoGridSelectBy="_id"
             >Send message</button> -->
         </ng-template>
 <kendo-grid-column field="users.company_name"
-                               title="Broker"
+                               title="Name"
                                [width]="50"
                                [class]="{'text-right': true}"
                                [headerClass]="{'text-center': true}">

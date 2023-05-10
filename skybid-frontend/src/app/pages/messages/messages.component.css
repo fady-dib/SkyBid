@@ -1,0 +1,24 @@
+.requests-container{
+    display:flex;
+    height : 100vh
+}
+.title{
+    margin: 2% 2%
+}
+.grid{
+    margin:5% 2%
+}
+
+.requests-content{
+    color:var(--darkblue);
+}
+
+.k-table-row{
+    background-color: var(--darkblue);
+}
+
+.k-button-solid-base:active{
+    background-color: var(--white);
+    color: var(--darkblue);
+    font-weight: bold;
+}

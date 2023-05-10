@@ -4,4 +4,5 @@
     <a [routerLink]="['/dashboard']" *ngIf="user_role === 'admin'"[ngClass]="{ 'selected': isCurrentRoute('/dashboard') }">Dashboard</a>
     <a [routerLink]="['/users']" *ngIf="user_role === 'admin'"[ngClass]="{ 'selected': isCurrentRoute('/users') }">Users</a>
     <a [routerLink]="['/broker-requests']" *ngIf="user_role === 'broker'"[ngClass]="{ 'selected': isCurrentRoute('/broker-requests') }" >Requests</a>
+    <a [routerLink]="['/messages']" *ngIf="user_role === 'broker' || user_role ==='operator'" [ngClass]="{ 'selected': isCurrentRoute('/messages') }" >Messages</a>
   </div>
