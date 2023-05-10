@@ -4,21 +4,16 @@ import { ChatComponentComponent } from './pages/chat/chat-component.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { DrawerComponent } from './components/drawer/drawer.component';
 import { RequestsListComponent } from './pages/requests-list/requests-list.component';
-import { RequestDetailComponent } from './pages/request-detail/request-detail.component';
-import { HeaderComponent } from './components/header/header.component';
 import { AircraftListComponent } from './pages/aircraft-list/aircraft-list.component';
-import { AddAircraftComponent } from './pages/add-aircraft/add-aircraft.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
-import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { UsersComponent } from './pages/admin/users/users.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
 import 'hammerjs';
 import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests.component';
 import { AuthGuard } from './auth/auth.guard';
-import { AgreementComponent } from './components/agreement/agreement.component';
 import { NotAuthGuard } from './auth/not-auth.guard';
+import { MessagesComponent } from './pages/messages/messages.component';
 
 const routes = [
   {path: 'chat', component: ChatComponentComponent },
@@ -33,7 +28,7 @@ const routes = [
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
   {path: 'broker-requests', component: BrokerRequestsComponent,canActivate: [AuthGuard],data: {allowed_role:['broker']}},
-  {path: 'agg', component : AgreementComponent}
+  {path: 'messages', component : MessagesComponent}
 ];
 
 

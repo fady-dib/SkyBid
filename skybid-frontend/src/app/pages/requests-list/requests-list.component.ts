@@ -8,6 +8,8 @@ import { SocketService } from 'src/app/services/socket.service';
 import { RequestDetailComponent } from '../request-detail/request-detail.component';
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { NotificationService } from '@progress/kendo-angular-notification';
+import { CommentComponent } from 'src/app/components/comment/comment.component';
 
 @Component({
   selector: 'app-requests-list',
@@ -26,9 +28,9 @@ export class RequestsListComponent implements OnInit {
 ngOnInit(): void {
 
   this.dataSubscription = this.socketService.requests.subscribe(data => {
-    let newRequests: Request[] = [];
+    let newRequests: any[] = [];
 
-    if (data.length < this.requests.length) {
+    if (data && this.requests && data.length < this.requests.length) {
       this.requests = data;
       this.sortRequests(this.requests);
       this.loadItems();
@@ -66,7 +68,16 @@ constructor(
   private apiService : ApiService,
   private socketService : SocketService,
   private windowService : WindowService,
+  private notificationService : NotificationService
 ) { }
+
+
+get selectedDataItem() {
+  if (this.mySelection.length > 0)
+    return this.requests.find(c => c._id == this.mySelection[0])
+  else
+    return null;
+}
 
 public gridData: GridDataResult;
 private dataSubscription: Subscription;
@@ -80,7 +91,7 @@ clickedItem: Request
 opened = false
 
 
-requests: Request[] = []
+requests : any[]=[]
 
 private search () {
   this.loading = true
@@ -152,4 +163,32 @@ private sortRequests(data: Request[]): void {
 }
 
 private latestRequestTimestamp: number = 0;
+
+sendMessage(){
+  if (!this.selectedDataItem) {
+    this.notificationService.show({
+      content: 'Select a bid',
+      type: { style: 'warning' }
+    })
+    return;
+  }
+  this.opened = true
+  const windowRef = this.windowService.open({
+    title: "Message",
+    content: CommentComponent,
+    width: 500,
+    top: 150
+  })
+
+  let windowRefCmp: ComponentRef<CommentComponent> = windowRef.content;
+  windowRefCmp.instance.model.receiver = this.selectedDataItem.broker._id
+  windowRefCmp.instance.windowRef = windowRef
+  windowRefCmp.instance.to = this.selectedDataItem.broker.company_name
+
+  windowRef.result.subscribe((result) => {
+    if (result instanceof WindowCloseResult) {
+      this.opened = false;
+    }
+  })
+}
 }

@@ -28,63 +28,46 @@ kendoGridSelectBy="_id"
                 </app-grid-pager>
             </ng-template>
             <ng-template kendoGridToolbarTemplate>
-               <button kendoButton class="toolbar-btn"
+               <!-- <button kendoButton class="toolbar-btn"
             [icon]="'add'" (click)="sendMessage()"
-            >Send message</button>
+            >Send message</button> -->
         </ng-template>
-<kendo-grid-column field="broker.company_name"
+<kendo-grid-column field="users.company_name"
                                title="Broker"
                                [width]="50"
                                [class]="{'text-right': true}"
                                [headerClass]="{'text-center': true}">
-                               <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                               <!-- <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                                 <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.broker.company_name }}</div>
-                              </ng-template>
+                              </ng-template> -->
             </kendo-grid-column>
-            <kendo-grid-column field="from"
-                               title="From"
+            <kendo-grid-column field="users.email"
+                               title="Email"
                                [width]="40"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-center': true}">
-                               <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                               <!-- <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                                 <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.from }}</div>
-                              </ng-template>
+                              </ng-template> -->
             </kendo-grid-column>
-            <kendo-grid-column field="to"
-                               title="To"
+            <kendo-grid-column field="users.phone"
+                               title="Phone"
                                [width]="40"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
-                               <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                               <!-- <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
                                 <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.to }}</div>
-                              </ng-template>
+                              </ng-template> -->
             </kendo-grid-column>
-            <kendo-grid-column field="departure_date"
-            title="Departure date"
+            <kendo-grid-column field="createdAt"
+            title="Date"
             [width]="50"
             [class]="{'text-left': true}"
             [headerClass]="{'text-left': true}">
             <ng-template kendoGridCellTemplate let-dataItem>
-             <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.departure_date | date: 'yyyy-MM-dd'}}</div>
-           </ng-template>
+                {{ dataItem.createdAt | date: 'yyyy-MM-dd' }}
+              </ng-template>
 </kendo-grid-column>
-<kendo-grid-column field="return_date"
-title="Return date"
-[width]="50"
-[class]="{'text-left': true}"
-[headerClass]="{'text-left': true}">
-<ng-template kendoGridCellTemplate let-dataItem>
-<div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.return_date | date: 'yyyy-MM-dd'}}</div>
-</ng-template>
-</kendo-grid-column>
-<kendo-grid-column field="passengers"
-title="Pax"
-[width]="30"
-[class]="{'text-left': true}"
-[headerClass]="{'text-left': true}">
-<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-    <div [@newDataHighlight]="dataItem.isNew ? 'new' : 'old'">{{ dataItem.passengers }}</div>
-  </ng-template></kendo-grid-column>
 </kendo-grid>
 </div>
 </div>
