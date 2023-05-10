@@ -54,6 +54,7 @@ other_user_id
   chat_id : string
 
   messages 
+  
 
   sendMessage(){
     this.socketService.sendMessage(this.model)

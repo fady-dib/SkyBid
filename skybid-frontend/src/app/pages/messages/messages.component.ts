@@ -93,7 +93,7 @@ export class MessagesComponent {
 
     if(this.clickedItem) {
       const windowRef = this.windowService.open({
-        title : `Chat`,
+        title : `${this.clickedItem.users.company_name}`,
         content: ChatComponent,
         width :635,
         top : 100,
@@ -102,7 +102,7 @@ export class MessagesComponent {
       let windowRefCmp : ComponentRef<ChatComponent> = windowRef.content;
        windowRefCmp.instance.chat_id = this.clickedItem._id
        windowRefCmp.instance.model.receiver = this.clickedItem.users._id
-  
+     
       windowRef.result.subscribe((result) => {
         if(result instanceof WindowCloseResult) {
           this.opened =false;

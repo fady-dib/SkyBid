@@ -67,6 +67,9 @@
   
   .timestamp {
   font-size: 0.8em;
-  color: #999;
+  color:#a3a8aa;
   /* margin-left: 5px; */
 }
+/* .sent .timestamp{
+    color : var(--blue)
+} */
