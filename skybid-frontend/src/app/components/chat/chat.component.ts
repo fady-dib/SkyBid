@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Chat } from 'src/app/models/chat';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
@@ -12,11 +12,10 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.getChats()
-    this.other_user_id =this.model.receiver
+    // this.other_user_id =this.model.receiver
     this.socketService.message.subscribe( data  => {
       const array = Object.values(data)
       this.messages = array
-      console.log(data)
     })
   }
 
@@ -28,7 +27,6 @@ export class ChatComponent implements OnInit {
   getChats() {
     this.apiService.getChatById(this.chat_id).subscribe((data :Chat) => {
       this.messages = data[0].messages
-      console.log(data)
     })
   }
   formatTimestamp(timestamp: string) {
@@ -47,7 +45,20 @@ export class ChatComponent implements OnInit {
     receiver : ""
   }
 
-other_user_id
+other_user_id :string
+
+@ViewChild('chatBox', { static: false })
+public chatBox: ElementRef;
+
+  ngAfterViewChecked() {        
+    this.scrollToBottom();        
+  } 
+
+  scrollToBottom(): void {
+    
+      this.chatBox.nativeElement.scrollTop = this.chatBox.nativeElement.scrollHeight;
+          
+  }
 
   
 
@@ -59,7 +70,7 @@ other_user_id
   sendMessage(){
     this.socketService.sendMessage(this.model)
     this.model.msg = ""
-    window.scrollTo(0,document.body.scrollHeight)
+    this.scrollToBottom();    
   }
 
 }

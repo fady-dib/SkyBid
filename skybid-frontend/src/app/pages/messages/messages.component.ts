@@ -102,6 +102,7 @@ export class MessagesComponent {
       let windowRefCmp : ComponentRef<ChatComponent> = windowRef.content;
        windowRefCmp.instance.chat_id = this.clickedItem._id
        windowRefCmp.instance.model.receiver = this.clickedItem.users._id
+       windowRefCmp.instance.other_user_id = this.clickedItem.users._id
      
       windowRef.result.subscribe((result) => {
         if(result instanceof WindowCloseResult) {

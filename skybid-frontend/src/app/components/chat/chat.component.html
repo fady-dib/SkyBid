@@ -1,6 +1,6 @@
 
-<div class="chat-box">
-  <div class="chat-content">
+<div class="chat-box" >
+  <div class="chat-content" #chatBox>
     <div class="message" 
     [ngClass]="{'sent': message.sender !== other_user_id, 'received': message.sender === other_user_id}" 
          *ngFor="let message of messages">
