@@ -28,7 +28,7 @@ const routes = [
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
   {path: 'broker-requests', component: BrokerRequestsComponent,canActivate: [AuthGuard],data: {allowed_role:['broker']}},
-  {path: 'messages', component : MessagesComponent}
+  {path: 'messages', component : MessagesComponent, canActivate : [AuthGuard] , data: {allowed_role : ['broker','operator']}}
 ];
 
 
