@@ -31,6 +31,7 @@ export class SocketService {
       this.getRequests()
     this.getNotification()
     this.getBids()
+    this.getNewMessage()
   }
 
 }
