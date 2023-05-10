@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { WindowService } from '@progress/kendo-angular-dialog';
+import { Component, ComponentRef } from '@angular/core';
+import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 import { CellClickEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { Subscription, finalize } from 'rxjs';
+import { ChatComponent } from 'src/app/components/chat/chat.component';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
 
@@ -53,9 +54,6 @@ export class MessagesComponent {
         console.log(data)
         this.sortChats(data);
         this.loadItems()
-      },
-      error => {
-        console.log('Error:', error);
       })
   }
 
@@ -92,6 +90,26 @@ export class MessagesComponent {
   }
 
   onDblClick(){
+
+    if(this.clickedItem) {
+      const windowRef = this.windowService.open({
+        title : `Chat`,
+        content: ChatComponent,
+        width :635,
+        top : 100,
+        height: 600
+      });
+      let windowRefCmp : ComponentRef<ChatComponent> = windowRef.content;
+      // windowRefCmp.instance.request_id = this.clickedItem._id
+  
+      windowRef.result.subscribe((result) => {
+        if(result instanceof WindowCloseResult) {
+          this.opened =false;
+          this.search();
+        }
+      })
+      this.opened = true ;
+    }
 
   }
 

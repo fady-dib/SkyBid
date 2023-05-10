@@ -14,9 +14,10 @@ import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests
 import { AuthGuard } from './auth/auth.guard';
 import { NotAuthGuard } from './auth/not-auth.guard';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 const routes = [
-  {path: 'chat', component: ChatComponentComponent },
+  {path: 'chat', component: ChatComponent },
   {path : 'login', component: LoginComponent, canActivate: [NotAuthGuard]},
   {path:'', component: LandingPageComponent,canActivate: [NotAuthGuard]},
   {path:'register', component: RegisterComponent,canActivate: [NotAuthGuard]},
@@ -28,7 +29,7 @@ const routes = [
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
   {path: 'broker-requests', component: BrokerRequestsComponent,canActivate: [AuthGuard],data: {allowed_role:['broker']}},
-  {path: 'messages', component : MessagesComponent, canActivate : [AuthGuard] , data: {allowed_role : ['broker','operator']}}
+  {path: 'messages', component : MessagesComponent, canActivate : [AuthGuard] , data: {allowed_role : ['broker','operator']}},
 ];
 
 

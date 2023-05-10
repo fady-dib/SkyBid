@@ -40,6 +40,7 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 import { UploadsModule } from '@progress/kendo-angular-upload';
 import { CommentComponent } from './components/comment/comment.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -70,6 +71,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
     AgreementComponent,
     CommentComponent,
     MessagesComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
