@@ -116,6 +116,14 @@ module.exports = function (io) {
                 receiver_socket.join(new_chat._id.toString())
               }
               io.to(new_chat._id.toString()).emit('chatMessage', new_chat.messages);
+              const notification = new Notification({
+                sender: broker,
+                receiver: receiver_socket,
+                type: "request",
+                notification: "You have received a new message"
+            })
+            await notification.save()
+            socket.broadcast.to(request_id.toString()).emit('notification', notification.notification);
             }
         }
         catch (error) {
