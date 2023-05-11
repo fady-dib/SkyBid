@@ -235,7 +235,33 @@ module.exports = function (io) {
         })
 
 
-
+        socket.on("updateRequest", async (req) => {
+            try{
+            const request_id = req.request_id
+            if(!request_id) return " Invalid request ID"
+            const update_request = await Request.findOneAndUpdate(
+                {_id : request_id},
+                {$set : {status: 'closed'}}
+            );
+            if (!update_request) {
+                return "Request not found";
+              }
+              const operators = await User.find({ role: 'operator' });
+            const notification = new Notification({
+                sender: socket.user._id,
+                receiver: operators.map(operator => operator._id),
+                type: "request",
+                notification: `A request has been closed`
+            });
+            await notification.save();
+            
+            io.to(request_id.toString()).emit('notification', notification.notification)
+            const requests = await Request.find({status : 'pending'}).populate('broker');
+            io.emit('getRequests', requests);
+            }catch (error) {
+                console.error("Error in createRequest event:", error);
+            }
+        })
 
     });
 }
