@@ -55,6 +55,10 @@ export class SocketService {
     })
   }
 
+  public updateRequest = (request_id) => {
+    this.socket.emit('updateRequest',{ request_id})
+  }
+
   public getNotification = () => {
     console.log('socket service getNotification called');
     this.socket.on("notification", (notification)=> {
