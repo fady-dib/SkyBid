@@ -1,5 +1,5 @@
 <form>
-  <p *ngIf="to" class="message">Send message to {{to}}</p>
+  <p [ngClass]="{'message': class, 'confirmation': !class}">{{label}}</p>
 <div class="mb-3">
     <!-- <label for="message" class="form-label">Message</label> -->
     <textarea class="form-control" [(ngModel)]="model.msg" name="message" id="message" rows="4" [placeholder]="placeholder" [readOnly]="readonly"></textarea>

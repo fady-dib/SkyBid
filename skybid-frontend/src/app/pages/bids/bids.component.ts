@@ -39,7 +39,7 @@ export class BidsComponent implements OnInit {
       });
   }
 
-  data : { from : string, to:string, trip: string}
+  data : { from : string, to:string, trip: string,bids:[{operator : {company_name : string}}]}
   loading;
   mySelection: number[] = [];
   clickedItem: Request;
@@ -111,12 +111,12 @@ export class BidsComponent implements OnInit {
     const confirmDialog = this.windowService.open({
       content: ConfirmationComponent,
       top: window.innerHeight / 2 - 150,
-      height: 330,
-      width : 400,
+      height: 400,
+      width : 510,
       titleBarContent: this.windowTitleBar,
     });
 
-    let confirmation_text = `Are you sure you want to accept the bid ${this.selectedDataItem.price} USD`
+    let confirmation_text = `Are you sure you want to accept this bid: ${this.selectedDataItem.price} USD`
 
 
     let confirmDialogCmp: ComponentRef<ConfirmationComponent> = confirmDialog.content;
@@ -124,6 +124,7 @@ export class BidsComponent implements OnInit {
     confirmDialogCmp.instance.from = this.data.from
     confirmDialogCmp.instance.to = this.data.to
     confirmDialogCmp.instance.trip = this.data.trip
+    confirmDialogCmp.instance.operator = this.data.bids[0].operator.company_name
   
     confirmDialog.result.subscribe(() => {
       this.opened =true

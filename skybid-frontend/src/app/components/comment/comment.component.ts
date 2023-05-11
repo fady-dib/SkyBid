@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WindowRef } from '@progress/kendo-angular-dialog';
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { SocketService } from 'src/app/services/socket.service';
@@ -8,7 +8,13 @@ import { SocketService } from 'src/app/services/socket.service';
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css']
 })
-export class CommentComponent {
+export class CommentComponent implements OnInit {
+
+  ngOnInit(): void {
+  if(!this.label){
+    this.label = `Send message to ${this.to}`
+  }
+  }
 
   constructor(
     private socketService : SocketService,
@@ -26,6 +32,13 @@ export class CommentComponent {
   @Input() readonly = false
   @Input() placeholder : string = "Type your message"
   to : string
+  @Input() label : string 
+  @Input() class : boolean = true
+  // ngOnChanges(): void {
+  //   if (!this.label) {
+  //     this.label = `Send message to ${this.to}`;
+  //   }
+  // }
 
   send(){
     this.socketService.sendMessage(this.model)

@@ -25,4 +25,8 @@
 .information-body{
     margin:2%;
     margin-bottom: 8%;
+    margin-top: 2%;
+    font-weight: bold;
+    color:var(--darkblue);
+    font-size: 1.1rem;
 }

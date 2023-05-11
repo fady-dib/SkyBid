@@ -11,6 +11,7 @@ export class ConfirmationComponent implements OnInit {
 
   ngOnInit(): void {
     this.textArea = `Bid accepted on a ${this.trip} request from ${this.from} to ${this.to} `
+    this.label = `This message will be sent to ${this.operator}`
   }
 
   constructor(private windowRef : WindowRef) {
@@ -21,12 +22,13 @@ export class ConfirmationComponent implements OnInit {
     this.windowRef.close();
   }
 
-  message : string
-  result : boolean
-  from : string
-  to :string
-  trip : string
-
-  textArea :string
+  message : string;
+  result : boolean;
+  from : string;
+  to :string;
+  trip : string;
+  label : string;
+  operator : string;
+  textArea :string;
 
 }

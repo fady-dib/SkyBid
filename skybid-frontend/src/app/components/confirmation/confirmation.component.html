@@ -1,9 +1,9 @@
 <div class="window-information">
     <p class="information-body" [innerHTML]="message">
     </p>
-    <app-comment [placeholder]="textArea"[button]="false" [readonly]="true"></app-comment>
+    <app-comment [placeholder]="textArea"[button]="false" [readonly]="true" [label]="label" [class]="false"></app-comment>
     <div class="buttons">
-        <button kendoButton (click)="onClose(true)" class="yes" >Accept</button>
+        <button kendoButton (click)="onClose(true)" class="yes" >Yes</button>
         <button kendoButton (click)="onClose(false)" class="no" >No</button>
         <div>
 </div>
