@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NotificationService, Position } from '@progress/kendo-angular-notification';
 import { Chat } from 'src/app/models/chat';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
@@ -21,7 +22,8 @@ export class ChatComponent implements OnInit {
 
   constructor(
     private apiService : ApiService,
-    private socketService : SocketService
+    private socketService : SocketService,
+    private notificationService : NotificationService
   ){}
 
   getChats() {
@@ -65,7 +67,7 @@ public chatBox: ElementRef;
   chat_id : string
 
   messages 
-  
+  notifPos : Position = { vertical: 'top', horizontal:'center'}
 
   sendMessage(){
     this.socketService.sendMessage(this.model)

@@ -11,6 +11,6 @@
   <div class="chat-input">
     <input type="text" [(ngModel)]="model.msg" name="msg" class="form-control" id="msg"
     required placeholder="Type a message">
-    <button (click)="sendMessage()">Send</button>
+    <button class="btn" [disabled]="!this.model.msg  || this.model.msg.trim() === ''" (click)="sendMessage()">Send</button>
   </div>
 </div>
