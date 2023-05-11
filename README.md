@@ -83,8 +83,5 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    npm install
    ```
-4. Enter  in `config.js`
-   ```js
-   ```
 
 Now, you should be able to run SkyBid locally and explore its features.
