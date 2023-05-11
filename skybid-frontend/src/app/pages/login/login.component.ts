@@ -48,6 +48,13 @@ login() {
   //   alert('Minimum password length is 8 character and should contain at least one lowercase, one uppercase, one')
   // }
   this.apiService.login(this.model).subscribe(data => {
+    if(data.message == 'Invalid credentials'){
+      this.notificationService.show({
+        content: "Invalid credentials",
+        type: {style: 'warning'},
+        position: this.notifPos
+      })
+    }
     console.log('token', data.token);
     console.log('role', data.role);
     localStorage.setItem('token', data.token )
@@ -56,6 +63,15 @@ login() {
     if(data.role == "operator") this.router.navigate(['/request-list'])
     if(data.role == "broker") this.router.navigate(['broker-requests'])
     
+  },
+  error => {
+    if (error.status === 400) {
+      this.notificationService.show({
+        content: "Invalid credentials",
+        type: {style: 'warning'},
+        position: this.notifPos
+      });
+    }
   });
   
 
