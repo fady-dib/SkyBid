@@ -111,7 +111,7 @@ onDblClick() {
     const windowRef = this.windowService.open({
       title : `REQUEST DETAILS`,
       content: RequestDetailComponent,
-      width :635,
+      width :660,
       top : 100
     });
     let windowRefCmp : ComponentRef<RequestDetailComponent> = windowRef.content;
