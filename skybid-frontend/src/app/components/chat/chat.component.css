@@ -18,7 +18,7 @@
     padding: 10px;
     border-radius: 0.375rem;
     margin-bottom: 10px;
-    font-size: 0.9em;
+    font-size: 1rem;
     line-height: 1.4;
     word-wrap: break-word;
   }
@@ -67,8 +67,10 @@
   }
   
   .timestamp {
-  font-size: 0.8em;
-  color:#a3a8aa;
+  font-size: 0.7rem;
+  color: white;
+  font-style: italic;
+  opacity: 0.5;
   /* margin-left: 5px; */
 }
 /* .sent .timestamp{
