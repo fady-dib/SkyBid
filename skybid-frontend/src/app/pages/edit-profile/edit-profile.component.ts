@@ -17,9 +17,12 @@ export class EditProfileComponent implements OnInit {
   getUser(){
     this.apiService.getUser().subscribe(data => {
       this.model = data
+      this.original_model = {...this.model};
       console.log(data)
     })
   }
+
+  original_model;
 
   constructor(
     private apiService : ApiService,
@@ -30,6 +33,16 @@ export class EditProfileComponent implements OnInit {
   notifPos : Position = { vertical: 'top', horizontal:'center'}
 
   update(){
+
+    if (JSON.stringify(this.model) === JSON.stringify(this.original_model)) {
+      this.notificationService.show({
+        content: 'No changes detected',
+        type: {style: 'warning'},
+        position: this.notifPos
+      });
+      return;
+    }
+
     if (this.model.password !== this.model.confirm_password) {
       this.notificationService.show({
         content: 'Passwords do not match',
