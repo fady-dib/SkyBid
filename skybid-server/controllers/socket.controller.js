@@ -96,7 +96,7 @@ module.exports = function (io) {
                     message : msg.msg,
                 });
                 await chat.save();
-                io.to(chat._id.toString()).emit('chatMessage', { msg, sender: sender });
+                io.to(chat._id.toString()).emit('chatMessage', chat.messages);
             }
             else{
                 const new_chat = new Chat({
@@ -115,7 +115,7 @@ module.exports = function (io) {
                 console.log(receiver_socket)
                 receiver_socket.join(new_chat._id.toString())
               }
-              io.to(new_chat._id.toString()).emit('chatMessage', { msg, sender: sender });
+              io.to(new_chat._id.toString()).emit('chatMessage', new_chat.messages);
             }
         }
         catch (error) {
