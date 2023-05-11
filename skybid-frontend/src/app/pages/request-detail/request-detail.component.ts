@@ -4,7 +4,7 @@ import { Request } from 'src/app/models/request';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
 import { Subscription, finalize } from 'rxjs';
-import { orderBy } from '@progress/kendo-data-query';
+import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 import {AddBidComponent } from '../add-bid/add-bid.component';
 
@@ -32,7 +32,6 @@ export class RequestDetailComponent implements OnInit {
   request;
 
   gridData : GridDataResult;
-  sort = [] ;
   loading = false;
   request_id : string
   broker_id;
@@ -50,9 +49,15 @@ export class RequestDetailComponent implements OnInit {
       this.model = data
       console.log(this.model)
       // this.model.bids.sort((a, b) => a.price - b.price);
-      this.gridData = { data: this.model.bids, total: this.model.bids.length };
+      const sortedBids = orderBy(this.model.bids, this.sort);
+      this.gridData = { data: sortedBids, total: sortedBids.length };
     })
   }
+
+  private sort: SortDescriptor[] = [{
+    field: 'price',
+    dir: 'asc'
+  }];
 
 
   formatDate(date: Date): string {
