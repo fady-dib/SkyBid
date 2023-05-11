@@ -10,14 +10,14 @@
 > SkyBid seeks to revolutionize the private jet charter industry by offering a seamless, user-friendly platform that enables operators and brokers to engage in real-time bidding for charter flights. Our mission is to optimize the booking experience, save time, and ensure the utmost satisfaction for all parties involved in the private aviation sector..
 
 ### User Stories
-- As a User I want to register so that i can benefit from the features the platform provide
-- As a user i want to login to my account so that i can access my personal inforamtion and use the features of the platform
-- As a user i want to edit my profile so that i can update it whenever something changes or needs to be corrected.
+- As a user I want to edit my profile so that i can update it whenever something changes or needs to be corrected.
+- As a user I want to be able to contact other users so that i can negotiate in private conversations
 - As a broker I want to create a new request so that I can find available flights with best prices.
+- As a broker I want to accept a bid in order to secure the best price for my client and book the desired flight
 - As an operator I want to submit a bid in real-time so that I can have the best chance of winning the booking
 - As an operator I want to see the current highest bid in real-time, so that I can adjust my bid accordingly.
-- As an admin i want to monitor the number of users so that i can identify any issues or areas for improvement.
-- As an admin i want to monitor the bids placed so that i can identify any issues or areas for improvement.
+- As an admin I want to monitor the number of users so that i can identify any issues or areas for improvement.
+- As an admin I want to see the users details so that I can ensure compliance with platform policies 
 
 <br><br>
 
@@ -52,7 +52,7 @@
 - [Node.js](https://node.js.org/): A runtime environment executing JavaScript server-side, enabling the development of scalable, high-performance web applications.
 - [Express.js](https://expressjs.com/): A lightweight, adaptable web application framework that streamlines Node.js server creation and effortlessly manages backend communication.
 - [Socket.IO](https://socket.io/): A real-time bidirectional event-based communication library, facilitating live data updates between operators and brokers.
-  - 🚨 Currently, we are focusing on implementing a messaging system between operators and brokers to enhance real-time communication within the platform. We are committed to resolving any existing issues and delivering a smooth, user-friendly experience for all.
+
 - The app uses the font ["Roboto"](https://fonts.google.com/specimen/Roboto) as its main font, and the design of the app adheres to the material design guidelines.
 
 <br><br>
@@ -82,9 +82,6 @@ _Below is an example of how you can instruct your audience on installing and set
 3. Install NPM packages
    ```sh
    npm install
-   ```
-4. Enter  in `config.js`
-   ```js
    ```
 
 Now, you should be able to run SkyBid locally and explore its features.
