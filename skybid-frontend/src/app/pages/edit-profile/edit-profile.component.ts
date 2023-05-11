@@ -30,6 +30,15 @@ export class EditProfileComponent implements OnInit {
   notifPos : Position = { vertical: 'top', horizontal:'center'}
 
   update(){
+    if (this.model.password !== this.model.confirm_password) {
+      this.notificationService.show({
+        content: 'Passwords do not match',
+        type: {style: 'warning'},
+        position: this.notifPos
+      });
+      return;
+    }
+
 this.apiService.updateProfile(this.model).subscribe(() => {
   this.notificationService.show({
     content: 'Your profile has been updated successfully',
