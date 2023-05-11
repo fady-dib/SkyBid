@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WindowRef } from '@progress/kendo-angular-dialog';
+import { NotificationService } from '@progress/kendo-angular-notification';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
 
@@ -32,15 +33,25 @@ windowRef : WindowRef
 
   constructor(
     private apiService : ApiService,
-    private socketService : SocketService
+    private socketService : SocketService,
+    private notificationService : NotificationService
    
   ){}
 
+  lowest_bid : number
+
   model = {
     aircraft: '',
-    price: ''
+    price: null
   }
   add(){
+    if (this.model.price >= this.lowest_bid) {
+      this.notificationService.show({
+        content: 'Your bid cannot be higher or equal the lowest bid',
+        type: { style: 'warning' }
+      })
+      return;
+    }
  this.socketService.addBid(this.model,this.request)
  this.windowRef.close()
 
