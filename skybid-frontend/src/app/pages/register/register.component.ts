@@ -92,6 +92,15 @@ const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return
   }
 
+  if (this.model.password !== this.model.confirm_password) {
+    this.notificationService.show({
+      content: 'Passwords do not match',
+      type: {style: 'warning'},
+      position: this.notifPos
+    });
+    return;
+  }
+
   this.apiService.register(this.model).subscribe(() => {
   this.router.navigate(['login'])
   });
