@@ -103,7 +103,15 @@ const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
   this.apiService.register(this.model).subscribe(() => {
   this.router.navigate(['login'])
-  });
+  },  error => {
+    if (error.status === 409) {
+      this.notificationService.show({
+        content: "Email already exists",
+        type: {style: 'warning'},
+        position: this.notifPos
+      });
+    }
+  })
 
 }
 
