@@ -96,7 +96,6 @@ export class MessagesComponent {
         title : `${this.clickedItem.users.company_name}`,
         content: ChatComponent,
         width :635,
-        top : 100,
         height: 650
       });
       let windowRefCmp : ComponentRef<ChatComponent> = windowRef.content;
