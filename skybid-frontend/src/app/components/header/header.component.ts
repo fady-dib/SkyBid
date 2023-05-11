@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit{
 
   setUserData() {
     this.userData = [
-      { text: 'Edit Profile',icon:'track-changes-enable', action: 'editProfile' },
+      { text: 'Edit',icon:'track-changes-enable', action: 'editProfile' },
       { text: 'Logout', icon:'logout', action: 'logout' },
     ];
 
