@@ -83,7 +83,11 @@ add(){
   windowRefCmp.instance.request.request_id = this.model._id
     windowRefCmp.instance.request.broker_id = this.model.broker._id
     windowRefCmp.instance.windowRef = windowRef
-    windowRefCmp.instance.lowest_bid = this.gridData.data[0].price
+    console.log(this.gridData.data);
+    if (this.gridData && this.gridData.data && this.gridData.data.length > 0) {
+      windowRefCmp.instance.lowest_bid = this.gridData.data[0].price;
+    } 
+    
 
   windowRef.result.subscribe((result) => {
     if(result instanceof WindowCloseResult) {

@@ -45,7 +45,7 @@ windowRef : WindowRef
     price: null
   }
   add(){
-    if (this.model.price >= this.lowest_bid) {
+    if (this.lowest_bid && this.model.price >= this.lowest_bid) {
       this.notificationService.show({
         content: 'Your bid cannot be higher or equal the lowest bid',
         type: { style: 'warning' }
