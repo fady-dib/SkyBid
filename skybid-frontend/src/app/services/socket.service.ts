@@ -45,7 +45,6 @@ export class SocketService {
     this.socket.on('chatMessage', (message) =>{
       this.message.next(message);
     });
-    // return this.message.asObservable();
   };
 
   public getRequests = () => {

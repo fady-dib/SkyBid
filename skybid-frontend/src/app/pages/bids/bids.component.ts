@@ -3,7 +3,7 @@ import { WindowCloseResult, WindowRef, WindowService } from '@progress/kendo-ang
 import { CellClickEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
-import { BehaviorSubject, combineLatest, finalize } from 'rxjs';
+import { BehaviorSubject, finalize } from 'rxjs';
 import { AgreementComponent } from 'src/app/components/agreement/agreement.component';
 import { CommentComponent } from 'src/app/components/comment/comment.component';
 import { ConfirmationComponent } from 'src/app/components/confirmation/confirmation.component';
@@ -126,58 +126,30 @@ export class BidsComponent implements OnInit {
     confirmDialogCmp.instance.to = this.data.to
     confirmDialogCmp.instance.trip = this.data.trip
     confirmDialogCmp.instance.operator = this.data.bids[0].operator.company_name
-
-    let messageEvent$ = confirmDialogCmp.instance.messageEvent;
-
-let resultEvent$ = confirmDialog.result;
-
-combineLatest([messageEvent$, resultEvent$]).subscribe(([message, result]) => {
-  this.opened = true;
-  if (result) {
-    this.loading = true;
-    this.socketService.updateRequest(this.request_id);
-    this.windowRef.close();
-    model.msg = message;
-    if (!model.msg) {
-      console.log('Cannot send empty message');
-      return;
-    }
-    this.socketService.sendMessage(model);
-    this.notificationService.show({
-      content: 'Message sent successfully',
-      type: { style: 'success' }
+  
+    confirmDialogCmp.instance.messageEvent.subscribe((message) => {
+      model.msg = message;
     });
-    this.getBids();
-  }
-  this.opened = false;
-});
-
   
-    // confirmDialogCmp.instance.messageEvent.subscribe((message) => {
-    //   console.log('Received message: ', message);
-    //   model.msg = message;
-    // });
-  
-    // confirmDialog.result.subscribe(() => {
-    //   this.opened = true
-    //   if (confirmDialogCmp.instance.result) {
-    //     this.loading = true
-    //     this.socketService.updateRequest(this.request_id)
-    //           this.windowRef.close()
-    //           if (!model.msg) {
-    //             console.log('Cannot send empty message');
-    //             return;
-    //           }
-    //           this.socketService.sendMessage(model)
-    //           this.notificationService.show({
-    //             content: 'Message sent successfully',
-    //             type: { style: 'success' }
-    //           })
-    //           this.getBids()
-            
-    //   }
-    //   this.opened = false
-    // });
+    confirmDialog.result.subscribe(() => {
+      this.opened = true
+      if (confirmDialogCmp.instance.result) {
+        this.loading = true
+        this.apiService.acceptBid(this.request_id).pipe(finalize(() => (this.loading = false)))
+          .subscribe(data => {
+            if (data.message == "Request closed") {
+              this.windowRef.close()
+              this.socketService.sendMessage(model)
+              this.notificationService.show({
+                content: 'Message sent successfully',
+                type: { style: 'success' }
+              })
+              this.getBids()
+            }
+          })
+      }
+      this.opened = false
+    });
   }
 
   get selectedDataItem() {

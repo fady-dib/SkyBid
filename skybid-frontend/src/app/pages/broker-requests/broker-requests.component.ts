@@ -119,9 +119,16 @@ export class BrokerRequestsComponent implements OnInit {
     }
   }
 
+  get selectedDataItem() {
+    if (this.mySelection.length > 0)
+      return this.requests.find(c => c._id == this.mySelection[0])
+    else
+      return null;
+  }
+
   onDelete() {
 
-    if(!this.mySelection){
+    if(!this.selectedDataItem){
       this.notificationService.show({
           content: 'Select a request',
           type: { style: 'warning' }

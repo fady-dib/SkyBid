@@ -33,6 +33,7 @@
     align-self: flex-start;
     background-color: var(--blue);
     color: white;
+   
   }
   
   .chat-input {
@@ -73,3 +74,4 @@
 /* .sent .timestamp{
     color : var(--blue)
 } */
+
