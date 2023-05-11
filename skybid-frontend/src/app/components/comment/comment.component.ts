@@ -34,11 +34,7 @@ export class CommentComponent implements OnInit {
   to : string
   @Input() label : string 
   @Input() class : boolean = true
-  // ngOnChanges(): void {
-  //   if (!this.label) {
-  //     this.label = `Send message to ${this.to}`;
-  //   }
-  // }
+
 
   send(){
     this.socketService.sendMessage(this.model)

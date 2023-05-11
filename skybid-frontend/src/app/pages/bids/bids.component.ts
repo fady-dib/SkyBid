@@ -39,7 +39,7 @@ export class BidsComponent implements OnInit {
       });
   }
 
-  data : { from : string, to:string, trip: string,bids:[{operator : {company_name : string}}]}
+  data : { from : string, to:string, trip: string,bids:[{operator : {company_name : string, _id:string}}]}
   loading;
   mySelection: number[] = [];
   clickedItem: Request;
@@ -105,20 +105,21 @@ export class BidsComponent implements OnInit {
       })
       return;
     }
-    this.opened =true;
+    this.opened = true;
     this.dialog_title = 'Confirmation';
-
+  
     const confirmDialog = this.windowService.open({
       content: ConfirmationComponent,
       top: window.innerHeight / 2 - 150,
       height: 400,
-      width : 510,
+      width: 510,
       titleBarContent: this.windowTitleBar,
     });
-
+  
     let confirmation_text = `Are you sure you want to accept this bid: ${this.selectedDataItem.price} USD`
-
-
+  
+    let model ={msg : "", receiver : this.data.bids[0].operator._id}
+  
     let confirmDialogCmp: ComponentRef<ConfirmationComponent> = confirmDialog.content;
     confirmDialogCmp.instance.message = confirmation_text
     confirmDialogCmp.instance.from = this.data.from
@@ -126,41 +127,28 @@ export class BidsComponent implements OnInit {
     confirmDialogCmp.instance.trip = this.data.trip
     confirmDialogCmp.instance.operator = this.data.bids[0].operator.company_name
   
+    confirmDialogCmp.instance.messageEvent.subscribe((message) => {
+      model.msg = message;
+    });
+  
     confirmDialog.result.subscribe(() => {
-      this.opened =true
+      this.opened = true
       if (confirmDialogCmp.instance.result) {
         this.loading = true
         this.apiService.acceptBid(this.request_id).pipe(finalize(() => (this.loading = false)))
-        .subscribe(data => {
-          // if (data.message == "Request closed") {
-          //   this.windowRef.close()
-          //   this.opened=true
-          //   console.log(this.opened) ;
-          //   const windowRef = this.windowService.open({
-          //     title : 'Congratulations',
-          //     content : AgreementComponent,
-          //     width : 635,
-          //   })
-          //   let windowRefCmp : ComponentRef<AgreementComponent> = windowRef.content;
-          //   windowRefCmp.instance.model = this.selectedDataItem.operator
-          //   console.log(this.selectedDataItem)
-
-          //   windowRef.result.subscribe((result) => {
-          //     if(result instanceof WindowCloseResult) {
-          //       this.opened = false;
-          //       this.getBids();
-          //     }
-              
-          //   })
-           
-          // }
-          this.getBids()
-          
-        })
+          .subscribe(data => {
+            if (data.message == "Request closed") {
+              this.socketService.sendMessage(model)
+              this.notificationService.show({
+                content: 'Message sent successfully',
+                type: { style: 'success' }
+              })
+              this.getBids()
+            }
+          })
       }
       this.opened = false
-    })
-    
+    });
   }
 
   get selectedDataItem() {

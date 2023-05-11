@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { WindowRef } from '@progress/kendo-angular-dialog';
 
 @Component({
@@ -20,7 +20,10 @@ export class ConfirmationComponent implements OnInit {
   onClose(result) {
     this.result = result;
     this.windowRef.close();
+    this.messageEvent.emit(this.textArea)
   }
+
+  @Output() messageEvent = new EventEmitter<string>();
 
   message : string;
   result : boolean;
