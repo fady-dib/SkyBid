@@ -21,6 +21,7 @@ export class CommentComponent {
   }
 
   windowRef : WindowRef
+  @Input() button = true
 
   @Input() readonly = false
   @Input() placeholder : string = "Type your message"

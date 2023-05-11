@@ -33,11 +33,13 @@ export class BidsComponent implements OnInit {
       .getRequestbyId(this.request_id)
       .pipe(finalize(() => (this.loading = false)))
       .subscribe((data) => {
+        this.data = data
         this.sortBids(data.bids);
         this.loadItems();
       });
   }
 
+  data : { from : string, to:string, trip: string}
   loading;
   mySelection: number[] = [];
   clickedItem: Request;
@@ -93,6 +95,8 @@ export class BidsComponent implements OnInit {
   public windowTitleBar: TemplateRef<any>;
   windowRef : WindowRef
 
+  
+
   accept() {
     if (!this.selectedDataItem) {
       this.notificationService.show({
@@ -107,15 +111,19 @@ export class BidsComponent implements OnInit {
     const confirmDialog = this.windowService.open({
       content: ConfirmationComponent,
       top: window.innerHeight / 2 - 150,
-      height: 200,
+      height: 330,
+      width : 400,
       titleBarContent: this.windowTitleBar,
     });
 
-    let confirmation_text = `Are you sure you want to accept the bid ${this.selectedDataItem.price}`
+    let confirmation_text = `Are you sure you want to accept the bid ${this.selectedDataItem.price} USD`
 
 
     let confirmDialogCmp: ComponentRef<ConfirmationComponent> = confirmDialog.content;
     confirmDialogCmp.instance.message = confirmation_text
+    confirmDialogCmp.instance.from = this.data.from
+    confirmDialogCmp.instance.to = this.data.to
+    confirmDialogCmp.instance.trip = this.data.trip
   
     confirmDialog.result.subscribe(() => {
       this.opened =true
@@ -123,29 +131,29 @@ export class BidsComponent implements OnInit {
         this.loading = true
         this.apiService.acceptBid(this.request_id).pipe(finalize(() => (this.loading = false)))
         .subscribe(data => {
-          if (data.message == "Request closed") {
-            this.windowRef.close()
-            this.opened=true
-            console.log(this.opened) ;
-            const windowRef = this.windowService.open({
-              title : 'Congratulations',
-              content : AgreementComponent,
-              width : 635,
-            })
-            let windowRefCmp : ComponentRef<AgreementComponent> = windowRef.content;
-            windowRefCmp.instance.model = this.selectedDataItem.operator
-            console.log(this.selectedDataItem)
+          // if (data.message == "Request closed") {
+          //   this.windowRef.close()
+          //   this.opened=true
+          //   console.log(this.opened) ;
+          //   const windowRef = this.windowService.open({
+          //     title : 'Congratulations',
+          //     content : AgreementComponent,
+          //     width : 635,
+          //   })
+          //   let windowRefCmp : ComponentRef<AgreementComponent> = windowRef.content;
+          //   windowRefCmp.instance.model = this.selectedDataItem.operator
+          //   console.log(this.selectedDataItem)
 
-            windowRef.result.subscribe((result) => {
-              if(result instanceof WindowCloseResult) {
-                this.opened = false;
-                this.getBids();
-              }
+          //   windowRef.result.subscribe((result) => {
+          //     if(result instanceof WindowCloseResult) {
+          //       this.opened = false;
+          //       this.getBids();
+          //     }
               
-            })
+          //   })
            
-          }
-
+          // }
+          this.getBids()
           
         })
       }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WindowRef } from '@progress/kendo-angular-dialog';
 
 @Component({
@@ -6,7 +6,12 @@ import { WindowRef } from '@progress/kendo-angular-dialog';
   templateUrl: './confirmation.component.html',
   styleUrls: ['./confirmation.component.css']
 })
-export class ConfirmationComponent {
+export class ConfirmationComponent implements OnInit {
+
+
+  ngOnInit(): void {
+    this.textArea = `Bid accepted on a ${this.trip} request from ${this.from} to ${this.to} `
+  }
 
   constructor(private windowRef : WindowRef) {
   }
@@ -18,5 +23,10 @@ export class ConfirmationComponent {
 
   message : string
   result : boolean
+  from : string
+  to :string
+  trip : string
+
+  textArea :string
 
 }
