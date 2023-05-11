@@ -52,7 +52,7 @@
 - [Node.js](https://node.js.org/): A runtime environment executing JavaScript server-side, enabling the development of scalable, high-performance web applications.
 - [Express.js](https://expressjs.com/): A lightweight, adaptable web application framework that streamlines Node.js server creation and effortlessly manages backend communication.
 - [Socket.IO](https://socket.io/): A real-time bidirectional event-based communication library, facilitating live data updates between operators and brokers.
-  - 🚨 Currently, we are focusing on implementing a messaging system between operators and brokers to enhance real-time communication within the platform. We are committed to resolving any existing issues and delivering a smooth, user-friendly experience for all.
+
 - The app uses the font ["Roboto"](https://fonts.google.com/specimen/Roboto) as its main font, and the design of the app adheres to the material design guidelines.
 
 <br><br>
