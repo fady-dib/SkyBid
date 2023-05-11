@@ -72,10 +72,20 @@ if (validations.length > 0) {
   return;
 }
 const emailRegex = new RegExp('^[^\s@]+@[^\s@]+\.[^\s@]+$');
-  const passwordRegex = new RegExp('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$')
+const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
   if(!emailRegex.test(this.model.email)){
     this.notificationService.show({
       content: "Email is invalid",
+      type: {style: 'warning'},
+      position: this.notifPos
+    })
+    return
+  }
+
+  if(!passwordRegex.test(this.model.password)){
+    this.notificationService.show({
+      content: "The password must contain at least one digit, one special character, one lowercase letter, one uppercase letter, and have a minimum length of 8 characters. ",
       type: {style: 'warning'},
       position: this.notifPos
     })
