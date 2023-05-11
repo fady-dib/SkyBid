@@ -102,12 +102,6 @@
     width: 120px;
     transition: margin 0.3s ease-in-out;
   }
-
-  .app-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-  
   .page-container {
     display: flex;
     flex-grow: 1;

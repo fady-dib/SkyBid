@@ -19,7 +19,7 @@ kendoGridSelectBy="_id"
 [(selectedKeys)]="mySelection"
 (dblclick)="onDblClick()"
 >
-<kendo-grid-checkbox-column [width]="20" [showSelectAll]="true">
+<kendo-grid-checkbox-column [width]="10" [showSelectAll]="true">
 </kendo-grid-checkbox-column>
 <ng-template kendoPagerTemplate
                          let-total="total">
@@ -34,7 +34,7 @@ kendoGridSelectBy="_id"
         </ng-template>
 <kendo-grid-column field="broker.company_name"
                                title="Broker"
-                               [width]="50"
+                               [width]="40"
                                [class]="{'text-right': true}"
                                [headerClass]="{'text-center': true}">
                                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
@@ -43,7 +43,7 @@ kendoGridSelectBy="_id"
             </kendo-grid-column>
             <kendo-grid-column field="from"
                                title="From"
-                               [width]="40"
+                               [width]="60"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-center': true}">
                                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
@@ -52,7 +52,7 @@ kendoGridSelectBy="_id"
             </kendo-grid-column>
             <kendo-grid-column field="to"
                                title="To"
-                               [width]="40"
+                               [width]="60"
                                [class]="{'text-left': true}"
                                [headerClass]="{'text-left': true}">
                                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">

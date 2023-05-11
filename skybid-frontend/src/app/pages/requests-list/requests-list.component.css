@@ -1,6 +1,6 @@
 .requests-container{
     display:flex;
-    height : 100vh
+    height : 100vh;
 }
 .title{
     margin: 2% 2%
@@ -11,6 +11,7 @@
 
 .requests-content{
     color:var(--darkblue);
+    padding: 1%;
 }
 
 .k-table-row{

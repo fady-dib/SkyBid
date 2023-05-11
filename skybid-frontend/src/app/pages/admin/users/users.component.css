@@ -1,4 +1,4 @@
-.requests-container{
+.users-container{
     display:flex;
     height : 100vh
 }
@@ -9,8 +9,9 @@
     margin:5% 2%
 }
 
-.requests-content{
+.users-content{
     color:var(--darkblue);
+    padding:1%
 }
 
 .k-table-row{

@@ -1,15 +1,20 @@
-.requests-container{
+.dashboard-container{
     display:flex;
     height: calc(100vh - 100px);
   }
   
   .chart{
-    margin-left : 20%;
+    margin-left : 15%;
     margin-bottom: 7%;
   }
   
   .dashboard{
     font-size: 1.5rem;
-    margin: 10%;
-    color: var(--darkblue)
+    margin: 2% 2%;
+    color: var(--darkblue);
+    margin-bottom : 5%
+  }
+
+  .dashboard-content{
+    padding: 1%;
   }
