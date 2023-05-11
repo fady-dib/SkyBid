@@ -9,6 +9,7 @@ import { CommentComponent } from 'src/app/components/comment/comment.component';
 import { ConfirmationComponent } from 'src/app/components/confirmation/confirmation.component';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
+import { CommonModule, DecimalPipe, NumberFormatStyle } from '@angular/common';
 
 @Component({
   selector: 'app-bids',
@@ -24,7 +25,8 @@ export class BidsComponent implements OnInit {
     private apiService: ApiService,
     private windowService: WindowService,
     private notificationService : NotificationService,
-    private socketService : SocketService
+    private socketService : SocketService,
+    private decimalPipe: DecimalPipe
   ) { }
 
   getBids() {
@@ -116,7 +118,7 @@ export class BidsComponent implements OnInit {
       titleBarContent: this.windowTitleBar,
     });
   
-    let confirmation_text = `Are you sure you want to accept this bid: ${this.selectedDataItem.price} USD`
+    let confirmation_text = `Are you sure you want to accept this bid: USD ${this.decimalPipe.transform(this.selectedDataItem.price)}`
   
     let model ={msg : "", receiver : this.data.bids[0].operator._id}
   

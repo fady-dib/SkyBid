@@ -3,7 +3,7 @@
     </p>
     <app-comment [placeholder]="textArea"[button]="false" [readonly]="true" [label]="label" [class]="false"></app-comment>
     <div class="buttons">
-        <button kendoButton (click)="onClose(true)" class="yes" >Yes</button>
-        <button kendoButton (click)="onClose(false)" class="no" >No</button>
+        <button (click)="onClose(true)" class="yes btn" >Yes</button>
+        <button (click)="onClose(false)" class="no btn" >No</button>
         <div>
 </div>

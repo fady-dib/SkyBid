@@ -40,6 +40,7 @@ import { UploadsModule } from '@progress/kendo-angular-upload';
 import { CommentComponent } from './components/comment/comment.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { DecimalPipe } from '@angular/common';
 
 
 
@@ -94,7 +95,7 @@ import { ChatComponent } from './components/chat/chat.component';
     useFactory: () => {
        return { nativeElement: document.body } as ElementRef;
     },
-  }, [DatePipe] ,CurrencyPipe],
+  }, [DatePipe] ,CurrencyPipe, DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

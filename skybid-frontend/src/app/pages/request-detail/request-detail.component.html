@@ -73,11 +73,11 @@
             </kendo-grid-column>
             <kendo-grid-column field="price"
             title="Bid"
-            [width]="60"
+            [width]="80"
             [class]="{'text-left': true}"
             [headerClass]="{'text-left': true}">
             <ng-template kendoGridCellTemplate let-dataItem>
-                <span class="currency-symbol">USD</span> {{dataItem.price }}
+                <span class="currency-symbol">USD</span> {{dataItem.price | number}}
               </ng-template>
 </kendo-grid-column>
 </kendo-grid>
