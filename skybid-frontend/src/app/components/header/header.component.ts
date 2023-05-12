@@ -18,14 +18,10 @@ export class HeaderComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-    // this.getNotification()
     this.setUserData()
   }
 
   user_role = this.authService.getUserRole()
-
-  notifications : string[] = ['jhjjgjhgjgjkgjkgjghjkgjghgjg'];
-  notificationData : ListItemModel [] =[{text: 'Notifications'}]
 
   userData = []
 
@@ -35,7 +31,6 @@ export class HeaderComponent implements OnInit{
       case 'logout':
         localStorage.removeItem('token');
         localStorage.removeItem('role');
-        console.log('disconecting socket from logout')
         this.socketService.disconnect()
         this.router.navigate(['/login'] );
         break;

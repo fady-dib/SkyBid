@@ -25,7 +25,7 @@ export class SideMenuComponent implements OnInit {
     return this.router.url === route;
   }
 
-  is_loading = true
+  is_loading : boolean = true
 
 
 user_role = this.authService.getUserRole()

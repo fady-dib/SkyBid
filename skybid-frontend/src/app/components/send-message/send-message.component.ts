@@ -25,13 +25,11 @@ export class SendMessageComponent implements OnInit {
     msg : "",
     receiver : ""
   }
-
+  to : string
   windowRef : WindowRef
   @Input() button = true
-
   @Input() readonly = false
   @Input() placeholder : string = "Type your message"
-  to : string
   @Input() label : string 
   @Input() class : boolean = true
 
