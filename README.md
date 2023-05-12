@@ -64,6 +64,10 @@
 | Aircrafts screen | Add-aircraft screen | Request details screen | Add-bid screen |
 | ![Landing](./readme/implementation/aircrafts.png) | ![Landing](./readme/implementation/add-aircraft.png) | ![Landing](./readme/implementation/request-details.png) | ![Landing](./readme/implementation/add-bid.png) | 
 
+### Admin Screens
+| Dashboard screen | Users screen |
+| ---| ---|
+| ![Landing](./readme/implementation/dashboard.png) | ![Landing](./readme/implementation/admin-users.png) |
 
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
