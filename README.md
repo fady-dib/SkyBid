@@ -61,6 +61,8 @@
 | ![Landing](./readme/implementation/login.png) | ![Landing](./readme/implementation/edit-profile.png) | ![Landing](./readme/implementation/requests-broker.png) | ![Landing](./readme/implementation/requests-operator.png) | ![Landing](./readme/implementation/create-request.png)
 | Bids screen | Accept bid screen | Send message screen | Messages screen | Chat screen |
 | ![Landing](./readme/implementation/bids.png) | ![Landing](./readme/implementation/accept-bid.png) | ![Landing](./readme/implementation/send-message.png) | ![Landing](./readme/implementation/messages.png) | ![Landing](./readme/implementation/chat.png)
+| Aircrafts screen | Add-aircraft screen | Request details screen | Add-bid screen |
+| ![Landing](./readme/implementation/aircrafts.png) | ![Landing](./readme/implementation/add-aircraft.png) | ![Landing](./readme/implementation/request-details.png) | ![Landing](./readme/implementation/add-bid.png) | 
 
 
 <!-- Tech stack -->
