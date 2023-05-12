@@ -27,11 +27,13 @@
 > We designed SkyBid using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
-| Login screen  | Register screen | Aircrafts screen | Add aircraft screen | Create request screen | 
+| Login screen  | Register screen | Aircrafts screen | Add aircraft screen | Edit profile screen | 
 | ---| ---| ---| ---| --- |
-| ![Landing](./readme/wireframes/login-wireframe.png) | ![register](./readme/wireframes/register-wireframe.png) | ![aircrafts](./readme/wireframes/aircrafts-wireframe.png) | ![addaircraft](./readme/wireframes/add-aircraft.png) | ![fsdaf](./readme/wireframes/create-request-wireframe.png)
-| Landing screen | requests |
-|![fsdaf](./readme/wireframes/landing-page-wireframe.png) | ![fsdaf](./readme/wireframes/requests-broker.png)
+| ![Landing](./readme/wireframes/login-wireframe.png) | ![register](./readme/wireframes/register-wireframe.png) | ![aircrafts](./readme/wireframes/aircrafts-wireframe.png) | ![addaircraft](./readme/wireframes/add-aircraft.png) | ![fsdaf](./readme/wireframes/Edit-profile.png)
+| Requests screen | Create request screen | Add bid screen | Request details screen | Messages screen | 
+|![fsdaf](./readme/wireframes/requests-broker.png) | ![fsdaf](./readme/wireframes/create-request-wireframe.png) | ![fsdaf](./readme/wireframes/bids.png) | ![fsdaf](./readme/wireframes/request-details.png) | ![fsdaf](./readme/wireframes/messages.png)
+| Landing screen |
+![fsdaf](./readme/wireframes/landing-page-wireframe.png)
 
 ### Mockups
 | Home screen  | Register Screen | Login Screen |
