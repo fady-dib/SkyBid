@@ -36,9 +36,13 @@
 ![fsdaf](./readme/wireframes/landing-page-wireframe.png)
 
 ### Mockups
-| Home screen  | Register Screen | Login Screen |
-| ---| ---| ---|
-| ![Landing](./readme/landing page.png) | ![fsdaf](./readme/register.png) | ![fsdaf](./readme/login.png) | 
+| Login  | Register Screen | Aircrafts Screen | Add aircraft screen | Edit profile screen | 
+| ---| ---| ---| ---| --- |
+| ![Landing](./readme/mockups/login-mockup.png) | ![register](./readme/mockups/register-mockup.png) | ![aircrafts](./readme/mockups/Aircrafts.png) | ![addaircraft](./readme/mockups/add-aircraft.png) | ![fsdaf](./readme/mockups/edit-profile.png)
+| Requests screen | Create request screen | Add bid screen | Request details screen | Messages screen | 
+|![fsdaf](./readme/mockups/requests-broker.png) | ![fsdaf](./readme/mockups/create-request.png) | ![fsdaf](./readme/mockups/Add-bid.png) | ![fsdaf](./readme/mockups/request-details.png) | ![fsdaf](./readme/mockups/messages.png)
+| Landing screen |
+![fsdaf](./readme/mockups/landing-page.png)
 
 <br><br>
 
