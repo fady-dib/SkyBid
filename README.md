@@ -27,20 +27,49 @@
 > We designed SkyBid using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
-| Login screen  | Register screen |  Landing screen |
-| ---| ---| ---|
-| ![Landing](./readme/login-wireframe.png) | ![fsdaf](./readme/register-wireframe.png) | ![fsdaf](./readme/landing pagewireframe.png) |
+| Login screen  | Register screen | Aircrafts screen | Add aircraft screen | Edit profile screen | 
+| ---| ---| ---| ---| --- |
+| ![Landing](./readme/wireframes/login-wireframe.png) | ![register](./readme/wireframes/register-wireframe.png) | ![aircrafts](./readme/wireframes/aircrafts-wireframe.png) | ![addaircraft](./readme/wireframes/add-aircraft.png) | ![fsdaf](./readme/wireframes/Edit-profile.png)
+| Requests screen | Create request screen | Add bid screen | Request details screen | Messages screen | 
+|![fsdaf](./readme/wireframes/requests-broker.png) | ![fsdaf](./readme/wireframes/create-request-wireframe.png) | ![fsdaf](./readme/wireframes/bids.png) | ![fsdaf](./readme/wireframes/request-details.png) | ![fsdaf](./readme/wireframes/messages.png)
+| Landing screen |
+![fsdaf](./readme/wireframes/landing-page-wireframe.png)
 
 ### Mockups
-| Home screen  | Register Screen | Login Screen |
-| ---| ---| ---|
-| ![Landing](./readme/landing page.png) | ![fsdaf](./readme/register.png) | ![fsdaf](./readme/login.png) |
+| Login screen | Register screen | Aircrafts screen | Add aircraft screen | Edit profile screen | 
+| ---| ---| ---| ---| --- |
+| ![Landing](./readme/mockups/login-mockup.png) | ![register](./readme/mockups/register-mockup.png) | ![aircrafts](./readme/mockups/Aircrafts.png) | ![addaircraft](./readme/mockups/add-aircraft.png) | ![fsdaf](./readme/mockups/edit-profile.png)
+| Requests screen | Create request screen | Add bid screen | Request details screen | Messages screen | 
+|![fsdaf](./readme/mockups/requests-broker.png) | ![fsdaf](./readme/mockups/create-request.png) | ![fsdaf](./readme/mockups/Add-bid.png) | ![fsdaf](./readme/mockups/request-details.png) | ![fsdaf](./readme/mockups/messages.png)
+| Landing screen |
+![fsdaf](./readme/mockups/landing-page.png)
 
 <br><br>
 
 <!-- Implementation -->
 <img src="./readme/title4.svg"/>
 
+> Using the wireframes and mockups as a guide, we implemented the SkyBid app with the following features:
+
+### User Screens
+| Landing screen | Landing screen | Landing screen | Landing screen | Landing screen | 
+| ---| ---| ---| ---| --- |
+| ![Landing](./readme/implementation/landing-1.png) | ![Landing](./readme/implementation/landing-2.png) | ![Landing](./readme/implementation/landing-3.png) | ![Landing](./readme/implementation/landing-4.png) | ![Landing](./readme/implementation/landing-5.png)
+| Landing screen | Landing screen | Landing screen | Landing screen | Register screen | 
+| ![Landing](./readme/implementation/landing-6.png) | ![Landing](./readme/implementation/landing-7.png) | ![Landing](./readme/implementation/landing-8.png) | ![Landing](./readme/implementation/landing-9.png) | ![Landing](./readme/implementation/register.png)
+| Login screen | Edit profile screen | Requests broker screen | Request operator screen | Create request screen |
+| ![Landing](./readme/implementation/login.png) | ![Landing](./readme/implementation/edit-profile.png) | ![Landing](./readme/implementation/requests-broker.png) | ![Landing](./readme/implementation/requests-operator.png) | ![Landing](./readme/implementation/create-request.png)
+| Bids screen | Accept bid screen | Send message screen | Messages screen | Chat screen |
+| ![Landing](./readme/implementation/bids.png) | ![Landing](./readme/implementation/accept-bid.png) | ![Landing](./readme/implementation/send-message.png) | ![Landing](./readme/implementation/messages.png) | ![Landing](./readme/implementation/chat.png)
+| Aircrafts screen | Add-aircraft screen | Request details screen | Add-bid screen |
+| ![Landing](./readme/implementation/aircrafts.png) | ![Landing](./readme/implementation/add-aircraft.png) | ![Landing](./readme/implementation/request-details.png) | ![Landing](./readme/implementation/add-bid.png) | 
+
+### Admin Screens
+| Dashboard screen | Users screen |
+| ---| ---|
+| ![Landing](./readme/implementation/dashboard.png) | ![Landing](./readme/implementation/admin-users.png) |
+
+<br><br>
 
 <!-- Tech stack -->
 <img src="./readme/title5.svg"/>
