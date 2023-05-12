@@ -22,7 +22,6 @@ export class DashboardComponent implements OnInit {
         this.seriesData = data.map((item) => {
           return { ...item, number: 1 ,category: this.getCategoryLabel(item.role)};
         });
-      console.log(data)
    })
   }
   getCategoryLabel(role: string): string {

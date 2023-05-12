@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { WindowRef } from '@progress/kendo-angular-dialog';
 import { NotificationService } from '@progress/kendo-angular-notification';
+import { Aircraft } from 'src/app/models/aircraft';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
 
@@ -11,12 +12,23 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class AddBidComponent implements OnInit {
 
-  aircrafts: any;
+  aircrafts : Aircraft [];
   formValues: any = {
     aircraft: '',
     passengers: '',
     yearOfManufacture: ''
   };
+  lowest_bid : number;
+  request={
+    request_id:"",
+    broker_id:""
+  }
+  windowRef : WindowRef;
+
+  model = {
+    aircraft: '',
+    price: null
+  }
 
   ngOnInit(): void {
     this.apiService.getAircrafts().subscribe(data => {
@@ -24,12 +36,6 @@ export class AddBidComponent implements OnInit {
       this.aircrafts = data.aircrafts;
     });
   }
-request={
-  request_id:"",
-  broker_id:""
-}
-
-windowRef : WindowRef
 
   constructor(
     private apiService : ApiService,
@@ -38,12 +44,6 @@ windowRef : WindowRef
    
   ){}
 
-  lowest_bid : number
-
-  model = {
-    aircraft: '',
-    price: null
-  }
   add(){
     if (this.lowest_bid && this.model.price >= this.lowest_bid) {
       this.notificationService.show({
