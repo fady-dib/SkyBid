@@ -15,11 +15,8 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class MessagesComponent {
 
-  chats = []
-
 
   ngOnInit(): void {
-    console.log('ngOnInit triggered');
     this.search()
   }
 
@@ -33,15 +30,15 @@ export class MessagesComponent {
 
   public gridData: GridDataResult;
   private dataSubscription: Subscription;
-  
+  chats  = []
   sort: SortDescriptor[] = [{
     field: 'createdAt',
     dir: 'desc'
   }];
 
-  loading = false;
+  loading : boolean = false;
   mySelection: number[] = [];
-  clickedItem
+  clickedItem :any;
   opened = false
 
   private search() {
@@ -51,7 +48,6 @@ export class MessagesComponent {
         finalize(() => this.loading = false)
       )
       .subscribe(data => {
-        console.log(data)
         this.sortChats(data);
         this.loadItems()
       })
@@ -64,6 +60,7 @@ export class MessagesComponent {
     setTimeout(() => {
       this.clickedItem = null
     }, 300)
+
   }
 
   public sortChange(sort: SortDescriptor[]): void {
@@ -113,10 +110,6 @@ export class MessagesComponent {
     }
 
   }
-
-
- 
-
 
 
 }

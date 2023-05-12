@@ -1,7 +1,7 @@
 export class Chat {
     chat: {
         _id: string;
-        users: string[];
+        users: [];
         messages: {
           sender: string;
           receiver: string;
