@@ -14,23 +14,22 @@ export class EditProfileComponent implements OnInit {
  this.getUser()
   }
 
+  original_model : User;
+  model : User = new User;
+  notifPos : Position = { vertical: 'top', horizontal:'center'}
+
   getUser(){
     this.apiService.getUser().subscribe(data => {
       this.model = data
       this.original_model = {...this.model};
-      console.log(data)
     })
   }
-
-  original_model;
 
   constructor(
     private apiService : ApiService,
     private notificationService : NotificationService
   ){}
 
-  model : User = new User;
-  notifPos : Position = { vertical: 'top', horizontal:'center'}
 
   update(){
 

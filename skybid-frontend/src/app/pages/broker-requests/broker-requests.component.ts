@@ -19,7 +19,7 @@ import { SocketService } from 'src/app/services/socket.service';
 
 export class BrokerRequestsComponent implements OnInit {
 
-  requests = []
+ 
 
 
   ngOnInit(): void {
@@ -27,6 +27,7 @@ export class BrokerRequestsComponent implements OnInit {
     this.search()
   }
 
+  
   constructor(
     private apiService: ApiService,
     private windowService: WindowService,
@@ -34,9 +35,17 @@ export class BrokerRequestsComponent implements OnInit {
     private socketService : SocketService
   ) { }
 
+  get selectedDataItem() {
+    if (this.mySelection.length > 0)
+      return this.requests.find(c => c._id == this.mySelection[0])
+    else
+      return null;
+  }
+
 
   public gridData: GridDataResult;
   private dataSubscription: Subscription;
+  requests : any = []
   
   sort: SortDescriptor[] = [{
     field: 'createdAt',
@@ -55,7 +64,6 @@ export class BrokerRequestsComponent implements OnInit {
         finalize(() => this.loading = false)
       )
       .subscribe(data => {
-        console.log(data)
         this.sortRequests(data);
         this.loadItems()
       },
@@ -119,12 +127,7 @@ export class BrokerRequestsComponent implements OnInit {
     }
   }
 
-  get selectedDataItem() {
-    if (this.mySelection.length > 0)
-      return this.requests.find(c => c._id == this.mySelection[0])
-    else
-      return null;
-  }
+
 
   onDelete() {
 
