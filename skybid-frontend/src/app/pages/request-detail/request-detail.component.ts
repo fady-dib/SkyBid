@@ -29,13 +29,17 @@ export class RequestDetailComponent implements OnInit {
 
   model : Request = new Request();
 
-  request;
-
+  request : Request;
+  opened : boolean = false
   gridData : GridDataResult;
-  loading = false;
+  loading : boolean = false;
   request_id : string
-  broker_id;
-  private subscription : Subscription
+  broker_id : string;
+  private subscription : Subscription;
+  private sort: SortDescriptor[] = [{
+    field: 'price',
+    dir: 'asc'
+  }];
 
   getBids() {
     this.loading = true
@@ -44,20 +48,19 @@ export class RequestDetailComponent implements OnInit {
       finalize(()=> this.loading = false)
     )
     .subscribe(data => {
+
       data.departure_date = this.formatDate(data.departure_date);
       data.return_date = this.formatDate(data.return_date);
-      this.model = data
-      console.log(this.model)
-      // this.model.bids.sort((a, b) => a.price - b.price);
+
+      this.model = data;
+
       const sortedBids = orderBy(this.model.bids, this.sort);
       this.gridData = { data: sortedBids, total: sortedBids.length };
+
     })
   }
 
-  private sort: SortDescriptor[] = [{
-    field: 'price',
-    dir: 'asc'
-  }];
+
 
 
   formatDate(date: Date): string {
@@ -68,7 +71,8 @@ export class RequestDetailComponent implements OnInit {
   
     return `${year}-${month}-${day}`;
   }
-  opened = false
+
+
   
 add(){
   this.opened = true ;
