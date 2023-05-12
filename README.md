@@ -36,7 +36,7 @@
 ![fsdaf](./readme/wireframes/landing-page-wireframe.png)
 
 ### Mockups
-| Login  | Register Screen | Aircrafts Screen | Add aircraft screen | Edit profile screen | 
+| Login screen | Register screen | Aircrafts screen | Add aircraft screen | Edit profile screen | 
 | ---| ---| ---| ---| --- |
 | ![Landing](./readme/mockups/login-mockup.png) | ![register](./readme/mockups/register-mockup.png) | ![aircrafts](./readme/mockups/Aircrafts.png) | ![addaircraft](./readme/mockups/add-aircraft.png) | ![fsdaf](./readme/mockups/edit-profile.png)
 | Requests screen | Create request screen | Add bid screen | Request details screen | Messages screen | 
@@ -48,6 +48,15 @@
 
 <!-- Implementation -->
 <img src="./readme/title4.svg"/>
+
+> Using the wireframes and mockups as a guide, we implemented the Coffee Express app with the following features:
+
+### User Screens
+| Landing screen | Landing screen | Landing screen | Landing screen | Landing screen | 
+| ---| ---| ---| ---| --- |
+| ![Landing](./readme/implementation/landing-1.png) | ![Landing](./readme/implementation/landing-2.png) | ![Landing](./readme/implementation/landing-3.png) | ![Landing](./readme/implementation/landing-4.png) | ![Landing](./readme/implementation/landing-5.png)
+| Landing screen | Landing screen | Landing screen | Landing screen | Register screen | 
+| ![Landing](./readme/implementation/landing-6.png) | ![Landing](./readme/implementation/landing-7.png) | ![Landing](./readme/implementation/landing-8.png) | ![Landing](./readme/implementation/landing-9.png) | ![Landing](./readme/implementation/register.png)
 
 
 <!-- Tech stack -->
