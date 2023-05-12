@@ -29,6 +29,32 @@ export class BidsComponent implements OnInit {
     private decimalPipe: DecimalPipe
   ) { }
 
+  dialog_title: string;
+  @ViewChild('windowTitleBar', { read: TemplateRef, static: false })
+  public windowTitleBar: TemplateRef<any>;
+  windowRef : WindowRef;
+  data : { from : string, to:string, trip: string,bids:[{operator : {company_name : string, _id:string}}]}
+  loading : boolean = false;
+  mySelection: number[] = [];
+  clickedItem: Request;
+  gridData: GridDataResult;
+  bids : any[];
+  request_id : string;
+  sort: SortDescriptor[] = [
+    {
+      field: 'createdAt',
+      dir: 'desc',
+    },
+  ];
+  opened : boolean = false
+
+  get selectedDataItem() {
+    if (this.mySelection.length > 0)
+      return this.bids.find(c => c._id == this.mySelection[0])
+    else
+      return null;
+  }
+
   getBids() {
     this.loading = true;
     this.apiService
@@ -41,20 +67,6 @@ export class BidsComponent implements OnInit {
       });
   }
 
-  data : { from : string, to:string, trip: string,bids:[{operator : {company_name : string, _id:string}}]}
-  loading;
-  mySelection: number[] = [];
-  clickedItem: Request;
-  gridData: GridDataResult;
-  bids;
-  request_id;
-  sort: SortDescriptor[] = [
-    {
-      field: 'createdAt',
-      dir: 'desc',
-    },
-  ];
-  opened = false
 
   public sortChange(sort: SortDescriptor[]): void {
     this.sort = sort;
@@ -91,12 +103,6 @@ export class BidsComponent implements OnInit {
       }
     });
   }
-
-  dialog_title: string;
-  @ViewChild('windowTitleBar', { read: TemplateRef, static: false })
-  public windowTitleBar: TemplateRef<any>;
-  windowRef : WindowRef
-
   
 
   accept() {
@@ -154,12 +160,7 @@ export class BidsComponent implements OnInit {
     });
   }
 
-  get selectedDataItem() {
-    if (this.mySelection.length > 0)
-      return this.bids.find(c => c._id == this.mySelection[0])
-    else
-      return null;
-  }
+
 
   addComment(){
     if (!this.selectedDataItem) {

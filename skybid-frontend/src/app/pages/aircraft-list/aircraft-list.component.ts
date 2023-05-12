@@ -2,7 +2,7 @@ import { Component, ComponentRef, OnInit } from '@angular/core';
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 import { ApiService } from 'src/app/services/api.service';
 import { AddAircraftComponent } from '../add-aircraft/add-aircraft.component';
-import { FileRestrictions } from '@progress/kendo-angular-upload';
+import { Aircraft } from 'src/app/models/aircraft';
 
 @Component({
   selector: 'app-aircraft-list',
@@ -20,10 +20,10 @@ export class AircraftListComponent implements OnInit {
     private windowService: WindowService,
   ) { }
 
-  aircrafts: any[] = []
+  aircrafts: Aircraft[] = []
   serverUrl = 'http://localhost:3006/'
-  opened = false;
-  is_loading = true;
+  opened : boolean = false;
+  is_loading : boolean = true;
 
 
   getAicrafts() {
@@ -33,7 +33,7 @@ export class AircraftListComponent implements OnInit {
     })
   }
 
-  onFileChange(event, aircraft_id: string, aircraft) {
+  onFileChange(event, aircraft_id: string, aircraft: Aircraft) {
     
     const file = event.target.files[0];
 
@@ -53,7 +53,7 @@ export class AircraftListComponent implements OnInit {
   }
  
 
-  deleteAircraft(id) {
+  deleteAircraft(id: string) {
     this.apiService.deleteAircraft(id).subscribe(() => {
       this.getAicrafts()
     })
