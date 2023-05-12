@@ -85,10 +85,10 @@ sort: SortDescriptor[] = [{
   field: 'createdAt',
   dir: 'desc'
 }];
-loading = false;
+loading : boolean = false;
 mySelection : number[] =[];
 clickedItem: Request
-opened = false
+opened : boolean = false
 
 
 requests : any[]=[]
@@ -102,7 +102,6 @@ private search () {
   .subscribe(data => {
     this.sortRequests(data);
     this.loadItems()
-    console.log(this.requests)
   })
   
 }
