@@ -57,6 +57,10 @@
 | ![Landing](./readme/implementation/landing-1.png) | ![Landing](./readme/implementation/landing-2.png) | ![Landing](./readme/implementation/landing-3.png) | ![Landing](./readme/implementation/landing-4.png) | ![Landing](./readme/implementation/landing-5.png)
 | Landing screen | Landing screen | Landing screen | Landing screen | Register screen | 
 | ![Landing](./readme/implementation/landing-6.png) | ![Landing](./readme/implementation/landing-7.png) | ![Landing](./readme/implementation/landing-8.png) | ![Landing](./readme/implementation/landing-9.png) | ![Landing](./readme/implementation/register.png)
+| Login screen | Edit profile screen | Requests broker screen | Request operator screen | Create request screen |
+| ![Landing](./readme/implementation/login.png) | ![Landing](./readme/implementation/edit-profile.png) | ![Landing](./readme/implementation/requests-broker.png) | ![Landing](./readme/implementation/requests-operator.png) | ![Landing](./readme/implementation/create-request.png)
+| Bids screen | Accept bid screen | Send message screen | Messages screen | Chat screen |
+| ![Landing](./readme/implementation/bids.png) | ![Landing](./readme/implementation/accept-bid.png) | ![Landing](./readme/implementation/send-message.png) | ![Landing](./readme/implementation/messages.png) | ![Landing](./readme/implementation/chat.png)
 
 
 <!-- Tech stack -->
