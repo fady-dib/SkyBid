@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DrawerComponent } from './drawer.component';
+import { SendMessageComponent } from './send-message.component';
 
-describe('DrawerComponent', () => {
-  let component: DrawerComponent;
-  let fixture: ComponentFixture<DrawerComponent>;
+describe('SendMessageComponent', () => {
+  let component: SendMessageComponent;
+  let fixture: ComponentFixture<SendMessageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DrawerComponent ]
+      declarations: [ SendMessageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DrawerComponent);
+    fixture = TestBed.createComponent(SendMessageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

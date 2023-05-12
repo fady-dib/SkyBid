@@ -13,17 +13,13 @@ import { BrokerRequestsComponent } from './pages/broker-requests/broker-requests
 import { AuthGuard } from './auth/auth.guard';
 import { NotAuthGuard } from './auth/not-auth.guard';
 import { MessagesComponent } from './pages/messages/messages.component';
-import { ChatComponent } from './components/chat/chat.component';
 
 const routes = [
-  {path: 'chat', component: ChatComponent },
   {path : 'login', component: LoginComponent, canActivate: [NotAuthGuard]},
   {path:'', component: LandingPageComponent,canActivate: [NotAuthGuard]},
   {path:'register', component: RegisterComponent,canActivate: [NotAuthGuard]},
   {path: 'request-list', component: RequestsListComponent, canActivate: [AuthGuard],data: {allowed_role:['operator']}},
-  // {path: 'request-detail', component : RequestDetailComponent, canActivate: [AuthGuard], data},
   {path: 'aircrafts', component: AircraftListComponent, canActivate: [AuthGuard],data: {allowed_role:['operator']}},
-  // {path: 'add-aircraft', component: AddAircraftComponent},
   {path: 'edit-profile', component: EditProfileComponent,canActivate: [AuthGuard],data: {allowed_role:['operator','broker']}},
   {path: 'users', component: UsersComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],data: {allowed_role:['admin']}},

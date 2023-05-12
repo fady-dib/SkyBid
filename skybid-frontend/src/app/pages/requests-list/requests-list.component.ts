@@ -9,7 +9,7 @@ import { RequestDetailComponent } from '../request-detail/request-detail.compone
 import { WindowCloseResult, WindowService } from '@progress/kendo-angular-dialog';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { NotificationService } from '@progress/kendo-angular-notification';
-import { CommentComponent } from 'src/app/components/comment/comment.component';
+import { SendMessageComponent } from 'src/app/components/send-message/send-message.component';
 
 @Component({
   selector: 'app-requests-list',
@@ -174,12 +174,12 @@ sendMessage(){
   this.opened = true
   const windowRef = this.windowService.open({
     title: "Message",
-    content: CommentComponent,
+    content: SendMessageComponent,
     width: 500,
     top: 150
   })
 
-  let windowRefCmp: ComponentRef<CommentComponent> = windowRef.content;
+  let windowRefCmp: ComponentRef<SendMessageComponent> = windowRef.content;
   windowRefCmp.instance.model.receiver = this.selectedDataItem.broker._id
   windowRefCmp.instance.windowRef = windowRef
   windowRefCmp.instance.to = this.selectedDataItem.broker.company_name

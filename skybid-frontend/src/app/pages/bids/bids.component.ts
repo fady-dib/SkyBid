@@ -3,9 +3,9 @@ import { WindowCloseResult, WindowRef, WindowService } from '@progress/kendo-ang
 import { CellClickEvent, GridDataResult } from '@progress/kendo-angular-grid';
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { SortDescriptor, orderBy } from '@progress/kendo-data-query';
-import { BehaviorSubject, finalize } from 'rxjs';
-import { AgreementComponent } from 'src/app/components/agreement/agreement.component';
-import { CommentComponent } from 'src/app/components/comment/comment.component';
+import { finalize } from 'rxjs';
+
+import { SendMessageComponent } from 'src/app/components/send-message/send-message.component';
 import { ConfirmationComponent } from 'src/app/components/confirmation/confirmation.component';
 import { ApiService } from 'src/app/services/api.service';
 import { SocketService } from 'src/app/services/socket.service';
@@ -173,12 +173,12 @@ export class BidsComponent implements OnInit {
     this.opened = true
     const windowRef = this.windowService.open({
       title: "Message",
-      content: CommentComponent,
+      content: SendMessageComponent,
       width: 500,
       top: 150
     })
 
-    let windowRefCmp: ComponentRef<CommentComponent> = windowRef.content;
+    let windowRefCmp: ComponentRef<SendMessageComponent> = windowRef.content;
     windowRefCmp.instance.model.receiver = this.selectedDataItem.operator._id
     windowRefCmp.instance.windowRef = windowRef
     windowRefCmp.instance.to = this.selectedDataItem.operator.company_name

@@ -1,7 +1,7 @@
 <div class="window-information">
     <p class="information-body" [innerHTML]="message">
     </p>
-    <app-comment [placeholder]="textArea"[button]="false" [readonly]="true" [label]="label" [class]="false"></app-comment>
+    <app-send-message> [placeholder]="textArea"[button]="false" [readonly]="true" [label]="label" [class]="false"></app-send-message>
     <div class="buttons">
         <button (click)="onClose(true)" class="yes btn" >Yes</button>
         <button (click)="onClose(false)" class="no btn" >No</button>

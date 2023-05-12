@@ -4,11 +4,11 @@ import { NotificationService } from '@progress/kendo-angular-notification';
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
-  selector: 'app-comment',
-  templateUrl: './comment.component.html',
-  styleUrls: ['./comment.component.css']
+  selector: 'app-send-message',
+  templateUrl: './send-message.component.html',
+  styleUrls: ['./send-message.component.css']
 })
-export class CommentComponent implements OnInit {
+export class SendMessageComponent implements OnInit {
 
   ngOnInit(): void {
   if(!this.label){
