@@ -69,6 +69,13 @@
 | ---| ---|
 | ![Landing](./readme/implementation/dashboard.png) | ![Landing](./readme/implementation/admin-users.png) |
 
+### Gifs
+| Landing screen | Aircrafts |
+| ---| ---| 
+| <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjhkMzRhYjZlM2ZiMTI5YjU3ZWI1OWI1ZDQ1YzBiMjM3YzYyMmNlMyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/WweNJUqJz3TapN16qn/giphy.gif"/>| <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmVmODg1NDM4MzhhNWI1M2NlOGJiYTFhMzAyYmFlMzMyNmIwOGM2MyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/g66vcgoFfo2kKdIB3S/giphy.gif"/> 
+|Create request | Chat
+|<img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjgzNDYwMDRjZWUzYzgwMDRjNDY2Nzg1MjVmNDI3Y2FmMDg5OWUxMSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/kZc7eJuKfUAatBwJ1Y/giphy.gif"/> |  <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2Y0MTZlNDFhYWRiODhjODIyZjA5MjFlMTllNzk3MDhkZGY1ZDcyZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/NgjEggY9m7LjOtQSbX/giphy.gif"/>
+
 <br><br>
 
 <!-- Tech stack -->
