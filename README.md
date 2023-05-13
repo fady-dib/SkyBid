@@ -110,14 +110,39 @@ This is an example of how to list things you need to use the software and how to
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/fady-dib/SkyBid.git
    ```
-3. Install NPM packages
+2. Navigate to the backend folder
+   ```sh
+   cd SkyBid-server
+   ```
+3. Install the backend NPM packages:
    ```sh
    npm install
-   ```
-
+   ```   
+4. Create .env file in the root directory of SkyBid-server folder and add the following lines. Remember to replace the placeholders with your actual values.
+   ```sh
+   PORT = number
+   DB_URL = your database
+   SECRET_KEY = your secret key
+   ```   
+5. To start the backend server, run the following command in the terminal. Make sure you're in the root directory of your project:
+   ```sh
+   nodemon .
+   ```   
+6. Open a new terminal and navigate to the frontend folder   
+   ```sh
+   cd SkyBid-frontend
+   ```    
+7. Install the frontend NPM packages
+   ```sh
+   npm install
+   ```     
+8. To start the frontend of the application, run the following command
+   ```sh
+   ng serve
+   ``` 
+   
 Now, you should be able to run SkyBid locally and explore its features.
