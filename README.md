@@ -116,13 +116,13 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 2. Navigate to the backend folder
    ```sh
-   cd SkyBid-server
+   cd skybid-server
    ```
 3. Install the backend NPM packages:
    ```sh
    npm install
    ```   
-4. Create .env file in the root directory of SkyBid-server folder and add the following lines. Remember to replace the placeholders with your actual values.
+4. Create .env file in the root directory of skybid-server folder and add the following lines. Remember to replace the placeholders with your actual values.
    ```sh
    PORT = number
    DB_URL = your database
@@ -134,7 +134,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```   
 6. Open a new terminal and navigate to the frontend folder   
    ```sh
-   cd SkyBid-frontend
+   cd skybid-frontend
    ```    
 7. Install the frontend NPM packages
    ```sh
