@@ -134,7 +134,7 @@ export class BidsComponent implements OnInit {
     confirmDialogCmp.instance.to = this.data.to
     confirmDialogCmp.instance.trip = this.data.trip
     confirmDialogCmp.instance.operator = this.data.bids[0].operator.company_name
-  
+
     confirmDialogCmp.instance.messageEvent.subscribe((message) => {
       model.msg = message;
     });
