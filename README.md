@@ -10,14 +10,16 @@
 > SkyBid seeks to revolutionize the private jet charter industry by offering a seamless, user-friendly platform that enables operators and brokers to engage in real-time bidding for charter flights. Our mission is to optimize the booking experience, save time, and ensure the utmost satisfaction for all parties involved in the private aviation sector..
 
 ### User Stories
-- As a user I want to edit my profile so that i can update it whenever something changes or needs to be corrected.
-- As a user I want to be able to contact other users so that i can negotiate in private conversations
+
+- As a user I want to be able to contact other users so that i can negotiate in private conversations.
 - As a broker I want to create a new request so that I can find available flights with best prices.
-- As a broker I want to accept a bid in order to secure the best price for my client and book the desired flight
-- As an operator I want to submit a bid in real-time so that I can have the best chance of winning the booking
-- As an operator I want to see the current highest bid in real-time, so that I can adjust my bid accordingly.
+- As a broker I want to accept a bid in order to secure the best price for my client and book the desired flight.
+- As an operator I want to submit a bid in real-time so that I can have the best chance of winning the booking.
+
+### Admin Stories
+
 - As an admin I want to monitor the number of users so that i can identify any issues or areas for improvement.
-- As an admin I want to see the users details so that I can ensure compliance with platform policies 
+- As an admin I want to see the users details so that I can ensure compliance with platform policies.
 
 <br><br>
 
@@ -27,22 +29,16 @@
 > We designed SkyBid using wireframes and mockups, iterating on the design until we reached the ideal layout for easy navigation and a seamless user experience.
 
 ### Wireframes
-| Login screen  | Register screen | Aircrafts screen | Add aircraft screen | Edit profile screen | 
-| ---| ---| ---| ---| --- |
-| ![Landing](./readme/wireframes/login-wireframe.png) | ![register](./readme/wireframes/register-wireframe.png) | ![aircrafts](./readme/wireframes/aircrafts-wireframe.png) | ![addaircraft](./readme/wireframes/add-aircraft.png) | ![fsdaf](./readme/wireframes/Edit-profile.png)
-| Requests screen | Create request screen | Add bid screen | Request details screen | Messages screen | 
-|![fsdaf](./readme/wireframes/requests-broker.png) | ![fsdaf](./readme/wireframes/create-request-wireframe.png) | ![fsdaf](./readme/wireframes/bids.png) | ![fsdaf](./readme/wireframes/request-details.png) | ![fsdaf](./readme/wireframes/messages.png)
-| Landing screen |
-![fsdaf](./readme/wireframes/landing-page-wireframe.png)
+| Login screen  | Requests screen | Create request screen | Aircrafts screen | 
+| --- | --- | --- | --- | 
+| ![fsdaf](./readme/wireframes/login-wireframe.png) | ![fsdaf](./readme/wireframes/requests-broker.png) | ![fsdaf](./readme/wireframes/create-request-wireframe.png) | ![aircrafts](./readme/wireframes/aircrafts-wireframe.png) |
+
 
 ### Mockups
-| Login screen | Register screen | Aircrafts screen | Add aircraft screen | Edit profile screen | 
-| ---| ---| ---| ---| --- |
-| ![Landing](./readme/mockups/login-mockup.png) | ![register](./readme/mockups/register-mockup.png) | ![aircrafts](./readme/mockups/Aircrafts.png) | ![addaircraft](./readme/mockups/add-aircraft.png) | ![fsdaf](./readme/mockups/edit-profile.png)
-| Requests screen | Create request screen | Add bid screen | Request details screen | Messages screen | 
-|![fsdaf](./readme/mockups/requests-broker.png) | ![fsdaf](./readme/mockups/create-request.png) | ![fsdaf](./readme/mockups/Add-bid.png) | ![fsdaf](./readme/mockups/request-details.png) | ![fsdaf](./readme/mockups/messages.png)
-| Landing screen |
-![fsdaf](./readme/mockups/landing-page.png)
+| Login screen | Requests screen | Create request screen | Messages screen  |
+| ---| --- | --- | ---| 
+| ![Landing](./readme/mockups/login-mockup.png) | ![fsdaf](./readme/mockups/requests-broker.png) | ![fsdaf](./readme/mockups/create-request.png)| ![fsdaf](./readme/mockups/messages.png) |
+
 
 <br><br>
 
@@ -51,30 +47,41 @@
 
 > Using the wireframes and mockups as a guide, we implemented the SkyBid app with the following features:
 
+### SkyBid in Action
+| Landing screen | Aircrafts |
+| ---| ---| 
+| <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjhkMzRhYjZlM2ZiMTI5YjU3ZWI1OWI1ZDQ1YzBiMjM3YzYyMmNlMyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/WweNJUqJz3TapN16qn/giphy.gif"/>| <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmVmODg1NDM4MzhhNWI1M2NlOGJiYTFhMzAyYmFlMzMyNmIwOGM2MyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/g66vcgoFfo2kKdIB3S/giphy.gif"/> 
+|Create request | Chat
+|<img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjgzNDYwMDRjZWUzYzgwMDRjNDY2Nzg1MjVmNDI3Y2FmMDg5OWUxMSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/kZc7eJuKfUAatBwJ1Y/giphy.gif"/> |  <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2Y0MTZlNDFhYWRiODhjODIyZjA5MjFlMTllNzk3MDhkZGY1ZDcyZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/NgjEggY9m7LjOtQSbX/giphy.gif"/>
+
 ### User Screens
-| Landing screen | Landing screen | Landing screen | Landing screen | Landing screen | 
-| ---| ---| ---| ---| --- |
-| ![Landing](./readme/implementation/landing-1.png) | ![Landing](./readme/implementation/landing-2.png) | ![Landing](./readme/implementation/landing-3.png) | ![Landing](./readme/implementation/landing-4.png) | ![Landing](./readme/implementation/landing-5.png)
-| Landing screen | Landing screen | Landing screen | Landing screen | Register screen | 
-| ![Landing](./readme/implementation/landing-6.png) | ![Landing](./readme/implementation/landing-7.png) | ![Landing](./readme/implementation/landing-8.png) | ![Landing](./readme/implementation/landing-9.png) | ![Landing](./readme/implementation/register.png)
-| Login screen | Edit profile screen | Requests broker screen | Request operator screen | Create request screen |
-| ![Landing](./readme/implementation/login.png) | ![Landing](./readme/implementation/edit-profile.png) | ![Landing](./readme/implementation/requests-broker.png) | ![Landing](./readme/implementation/requests-operator.png) | ![Landing](./readme/implementation/create-request.png)
-| Bids screen | Accept bid screen | Send message screen | Messages screen | Chat screen |
-| ![Landing](./readme/implementation/bids.png) | ![Landing](./readme/implementation/accept-bid.png) | ![Landing](./readme/implementation/send-message.png) | ![Landing](./readme/implementation/messages.png) | ![Landing](./readme/implementation/chat.png)
-| Aircrafts screen | Add-aircraft screen | Request details screen | Add-bid screen |
-| ![Landing](./readme/implementation/aircrafts.png) | ![Landing](./readme/implementation/add-aircraft.png) | ![Landing](./readme/implementation/request-details.png) | ![Landing](./readme/implementation/add-bid.png) | 
+| Landing screen | Landing screen 
+| ---| ---| 
+| ![Landing](./readme/implementation/landing-1.png) | ![Landing](./readme/implementation/landing-2.png) 
+| Landing screen | Landing screen |
+| ![Landing](./readme/implementation/landing-5.png) | ![Landing](./readme/implementation/landing-7.png)
+| Landing screen | Register screen | 
+| ![Landing](./readme/implementation/landing-9.png) | ![Landing](./readme/implementation/register.png)
+| Login screen | Edit profile screen 
+| ![Landing](./readme/implementation/login.png) | ![Landing](./readme/implementation/edit-profile.png) 
+| Requests broker screen | Request operator screen
+| ![Landing](./readme/implementation/requests-broker.png) | ![Landing](./readme/implementation/requests-operator.png)
+| Create request screen | Bids screen 
+| ![Landing](./readme/implementation/create-request.png) | ![Landing](./readme/implementation/bids.png)
+| Accept bid screen | Send message screen 
+| ![Landing](./readme/implementation/accept-bid.png) | ![Landing](./readme/implementation/send-message.png)  
+| Messages screen | Chat screen
+| ![Landing](./readme/implementation/messages.png) | ![Landing](./readme/implementation/chat.png)
+| Aircrafts screen | Add-aircraft screen
+| ![Landing](./readme/implementation/aircrafts.png) | ![Landing](./readme/implementation/add-aircraft.png)
+| Request details screen | Add-bid screen 
+| ![Landing](./readme/implementation/request-details.png) | ![Landing](./readme/implementation/add-bid.png)
 
 ### Admin Screens
 | Dashboard screen | Users screen |
 | ---| ---|
 | ![Landing](./readme/implementation/dashboard.png) | ![Landing](./readme/implementation/admin-users.png) |
 
-### Gifs
-| Landing screen | Aircrafts |
-| ---| ---| 
-| <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjhkMzRhYjZlM2ZiMTI5YjU3ZWI1OWI1ZDQ1YzBiMjM3YzYyMmNlMyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/WweNJUqJz3TapN16qn/giphy.gif"/>| <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmVmODg1NDM4MzhhNWI1M2NlOGJiYTFhMzAyYmFlMzMyNmIwOGM2MyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/g66vcgoFfo2kKdIB3S/giphy.gif"/> 
-|Create request | Chat
-|<img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMjgzNDYwMDRjZWUzYzgwMDRjNDY2Nzg1MjVmNDI3Y2FmMDg5OWUxMSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/kZc7eJuKfUAatBwJ1Y/giphy.gif"/> |  <img width=100% src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2Y0MTZlNDFhYWRiODhjODIyZjA5MjFlMTllNzk3MDhkZGY1ZDcyZSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/NgjEggY9m7LjOtQSbX/giphy.gif"/>
 
 <br><br>
 
