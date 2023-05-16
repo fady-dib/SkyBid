@@ -12,14 +12,14 @@
 ### User Stories
 
 - As a user I want to be able to contact other users so that i can negotiate in private conversations.
-- As a broker I want to create a new request so that I can find available flights with best prices.
+- As a broker I want to create a new request so that I can find flights with best prices.
 - As a broker I want to accept a bid in order to secure the best price for my client and book the desired flight.
-- As an operator I want to submit a bid in real-time so that I can have the best chance of winning the booking.
+- As an operator I want to submit a bid in real-time so that I can maximize my chances of winning the booking.
 
 ### Admin Stories
 
 - As an admin I want to monitor the number of users so that i can identify any issues or areas for improvement.
-- As an admin I want to see the users details so that I can ensure compliance with platform policies.
+- As an admin I want to be able to see the user details so that I can ensure compliance with platform policies.
 
 <br><br>
 
