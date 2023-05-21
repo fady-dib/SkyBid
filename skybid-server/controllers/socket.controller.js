@@ -19,10 +19,7 @@ module.exports = function (io) {
         if (user_index === -1) {
             users.push({ user_id, socket_id })
          } 
-        // else {
-        //     users[user_index].socket_id = socket_id
-        // }
-
+      
 
          function joinRooms(socket)  {
             if (socket.user.role === "operator") {
@@ -65,12 +62,6 @@ module.exports = function (io) {
 
         joinRooms(socket)
 
-        // if (socket.user.role === "operator") {
-        //     socket.join("operators")
-        // }
-        // else if (socket.user.role === "broker") {
-        //     socket.join("brokers")
-        // }
 
         console.log(`Client ${socket.id} connected`);
 
