@@ -6,7 +6,7 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server,{ cors:{
     origin: "*",
-    // credentials : true,
+   
   }});
 const socket_controller = require('./controllers/socket.controller')(io);
 const {authMiddleware} = require('./middlewares/authMiddleware');
@@ -18,8 +18,6 @@ const path = require('path');
 
 
 app.use(express.json())
-// app.use(express.urlencoded({extended: true})); 
-// app.use('/images', express.static(path.join(__dirname, '../images')));
 
 app.use('/Uploads', express.static(path.join(__dirname, 'Uploads')));
 
