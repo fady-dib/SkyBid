@@ -16,8 +16,8 @@ export class Request {
     luggage: number;
     from: string;
     to: string;
-    departure_date: Date;
-    return_date: Date;
+    departure_date: string;
+    return_date: string;
     status: string;
     createdAt: Date;
     bids: [];

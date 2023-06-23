@@ -1,4 +1,5 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { getToday } from '@progress/kendo-angular-dateinputs/util';
 import { WindowRef } from '@progress/kendo-angular-dialog';
 import { NotificationService, Position } from '@progress/kendo-angular-notification';
 import { Request } from 'src/app/models/request';
@@ -9,7 +10,12 @@ import { SocketService } from 'src/app/services/socket.service';
   templateUrl: './create-request.component.html',
   styleUrls: ['./create-request.component.css']
 })
-export class CreateRequestComponent {
+export class CreateRequestComponent implements OnInit {
+
+  ngOnInit(): void {
+    this.model.departure_date = this.today_date
+    
+  }
 
   constructor(
     private socketService: SocketService,
@@ -67,6 +73,17 @@ export class CreateRequestComponent {
 
     this.socketService.createRequest(this.model)
     this.windowref.close()
+  }
+
+  today_date : string = this.getToday()
+
+  getToday() {
+    const date = new Date();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${year}-${month}-${day}`;
   }
 
   airports = [
