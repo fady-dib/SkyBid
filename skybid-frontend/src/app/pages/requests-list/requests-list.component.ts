@@ -166,7 +166,7 @@ private latestRequestTimestamp: number = 0;
 sendMessage(){
   if (!this.selectedDataItem) {
     this.notificationService.show({
-      content: 'Select a bid',
+      content: 'Select a request',
       type: { style: 'warning' }
     })
     return;

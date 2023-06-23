@@ -45,6 +45,7 @@ export class AddBidComponent implements OnInit {
   ){}
 
   add(){
+    console.log(this.lowest_bid, this.model.price)
     if (this.lowest_bid && this.model.price >= this.lowest_bid) {
       this.notificationService.show({
         content: 'Your bid cannot be higher or equal the lowest bid',

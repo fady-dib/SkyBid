@@ -38,7 +38,7 @@
             </div>
             <div class="mb-3 ">
                 <label for="return" class="form-label">Return Date</label>
-                <input type="date" id="return" class="form-control" [(ngModel)]="model.return_date" name="return">
+                <input type="date" id="return" class="form-control" [(ngModel)]="model.return_date" name="return"[min]="model.departure_date">
             </div>
         </div>
         <div class="mb-3 ">

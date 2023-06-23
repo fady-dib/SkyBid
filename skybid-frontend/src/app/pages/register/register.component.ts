@@ -92,7 +92,7 @@ const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return
   }
 
-  if (this.model.password !== this.model.confirm_password) {
+  if (this.model.password.trim() !== this.model.confirm_password.trim()) {
     this.notificationService.show({
       content: 'Passwords do not match',
       type: {style: 'warning'},

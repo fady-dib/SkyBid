@@ -89,8 +89,13 @@ add(){
     windowRefCmp.instance.windowRef = windowRef
     console.log(this.gridData.data);
     if (this.gridData && this.gridData.data && this.gridData.data.length > 0) {
+      console.log('Lowest bid before assignment:', this.gridData.data[0].price);
       windowRefCmp.instance.lowest_bid = this.gridData.data[0].price;
+      console.log('Lowest bid after assignment:', windowRefCmp.instance.lowest_bid);
     } 
+    else {
+  console.log('Grid data is not defined or empty');
+}
     
 
   windowRef.result.subscribe((result) => {
